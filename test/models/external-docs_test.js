@@ -1,28 +1,18 @@
 const { expect } = require('chai');
 const ExternalDocs = require('../../lib/models/external-docs');
-const js = { description: 'Testing', url: 'somewhere', 'x-test': 'testing' };
+const js = { url: 'somewhere' };
 
-describe('ExternalDocs', function() {
-  describe('#ext()', function() {
-    it('should support extensions', function() {
-      const d = new ExternalDocs(js);
-      expect(d.ext('x-test')).to.be.equal(js['x-test']);      
-      expect(d.extension('x-test')).to.be.equal(js['x-test']);      
-      expect(d.extensions()).to.be.deep.equal({'x-test': 'testing'});
-    });
-  });
+const { assertMixinDescriptionInheritance } = require('../mixins/description_test');
+const { assertMixinSpecificationExtensionsInheritance } = require('../mixins/specification-extensions_test');
 
-  describe('#description()', function() {
-    it('should return a string', function() {
-      const d = new ExternalDocs(js);
-      expect(d.description()).to.be.equal(js.description);
-    });
-  });
-  
+describe('ExternalDocs', function() {  
   describe('#url()', function() {
     it('should return a string', function() {
       const d = new ExternalDocs(js);
       expect(d.url()).to.be.equal(js.url);
     });
   });
+
+  assertMixinDescriptionInheritance(ExternalDocs);
+  assertMixinSpecificationExtensionsInheritance(ExternalDocs);
 });

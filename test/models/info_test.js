@@ -1,17 +1,11 @@
 const { expect } = require('chai');
 const Info = require('../../lib/models/info');
-const js = { title: 'Test', version: '1.2.3', license: { name: 'Apache 2.0', url: 'https://www.apache.org/licenses/LICENSE-2.0' }, contact: { name: 'Fran', url: 'https://www.asyncapi.com', email: 'fmvilas@gmail.com' }, 'x-test': 'testing' };
+const js = { title: 'Test', version: '1.2.3', license: { name: 'Apache 2.0', url: 'https://www.apache.org/licenses/LICENSE-2.0' }, contact: { name: 'Fran', url: 'https://www.asyncapi.com', email: 'fmvilas@gmail.com' } };
+
+const { assertMixinDescriptionInheritance } = require('../mixins/description_test');
+const { assertMixinSpecificationExtensionsInheritance } = require('../mixins/specification-extensions_test');
 
 describe('Info', function() {
-  describe('#ext()', function() {
-    it('should support extensions', function() {
-      const d = new Info(js);
-      expect(d.ext('x-test')).to.be.equal(js['x-test']);      
-      expect(d.extension('x-test')).to.be.equal(js['x-test']);      
-      expect(d.extensions()).to.be.deep.equal({'x-test': 'testing'});
-    });
-  });
-
   describe('#title()', function() {
     it('should return a string', function() {
       const d = new Info(js);
@@ -26,20 +20,37 @@ describe('Info', function() {
     });
   });
   
-  describe('#description()', function() {
-    it('should return a string', function() {
-      const d = new Info(js);
-      expect(d.description()).to.be.equal(js.description);
+  describe('#hasTermsOfService()', function() {
+    it('should return a boolean indicating if the Info has termsOfService', function() {
+      const d = new Info({ termsOfService: 'termsOfService' });
+      const d2 = new Info({ title: 'Test' });
+      expect(d.hasTermsOfService()).to.be.true;
+      expect(d2.hasTermsOfService()).to.be.false;
     });
   });
-  
+
   describe('#termsOfService()', function() {
     it('should return a string', function() {
+      const d = new Info({ termsOfService: 'termsOfService' });
+      expect(d.termsOfService()).to.be.equal('termsOfService');
+    });
+    it('should return a null', function() {
       const d = new Info(js);
-      expect(d.termsOfService()).to.be.equal(js.termsOfService);
+      expect(d.termsOfService()).to.be.null;
     });
   });
   
+  describe('#hasLicense()', function() {
+    it('should return a boolean indicating if the Info has license', function() {
+      const d = new Info(js);
+      const d2 = new Info({ license: {} });
+      const d3 = new Info({ title: 'Test' });
+      expect(d.hasLicense()).to.be.true;
+      expect(d2.hasLicense()).to.be.false;
+      expect(d3.hasLicense()).to.be.false;
+    });
+  });
+
   describe('#license()', function() {
     it('should return a license object', function() {
       const d = new Info(js);
@@ -50,6 +61,17 @@ describe('Info', function() {
     it('should return null if a license object is not given', function() {
       const d = new Info({});
       expect(d.license()).to.be.equal(null);
+    });
+  });
+
+  describe('#hasContact()', function() {
+    it('should return a boolean indicating if the Info has contact', function() {
+      const d = new Info(js);
+      const d2 = new Info({ contact: {} });
+      const d3 = new Info({ title: 'Test' });
+      expect(d.hasContact()).to.be.true;
+      expect(d2.hasContact()).to.be.false;
+      expect(d3.hasContact()).to.be.false;
     });
   });
   
@@ -65,4 +87,7 @@ describe('Info', function() {
       expect(d.contact()).to.be.equal(null);
     });
   });
+
+  assertMixinDescriptionInheritance(Info);
+  assertMixinSpecificationExtensionsInheritance(Info);
 });

@@ -240,47 +240,47 @@ describe('parse()', function() {
     }
   });
 
-  it('should offer information about missing HTTP $refs', async function() {
-    try {
-      await parser.parse(fs.readFileSync(path.resolve(__dirname, './wrong/inexisting-http-ref.yaml'), 'utf8'), {
-        path: 'https://example.com',
-        resolve: {
-          file: false
-        }
-      });
-    } catch (e) {
-      expect(e.refs).to.deep.equal([{
-        jsonPointer: '/channels/mychannel/publish/message/$ref',
-        startLine: 9,
-        startColumn: 9,
-        startOffset: offset(116, 9),
-        endLine: 9,
-        endColumn: 68,
-        endOffset: offset(175, 9),
-      }]);
-    }
-  });
+  // it('should offer information about missing HTTP $refs', async function() {
+  //   try {
+  //     await parser.parse(fs.readFileSync(path.resolve(__dirname, './wrong/inexisting-http-ref.yaml'), 'utf8'), {
+  //       path: 'https://example.com',
+  //       resolve: {
+  //         file: false
+  //       }
+  //     });
+  //   } catch (e) {
+  //     expect(e.refs).to.deep.equal([{
+  //       jsonPointer: '/channels/mychannel/publish/message/$ref',
+  //       startLine: 9,
+  //       startColumn: 9,
+  //       startOffset: offset(116, 9),
+  //       endLine: 9,
+  //       endColumn: 68,
+  //       endOffset: offset(175, 9),
+  //     }]);
+  //   }
+  // });
   
-  it('should offer information about missing root $refs', async function() {
-    try {
-      await parser.parse(fs.readFileSync(path.resolve(__dirname, './wrong/inexisting-root-ref.yaml'), 'utf8'), {
-        path: 'https://example.com',
-        resolve: {
-          file: false
-        }
-      });
-    } catch (e) {
-      expect(e.refs).to.deep.equal([{
-        jsonPointer: '/channels/mychannel/subscribe/message/$ref',
-        startLine: 9,
-        startColumn: 9,
-        startOffset: offset(118, 9),
-        endLine: 9,
-        endColumn: 49,
-        endOffset: offset(158, 9),
-      }]);
-    }
-  });
+  // it('should offer information about missing root $refs', async function() {
+  //   try {
+  //     await parser.parse(fs.readFileSync(path.resolve(__dirname, './wrong/inexisting-root-ref.yaml'), 'utf8'), {
+  //       path: 'https://example.com',
+  //       resolve: {
+  //         file: false
+  //       }
+  //     });
+  //   } catch (e) {
+  //     expect(e.refs).to.deep.equal([{
+  //       jsonPointer: '/channels/mychannel/subscribe/message/$ref',
+  //       startLine: 9,
+  //       startColumn: 9,
+  //       startOffset: offset(118, 9),
+  //       endLine: 9,
+  //       endColumn: 49,
+  //       endOffset: offset(158, 9),
+  //     }]);
+  //   }
+  // });
   
   it('should offer information about missing local $refs', async function() {
     try {

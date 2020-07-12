@@ -9,7 +9,7 @@
   "scripts": {
     "test": "nyc --reporter=html --reporter=text mocha --recursive",
     "bundle": "browserify lib/browser.js | uglifyjs > dist/bundle.js",
-    "docs": "jsdoc2md lib/parser.js -f lib/**/*.js > API.md",
+    "docs": "jsdoc2md lib/parser.js -f lib/mixins/*.js -f lib/**/*.js > API.md",
     "prepublishOnly": "npm run bundle",
     "release": "semantic-release",
     "get-version": "echo $npm_package_version",
@@ -42,7 +42,7 @@
     "eslint-plugin-mocha": "^7.0.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-sonarjs": "^0.5.0",
-    "jsdoc-to-markdown": "^5.0.0",
+    "jsdoc-to-markdown": "^6.0.1",
     "mocha": "^6.1.4",
     "nyc": "^15.1.0",
     "semantic-release": "^17.0.4",
@@ -100,7 +100,8 @@
   },
   "nyc": {
     "exclude": [
-      "dist/bundle.js"
+      "dist/bundle.js",
+      "test/**/*"
     ]
   }
 }

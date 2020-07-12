@@ -2,16 +2,11 @@ const { expect } = require('chai');
 const Server = require('../../lib/models/server');
 const js = { url: 'test.com', protocol: 'amqp', protocolVersion: '0-9-1', description: 'test', variables: { test1: { enum: ['value1', 'value2'], default: 'value1', description: 'test1', examples: ['value2'] } }, security: [{ oauth2: ['user:read'] }], bindings: { amqp: 'test' }, 'x-test': 'testing' };
 
-describe('Server', function() {
-  describe('#ext()', function() {
-    it('should support extensions', function() {
-      const d = new Server(js);
-      expect(d.ext('x-test')).to.be.equal(js['x-test']);      
-      expect(d.extension('x-test')).to.be.equal(js['x-test']);      
-      expect(d.extensions()).to.be.deep.equal({'x-test': 'testing'});
-    });
-  });
+const { assertMixinDescriptionInheritance } = require('../mixins/description_test');
+const { assertMixinBindingsInheritance } = require('../mixins/bindings_test');
+const { assertMixinSpecificationExtensionsInheritance } = require('../mixins/specification-extensions_test');
 
+describe('Server', function() {
   describe('#url()', function() {
     it('should return a string', function() {
       const d = new Server(js);
@@ -25,18 +20,24 @@ describe('Server', function() {
       expect(d.protocol()).to.be.equal(js.protocol);
     });
   });
-  
+
   describe('#protocolVersion()', function() {
     it('should return a string', function() {
       const d = new Server(js);
       expect(d.protocolVersion()).to.be.equal(js.protocolVersion);
     });
+    it('should return a null', function() {
+      const d = new Server({ protocol: '' });
+      expect(d.protocolVersion()).to.be.null;
+    });
   });
   
-  describe('#description()', function() {
-    it('should return a string', function() {
+  describe('#hasProtocolVersion()', function() {
+    it('should return a boolean indicating if a server has protocol version', function() {
       const d = new Server(js);
-      expect(d.description()).to.be.equal(js.description);
+      const d2 = new Server({ protocol: 'amqp' });
+      expect(d.hasProtocolVersion()).to.be.true;
+      expect(d2.hasProtocolVersion()).to.be.false;
     });
   });
 
@@ -60,11 +61,28 @@ describe('Server', function() {
     });
   });
   
+  describe('#hasVariable()', function() {
+    it('should return a boolean indicating if a server has a appropriate variable by name', function() {
+      const d = new Server(js);
+      expect(d.hasVariable('test1')).to.be.true;
+      expect(d.hasVariable('test2')).to.be.false;
+    });
+  });
+
   describe('#variable()', function() {
     it('should return a specific ServerVariable object', function() {
       const d = new Server(js);
       expect(d.variable('test1').constructor.name).to.equal('ServerVariable');
       expect(d.variable('test1').json()).to.equal(js.variables.test1);
+    });
+  });
+
+  describe('#hasSecurity()', function() {
+    it('should return a boolean indicating if a server has a security', function() {
+      const d = new Server(js);
+      const d2 = new Server({ security: {} });
+      expect(d.hasSecurity()).to.be.true;
+      expect(d2.hasSecurity()).to.be.false;
     });
   });
   
@@ -77,19 +95,13 @@ describe('Server', function() {
         expect(s.json()).to.equal(js.security[i]);
       });
     });
-  });
-
-  describe('#bindings()', function() {
-    it('should return a map of bindings', function() {
-      const d = new Server(js);
-      expect(d.bindings()).to.be.equal(js.bindings);
+    it('should return null', function() {
+      const d = new Server({ security: {} });
+      expect(d.security()).to.be.null;
     });
   });
 
-  describe('#binding()', function() {
-    it('should return a specific binding', function() {
-      const d = new Server(js);
-      expect(d.binding('amqp')).to.be.equal(js.bindings.amqp);
-    });
-  });
+  assertMixinDescriptionInheritance(Server);
+  assertMixinBindingsInheritance(Server);
+  assertMixinSpecificationExtensionsInheritance(Server);
 });

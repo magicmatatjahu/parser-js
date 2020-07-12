@@ -12,37 +12,28 @@
 <dd><p>Represents an error while trying to parse an AsyncAPI document.</p>
 </dd>
 <dt><a href="#AsyncAPIDocument">AsyncAPIDocument</a> ⇐ <code><a href="#Base">Base</a></code></dt>
-<dd><p>Implements functions to deal with the AsyncAPI document.</p>
-</dd>
+<dd></dd>
 <dt><a href="#Base">Base</a></dt>
-<dd><p>Implements common functionality for all the models.</p>
-</dd>
+<dd></dd>
 <dt><a href="#ChannelParameter">ChannelParameter</a> ⇐ <code><a href="#Base">Base</a></code></dt>
-<dd><p>Implements functions to deal with a ChannelParameter object.</p>
-</dd>
+<dd></dd>
 <dt><a href="#Channel">Channel</a> ⇐ <code><a href="#Base">Base</a></code></dt>
-<dd><p>Implements functions to deal with a Channel object.</p>
-</dd>
+<dd></dd>
 <dt><a href="#Components">Components</a> ⇐ <code><a href="#Base">Base</a></code></dt>
 <dd><p>Implements functions to deal with a Components object.</p>
 </dd>
 <dt><a href="#Contact">Contact</a> ⇐ <code><a href="#Base">Base</a></code></dt>
-<dd><p>Implements functions to deal with the Contact object.</p>
-</dd>
+<dd></dd>
 <dt><a href="#CorrelationId">CorrelationId</a> ⇐ <code><a href="#Base">Base</a></code></dt>
-<dd><p>Implements functions to deal with a CorrelationId object.</p>
-</dd>
+<dd></dd>
 <dt><a href="#ExternalDocs">ExternalDocs</a> ⇐ <code><a href="#Base">Base</a></code></dt>
-<dd><p>Implements functions to deal with an ExternalDocs object.</p>
-</dd>
+<dd></dd>
 <dt><a href="#Info">Info</a> ⇐ <code><a href="#Base">Base</a></code></dt>
 <dd></dd>
 <dt><a href="#License">License</a> ⇐ <code><a href="#Base">Base</a></code></dt>
-<dd><p>Implements functions to deal with the License object.</p>
-</dd>
+<dd></dd>
 <dt><a href="#MessageTrait">MessageTrait</a> ⇐ <code><a href="#Base">Base</a></code></dt>
-<dd><p>Implements functions to deal with a MessageTrait object.</p>
-</dd>
+<dd></dd>
 <dt><a href="#MessageTraitable">MessageTraitable</a> ⇐ <code><a href="#Base">Base</a></code></dt>
 <dd><p>Implements functions to deal with a the common properties that Message and MessageTrait objects have.</p>
 </dd>
@@ -53,17 +44,13 @@
 <dd><p>Implements functions to deal with a OAuthFlow object.</p>
 </dd>
 <dt><a href="#OperationTrait">OperationTrait</a> ⇐ <code><a href="#OperationTraitable">OperationTraitable</a></code></dt>
-<dd><p>Implements functions to deal with a OperationTrait object.</p>
-</dd>
+<dd></dd>
 <dt><a href="#OperationTraitable">OperationTraitable</a> ⇐ <code><a href="#Base">Base</a></code></dt>
-<dd><p>Implements functions to deal with the common properties Operation and OperationTrait object have.</p>
-</dd>
+<dd></dd>
 <dt><a href="#Operation">Operation</a> ⇐ <code><a href="#OperationTraitable">OperationTraitable</a></code></dt>
-<dd><p>Implements functions to deal with an Operation object.</p>
-</dd>
+<dd></dd>
 <dt><a href="#PublishOperation">PublishOperation</a> ⇐ <code><a href="#Operation">Operation</a></code></dt>
-<dd><p>Implements functions to deal with a PublishOperation object.</p>
-</dd>
+<dd></dd>
 <dt><a href="#Schema">Schema</a> ⇐ <code><a href="#Base">Base</a></code></dt>
 <dd><p>Implements functions to deal with a Schema object.</p>
 </dd>
@@ -74,16 +61,32 @@
 <dd><p>Implements functions to deal with a ServerSecurityRequirement object.</p>
 </dd>
 <dt><a href="#ServerVariable">ServerVariable</a> ⇐ <code><a href="#Base">Base</a></code></dt>
-<dd><p>Implements functions to deal with a ServerVariable object.</p>
-</dd>
+<dd></dd>
 <dt><a href="#Server">Server</a> ⇐ <code><a href="#Base">Base</a></code></dt>
-<dd><p>Implements functions to deal with a Server object.</p>
-</dd>
+<dd></dd>
 <dt><a href="#SubscribeOperation">SubscribeOperation</a> ⇐ <code><a href="#Operation">Operation</a></code></dt>
-<dd><p>Implements functions to deal with a SubscribeOperation object.</p>
-</dd>
+<dd></dd>
 <dt><a href="#Tag">Tag</a> ⇐ <code><a href="#Base">Base</a></code></dt>
-<dd><p>Implements functions to deal with a Tag object.</p>
+<dd></dd>
+</dl>
+
+## Mixins
+
+<dl>
+<dt><a href="#MixinBindings">MixinBindings</a></dt>
+<dd><p>Implements functions to deal with the Bindings object.</p>
+</dd>
+<dt><a href="#MixinDescription">MixinDescription</a></dt>
+<dd><p>Implements functions to deal with the description field.</p>
+</dd>
+<dt><a href="#MixinExternalDocs">MixinExternalDocs</a></dt>
+<dd><p>Implements functions to deal with the ExternalDocs object.</p>
+</dd>
+<dt><a href="#MixinSpecificationExtensions">MixinSpecificationExtensions</a></dt>
+<dd><p>Implements functions to deal with the SpecificationExtensions object.</p>
+</dd>
+<dt><a href="#MixinTags">MixinTags</a></dt>
+<dd><p>Implements functions to deal with the Tags object.</p>
 </dd>
 </dl>
 
@@ -222,43 +225,71 @@ Returns a JS object representation of the error.
 <a name="AsyncAPIDocument"></a>
 
 ## AsyncAPIDocument ⇐ [<code>Base</code>](#Base)
-Implements functions to deal with the AsyncAPI document.
-
 **Kind**: global class  
 **Extends**: [<code>Base</code>](#Base)  
+**Mixes**: [<code>MixinTags</code>](#MixinTags), [<code>MixinExternalDocs</code>](#MixinExternalDocs), [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
 
 * [AsyncAPIDocument](#AsyncAPIDocument) ⇐ [<code>Base</code>](#Base)
+    * [new AsyncAPIDocument()](#new_AsyncAPIDocument_new)
     * [.version()](#AsyncAPIDocument+version) ⇒ <code>string</code>
+    * [.hasId()](#AsyncAPIDocument+hasId) ⇒ <code>boolean</code>
+    * [.id()](#AsyncAPIDocument+id) ⇒ <code>string</code> \| <code>null</code>
     * [.info()](#AsyncAPIDocument+info) ⇒ [<code>Info</code>](#Info)
-    * [.id()](#AsyncAPIDocument+id) ⇒ <code>string</code>
     * [.hasServers()](#AsyncAPIDocument+hasServers) ⇒ <code>boolean</code>
-    * [.servers()](#AsyncAPIDocument+servers) ⇒ <code>Object.&lt;string, Server&gt;</code>
-    * [.server(name)](#AsyncAPIDocument+server) ⇒ [<code>Server</code>](#Server)
+    * [.servers()](#AsyncAPIDocument+servers) ⇒ <code>Object.&lt;string, Server&gt;</code> \| <code>null</code>
+    * [.serverNames()](#AsyncAPIDocument+serverNames) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasServer(name)](#AsyncAPIDocument+hasServer) ⇒ <code>boolean</code>
+    * [.server(name)](#AsyncAPIDocument+server) ⇒ [<code>Server</code>](#Server) \| <code>null</code>
     * [.hasChannels()](#AsyncAPIDocument+hasChannels) ⇒ <code>boolean</code>
-    * [.channels()](#AsyncAPIDocument+channels) ⇒ <code>Object.&lt;string, Channel&gt;</code>
-    * [.channelNames()](#AsyncAPIDocument+channelNames) ⇒ <code>Array.&lt;string&gt;</code>
-    * [.channel(name)](#AsyncAPIDocument+channel) ⇒ [<code>Channel</code>](#Channel)
-    * [.defaultContentType()](#AsyncAPIDocument+defaultContentType) ⇒ <code>string</code>
+    * [.channels()](#AsyncAPIDocument+channels) ⇒ <code>Object.&lt;string, Channel&gt;</code> \| <code>null</code>
+    * [.channelNames()](#AsyncAPIDocument+channelNames) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasChannel(name)](#AsyncAPIDocument+hasChannel) ⇒ <code>boolean</code>
+    * [.channel(name)](#AsyncAPIDocument+channel) ⇒ [<code>Channel</code>](#Channel) \| <code>null</code>
+    * [.hasDefaultContentType()](#AsyncAPIDocument+hasDefaultContentType) ⇒ <code>boolean</code>
+    * [.defaultContentType()](#AsyncAPIDocument+defaultContentType) ⇒ <code>string</code> \| <code>null</code>
     * [.hasComponents()](#AsyncAPIDocument+hasComponents) ⇒ <code>boolean</code>
-    * [.components()](#AsyncAPIDocument+components) ⇒ [<code>Components</code>](#Components)
-    * [.hasTags()](#AsyncAPIDocument+hasTags) ⇒ <code>boolean</code>
-    * [.tags()](#AsyncAPIDocument+tags) ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag)
+    * [.components()](#AsyncAPIDocument+components) ⇒ [<code>Components</code>](#Components) \| <code>null</code>
     * [.hasMessages()](#AsyncAPIDocument+hasMessages) ⇒ <code>boolean</code>
     * [.allMessages()](#AsyncAPIDocument+allMessages) ⇒ [<code>Map.&lt;Message&gt;</code>](#Message)
+    * [.hasSchemas()](#AsyncAPIDocument+hasSchemas) ⇒ <code>boolean</code>
     * [.allSchemas()](#AsyncAPIDocument+allSchemas) ⇒ [<code>Map.&lt;Schema&gt;</code>](#Schema)
+    * [.hasTags()](#AsyncAPIDocument+hasTags) ⇒ <code>boolean</code>
+    * [.tags()](#AsyncAPIDocument+tags) ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag) \| <code>null</code>
+    * [.tagNames()](#AsyncAPIDocument+tagNames) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasTag(name)](#AsyncAPIDocument+hasTag) ⇒ <code>boolean</code>
+    * [.tag(name)](#AsyncAPIDocument+tag) ⇒ [<code>Tag</code>](#Tag) \| <code>null</code>
+    * [.hasExternalDocs()](#AsyncAPIDocument+hasExternalDocs) ⇒ <code>boolean</code>
+    * [.externalDocs()](#AsyncAPIDocument+externalDocs) ⇒ [<code>ExternalDocs</code>](#ExternalDocs) \| <code>null</code>
+    * [.hasExtensions()](#AsyncAPIDocument+hasExtensions) ⇒ <code>boolean</code>
+    * [.extensions()](#AsyncAPIDocument+extensions) ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+    * [.extensionKeys()](#AsyncAPIDocument+extensionKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.extKeys()](#AsyncAPIDocument+extKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasExtension(key)](#AsyncAPIDocument+hasExtension) ⇒ <code>boolean</code>
+    * [.extension(key)](#AsyncAPIDocument+extension) ⇒ <code>Any</code>
+    * [.hasExt(key)](#AsyncAPIDocument+hasExt) ⇒ <code>boolean</code>
+    * [.ext(key)](#AsyncAPIDocument+ext) ⇒ <code>Any</code>
     * [.json()](#Base+json) ⇒ <code>Any</code>
+
+<a name="new_AsyncAPIDocument_new"></a>
+
+### new AsyncAPIDocument()
+Implements functions to deal with the AsyncAPI document.
 
 <a name="AsyncAPIDocument+version"></a>
 
 ### asyncAPIDocument.version() ⇒ <code>string</code>
 **Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
-<a name="AsyncAPIDocument+info"></a>
+<a name="AsyncAPIDocument+hasId"></a>
 
-### asyncAPIDocument.info() ⇒ [<code>Info</code>](#Info)
+### asyncAPIDocument.hasId() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
 <a name="AsyncAPIDocument+id"></a>
 
-### asyncAPIDocument.id() ⇒ <code>string</code>
+### asyncAPIDocument.id() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+<a name="AsyncAPIDocument+info"></a>
+
+### asyncAPIDocument.info() ⇒ [<code>Info</code>](#Info)
 **Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
 <a name="AsyncAPIDocument+hasServers"></a>
 
@@ -266,11 +297,24 @@ Implements functions to deal with the AsyncAPI document.
 **Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
 <a name="AsyncAPIDocument+servers"></a>
 
-### asyncAPIDocument.servers() ⇒ <code>Object.&lt;string, Server&gt;</code>
+### asyncAPIDocument.servers() ⇒ <code>Object.&lt;string, Server&gt;</code> \| <code>null</code>
 **Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+<a name="AsyncAPIDocument+serverNames"></a>
+
+### asyncAPIDocument.serverNames() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+<a name="AsyncAPIDocument+hasServer"></a>
+
+### asyncAPIDocument.hasServer(name) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the server. |
+
 <a name="AsyncAPIDocument+server"></a>
 
-### asyncAPIDocument.server(name) ⇒ [<code>Server</code>](#Server)
+### asyncAPIDocument.server(name) ⇒ [<code>Server</code>](#Server) \| <code>null</code>
 **Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
 
 | Param | Type | Description |
@@ -283,24 +327,37 @@ Implements functions to deal with the AsyncAPI document.
 **Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
 <a name="AsyncAPIDocument+channels"></a>
 
-### asyncAPIDocument.channels() ⇒ <code>Object.&lt;string, Channel&gt;</code>
+### asyncAPIDocument.channels() ⇒ <code>Object.&lt;string, Channel&gt;</code> \| <code>null</code>
 **Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
 <a name="AsyncAPIDocument+channelNames"></a>
 
-### asyncAPIDocument.channelNames() ⇒ <code>Array.&lt;string&gt;</code>
+### asyncAPIDocument.channelNames() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
 **Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
-<a name="AsyncAPIDocument+channel"></a>
+<a name="AsyncAPIDocument+hasChannel"></a>
 
-### asyncAPIDocument.channel(name) ⇒ [<code>Channel</code>](#Channel)
+### asyncAPIDocument.hasChannel(name) ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | name | <code>string</code> | Name of the channel. |
 
+<a name="AsyncAPIDocument+channel"></a>
+
+### asyncAPIDocument.channel(name) ⇒ [<code>Channel</code>](#Channel) \| <code>null</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the channel. |
+
+<a name="AsyncAPIDocument+hasDefaultContentType"></a>
+
+### asyncAPIDocument.hasDefaultContentType() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
 <a name="AsyncAPIDocument+defaultContentType"></a>
 
-### asyncAPIDocument.defaultContentType() ⇒ <code>string</code>
+### asyncAPIDocument.defaultContentType() ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
 <a name="AsyncAPIDocument+hasComponents"></a>
 
@@ -308,15 +365,7 @@ Implements functions to deal with the AsyncAPI document.
 **Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
 <a name="AsyncAPIDocument+components"></a>
 
-### asyncAPIDocument.components() ⇒ [<code>Components</code>](#Components)
-**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
-<a name="AsyncAPIDocument+hasTags"></a>
-
-### asyncAPIDocument.hasTags() ⇒ <code>boolean</code>
-**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
-<a name="AsyncAPIDocument+tags"></a>
-
-### asyncAPIDocument.tags() ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag)
+### asyncAPIDocument.components() ⇒ [<code>Components</code>](#Components) \| <code>null</code>
 **Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
 <a name="AsyncAPIDocument+hasMessages"></a>
 
@@ -326,21 +375,137 @@ Implements functions to deal with the AsyncAPI document.
 
 ### asyncAPIDocument.allMessages() ⇒ [<code>Map.&lt;Message&gt;</code>](#Message)
 **Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+<a name="AsyncAPIDocument+hasSchemas"></a>
+
+### asyncAPIDocument.hasSchemas() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
 <a name="AsyncAPIDocument+allSchemas"></a>
 
 ### asyncAPIDocument.allSchemas() ⇒ [<code>Map.&lt;Schema&gt;</code>](#Schema)
 **Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+<a name="AsyncAPIDocument+hasTags"></a>
+
+### asyncAPIDocument.hasTags() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+**Mixes**: [<code>hasTags</code>](#MixinTags.hasTags)  
+<a name="AsyncAPIDocument+tags"></a>
+
+### asyncAPIDocument.tags() ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag) \| <code>null</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+**Mixes**: [<code>tags</code>](#MixinTags.tags)  
+<a name="AsyncAPIDocument+tagNames"></a>
+
+### asyncAPIDocument.tagNames() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+**Mixes**: [<code>tagNames</code>](#MixinTags.tagNames)  
+<a name="AsyncAPIDocument+hasTag"></a>
+
+### asyncAPIDocument.hasTag(name) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+**Mixes**: [<code>hasTag</code>](#MixinTags.hasTag)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the tag. |
+
+<a name="AsyncAPIDocument+tag"></a>
+
+### asyncAPIDocument.tag(name) ⇒ [<code>Tag</code>](#Tag) \| <code>null</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+**Mixes**: [<code>tag</code>](#MixinTags.tag)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the tag. |
+
+<a name="AsyncAPIDocument+hasExternalDocs"></a>
+
+### asyncAPIDocument.hasExternalDocs() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+**Mixes**: [<code>hasExternalDocs</code>](#MixinExternalDocs.hasExternalDocs)  
+<a name="AsyncAPIDocument+externalDocs"></a>
+
+### asyncAPIDocument.externalDocs() ⇒ [<code>ExternalDocs</code>](#ExternalDocs) \| <code>null</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+**Mixes**: [<code>externalDocs</code>](#MixinExternalDocs.externalDocs)  
+<a name="AsyncAPIDocument+hasExtensions"></a>
+
+### asyncAPIDocument.hasExtensions() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+**Mixes**: [<code>hasExtensions</code>](#MixinSpecificationExtensions.hasExtensions)  
+<a name="AsyncAPIDocument+extensions"></a>
+
+### asyncAPIDocument.extensions() ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+**Mixes**: [<code>extensions</code>](#MixinSpecificationExtensions.extensions)  
+<a name="AsyncAPIDocument+extensionKeys"></a>
+
+### asyncAPIDocument.extensionKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+**Mixes**: [<code>extensionKeys</code>](#MixinSpecificationExtensions.extensionKeys)  
+<a name="AsyncAPIDocument+extKeys"></a>
+
+### asyncAPIDocument.extKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+**Mixes**: [<code>extKeys</code>](#MixinSpecificationExtensions.extKeys)  
+<a name="AsyncAPIDocument+hasExtension"></a>
+
+### asyncAPIDocument.hasExtension(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+**Mixes**: [<code>hasExtension</code>](#MixinSpecificationExtensions.hasExtension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="AsyncAPIDocument+extension"></a>
+
+### asyncAPIDocument.extension(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+**Mixes**: [<code>extension</code>](#MixinSpecificationExtensions.extension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="AsyncAPIDocument+hasExt"></a>
+
+### asyncAPIDocument.hasExt(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+**Mixes**: [<code>hasExt</code>](#MixinSpecificationExtensions.hasExt)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="AsyncAPIDocument+ext"></a>
+
+### asyncAPIDocument.ext(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
+**Mixes**: [<code>ext</code>](#MixinSpecificationExtensions.ext)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise throw an error. |
+
 <a name="Base+json"></a>
 
 ### asyncAPIDocument.json() ⇒ <code>Any</code>
 **Kind**: instance method of [<code>AsyncAPIDocument</code>](#AsyncAPIDocument)  
-**Overrides**: [<code>json</code>](#Base+json)  
 <a name="Base"></a>
 
 ## Base
+**Kind**: global class  
+
+* [Base](#Base)
+    * [new Base()](#new_Base_new)
+    * [.json()](#Base+json) ⇒ <code>Any</code>
+
+<a name="new_Base_new"></a>
+
+### new Base()
 Implements common functionality for all the models.
 
-**Kind**: global class  
 <a name="Base+json"></a>
 
 ### base.json() ⇒ <code>Any</code>
@@ -348,29 +513,119 @@ Implements common functionality for all the models.
 <a name="ChannelParameter"></a>
 
 ## ChannelParameter ⇐ [<code>Base</code>](#Base)
-Implements functions to deal with a ChannelParameter object.
-
 **Kind**: global class  
 **Extends**: [<code>Base</code>](#Base)  
+**Mixes**: [<code>MixinDescription</code>](#MixinDescription), [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
 
 * [ChannelParameter](#ChannelParameter) ⇐ [<code>Base</code>](#Base)
-    * [.description()](#ChannelParameter+description) ⇒ <code>string</code>
-    * [.location()](#ChannelParameter+location) ⇒ <code>string</code>
-    * [.schema()](#ChannelParameter+schema) ⇒ [<code>Schema</code>](#Schema)
+    * [new ChannelParameter()](#new_ChannelParameter_new)
+    * [.hasLocation()](#ChannelParameter+hasLocation) ⇒ <code>boolean</code>
+    * [.location()](#ChannelParameter+location) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasSchema()](#ChannelParameter+hasSchema) ⇒ <code>boolean</code>
+    * [.schema()](#ChannelParameter+schema) ⇒ [<code>Schema</code>](#Schema) \| <code>null</code>
+    * [.hasDescription()](#ChannelParameter+hasDescription) ⇒ <code>boolean</code>
+    * [.description()](#ChannelParameter+description) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasExtensions()](#ChannelParameter+hasExtensions) ⇒ <code>boolean</code>
+    * [.extensions()](#ChannelParameter+extensions) ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+    * [.extensionKeys()](#ChannelParameter+extensionKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.extKeys()](#ChannelParameter+extKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasExtension(key)](#ChannelParameter+hasExtension) ⇒ <code>boolean</code>
+    * [.extension(key)](#ChannelParameter+extension) ⇒ <code>Any</code>
+    * [.hasExt(key)](#ChannelParameter+hasExt) ⇒ <code>boolean</code>
+    * [.ext(key)](#ChannelParameter+ext) ⇒ <code>Any</code>
     * [.json()](#Base+json) ⇒ <code>Any</code>
 
-<a name="ChannelParameter+description"></a>
+<a name="new_ChannelParameter_new"></a>
 
-### channelParameter.description() ⇒ <code>string</code>
+### new ChannelParameter()
+Implements functions to deal with a ChannelParameter object.
+
+<a name="ChannelParameter+hasLocation"></a>
+
+### channelParameter.hasLocation() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>ChannelParameter</code>](#ChannelParameter)  
 <a name="ChannelParameter+location"></a>
 
-### channelParameter.location() ⇒ <code>string</code>
+### channelParameter.location() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>ChannelParameter</code>](#ChannelParameter)  
+<a name="ChannelParameter+hasSchema"></a>
+
+### channelParameter.hasSchema() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>ChannelParameter</code>](#ChannelParameter)  
 <a name="ChannelParameter+schema"></a>
 
-### channelParameter.schema() ⇒ [<code>Schema</code>](#Schema)
+### channelParameter.schema() ⇒ [<code>Schema</code>](#Schema) \| <code>null</code>
 **Kind**: instance method of [<code>ChannelParameter</code>](#ChannelParameter)  
+<a name="ChannelParameter+hasDescription"></a>
+
+### channelParameter.hasDescription() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>ChannelParameter</code>](#ChannelParameter)  
+**Mixes**: [<code>hasDescription</code>](#MixinDescription.hasDescription)  
+<a name="ChannelParameter+description"></a>
+
+### channelParameter.description() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>ChannelParameter</code>](#ChannelParameter)  
+**Mixes**: [<code>description</code>](#MixinDescription.description)  
+<a name="ChannelParameter+hasExtensions"></a>
+
+### channelParameter.hasExtensions() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>ChannelParameter</code>](#ChannelParameter)  
+**Mixes**: [<code>hasExtensions</code>](#MixinSpecificationExtensions.hasExtensions)  
+<a name="ChannelParameter+extensions"></a>
+
+### channelParameter.extensions() ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>ChannelParameter</code>](#ChannelParameter)  
+**Mixes**: [<code>extensions</code>](#MixinSpecificationExtensions.extensions)  
+<a name="ChannelParameter+extensionKeys"></a>
+
+### channelParameter.extensionKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>ChannelParameter</code>](#ChannelParameter)  
+**Mixes**: [<code>extensionKeys</code>](#MixinSpecificationExtensions.extensionKeys)  
+<a name="ChannelParameter+extKeys"></a>
+
+### channelParameter.extKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>ChannelParameter</code>](#ChannelParameter)  
+**Mixes**: [<code>extKeys</code>](#MixinSpecificationExtensions.extKeys)  
+<a name="ChannelParameter+hasExtension"></a>
+
+### channelParameter.hasExtension(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>ChannelParameter</code>](#ChannelParameter)  
+**Mixes**: [<code>hasExtension</code>](#MixinSpecificationExtensions.hasExtension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="ChannelParameter+extension"></a>
+
+### channelParameter.extension(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>ChannelParameter</code>](#ChannelParameter)  
+**Mixes**: [<code>extension</code>](#MixinSpecificationExtensions.extension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="ChannelParameter+hasExt"></a>
+
+### channelParameter.hasExt(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>ChannelParameter</code>](#ChannelParameter)  
+**Mixes**: [<code>hasExt</code>](#MixinSpecificationExtensions.hasExt)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="ChannelParameter+ext"></a>
+
+### channelParameter.ext(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>ChannelParameter</code>](#ChannelParameter)  
+**Mixes**: [<code>ext</code>](#MixinSpecificationExtensions.ext)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise throw an error. |
+
 <a name="Base+json"></a>
 
 ### channelParameter.json() ⇒ <code>Any</code>
@@ -378,73 +633,188 @@ Implements functions to deal with a ChannelParameter object.
 <a name="Channel"></a>
 
 ## Channel ⇐ [<code>Base</code>](#Base)
-Implements functions to deal with a Channel object.
-
 **Kind**: global class  
 **Extends**: [<code>Base</code>](#Base)  
+**Mixes**: [<code>MixinDescription</code>](#MixinDescription), [<code>MixinBindings</code>](#MixinBindings), [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
 
 * [Channel](#Channel) ⇐ [<code>Base</code>](#Base)
-    * [.description()](#Channel+description) ⇒ <code>string</code>
-    * [.parameters()](#Channel+parameters) ⇒ <code>Object.&lt;string, ChannelParameter&gt;</code>
-    * [.parameter(name)](#Channel+parameter) ⇒ [<code>ChannelParameter</code>](#ChannelParameter)
+    * [new Channel()](#new_Channel_new)
     * [.hasParameters()](#Channel+hasParameters) ⇒ <code>boolean</code>
-    * [.publish()](#Channel+publish) ⇒ [<code>PublishOperation</code>](#PublishOperation)
-    * [.subscribe()](#Channel+subscribe) ⇒ [<code>SubscribeOperation</code>](#SubscribeOperation)
+    * [.parameters()](#Channel+parameters) ⇒ <code>Object.&lt;string, ChannelParameter&gt;</code> \| <code>null</code>
+    * [.hasParameter(name)](#Channel+hasParameter) ⇒ <code>boolean</code>
+    * [.parameter(name)](#Channel+parameter) ⇒ [<code>ChannelParameter</code>](#ChannelParameter) \| <code>null</code>
     * [.hasPublish()](#Channel+hasPublish) ⇒ <code>boolean</code>
+    * [.publish()](#Channel+publish) ⇒ [<code>PublishOperation</code>](#PublishOperation) \| <code>null</code>
     * [.hasSubscribe()](#Channel+hasSubscribe) ⇒ <code>boolean</code>
-    * [.bindings()](#Channel+bindings) ⇒ <code>Object</code>
-    * [.binding(name)](#Channel+binding) ⇒ <code>Object</code>
+    * [.subscribe()](#Channel+subscribe) ⇒ [<code>SubscribeOperation</code>](#SubscribeOperation) \| <code>null</code>
+    * [.hasDescription()](#Channel+hasDescription) ⇒ <code>boolean</code>
+    * [.description()](#Channel+description) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasBindings()](#Channel+hasBindings) ⇒ <code>boolean</code>
+    * [.bindings()](#Channel+bindings) ⇒ <code>Object</code> \| <code>null</code>
+    * [.bindingProtocols()](#Channel+bindingProtocols) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasBinding(name)](#Channel+hasBinding) ⇒ <code>boolean</code>
+    * [.binding(name)](#Channel+binding) ⇒ <code>Object</code> \| <code>null</code>
+    * [.hasExtensions()](#Channel+hasExtensions) ⇒ <code>boolean</code>
+    * [.extensions()](#Channel+extensions) ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+    * [.extensionKeys()](#Channel+extensionKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.extKeys()](#Channel+extKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasExtension(key)](#Channel+hasExtension) ⇒ <code>boolean</code>
+    * [.extension(key)](#Channel+extension) ⇒ <code>Any</code>
+    * [.hasExt(key)](#Channel+hasExt) ⇒ <code>boolean</code>
+    * [.ext(key)](#Channel+ext) ⇒ <code>Any</code>
     * [.json()](#Base+json) ⇒ <code>Any</code>
 
-<a name="Channel+description"></a>
+<a name="new_Channel_new"></a>
 
-### channel.description() ⇒ <code>string</code>
+### new Channel()
+Implements functions to deal with a Channel object.
+
+<a name="Channel+hasParameters"></a>
+
+### channel.hasParameters() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>Channel</code>](#Channel)  
 <a name="Channel+parameters"></a>
 
-### channel.parameters() ⇒ <code>Object.&lt;string, ChannelParameter&gt;</code>
+### channel.parameters() ⇒ <code>Object.&lt;string, ChannelParameter&gt;</code> \| <code>null</code>
 **Kind**: instance method of [<code>Channel</code>](#Channel)  
-<a name="Channel+parameter"></a>
+<a name="Channel+hasParameter"></a>
 
-### channel.parameter(name) ⇒ [<code>ChannelParameter</code>](#ChannelParameter)
+### channel.hasParameter(name) ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>Channel</code>](#Channel)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | name | <code>string</code> | Name of the parameter. |
 
-<a name="Channel+hasParameters"></a>
+<a name="Channel+parameter"></a>
 
-### channel.hasParameters() ⇒ <code>boolean</code>
+### channel.parameter(name) ⇒ [<code>ChannelParameter</code>](#ChannelParameter) \| <code>null</code>
 **Kind**: instance method of [<code>Channel</code>](#Channel)  
-<a name="Channel+publish"></a>
 
-### channel.publish() ⇒ [<code>PublishOperation</code>](#PublishOperation)
-**Kind**: instance method of [<code>Channel</code>](#Channel)  
-<a name="Channel+subscribe"></a>
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the parameter. |
 
-### channel.subscribe() ⇒ [<code>SubscribeOperation</code>](#SubscribeOperation)
-**Kind**: instance method of [<code>Channel</code>](#Channel)  
 <a name="Channel+hasPublish"></a>
 
 ### channel.hasPublish() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Channel</code>](#Channel)  
+<a name="Channel+publish"></a>
+
+### channel.publish() ⇒ [<code>PublishOperation</code>](#PublishOperation) \| <code>null</code>
 **Kind**: instance method of [<code>Channel</code>](#Channel)  
 <a name="Channel+hasSubscribe"></a>
 
 ### channel.hasSubscribe() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>Channel</code>](#Channel)  
+<a name="Channel+subscribe"></a>
+
+### channel.subscribe() ⇒ [<code>SubscribeOperation</code>](#SubscribeOperation) \| <code>null</code>
+**Kind**: instance method of [<code>Channel</code>](#Channel)  
+<a name="Channel+hasDescription"></a>
+
+### channel.hasDescription() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Channel</code>](#Channel)  
+**Mixes**: [<code>hasDescription</code>](#MixinDescription.hasDescription)  
+<a name="Channel+description"></a>
+
+### channel.description() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>Channel</code>](#Channel)  
+**Mixes**: [<code>description</code>](#MixinDescription.description)  
+<a name="Channel+hasBindings"></a>
+
+### channel.hasBindings() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Channel</code>](#Channel)  
+**Mixes**: [<code>hasBindings</code>](#MixinBindings.hasBindings)  
 <a name="Channel+bindings"></a>
 
-### channel.bindings() ⇒ <code>Object</code>
+### channel.bindings() ⇒ <code>Object</code> \| <code>null</code>
 **Kind**: instance method of [<code>Channel</code>](#Channel)  
-<a name="Channel+binding"></a>
+**Mixes**: [<code>bindings</code>](#MixinBindings.bindings)  
+<a name="Channel+bindingProtocols"></a>
 
-### channel.binding(name) ⇒ <code>Object</code>
+### channel.bindingProtocols() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
 **Kind**: instance method of [<code>Channel</code>](#Channel)  
+**Mixes**: [<code>bindingProtocols</code>](#MixinBindings.bindingProtocols)  
+<a name="Channel+hasBinding"></a>
+
+### channel.hasBinding(name) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Channel</code>](#Channel)  
+**Mixes**: [<code>hasBinding</code>](#MixinBindings.hasBinding)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | name | <code>string</code> | Name of the binding. |
+
+<a name="Channel+binding"></a>
+
+### channel.binding(name) ⇒ <code>Object</code> \| <code>null</code>
+**Kind**: instance method of [<code>Channel</code>](#Channel)  
+**Mixes**: [<code>binding</code>](#MixinBindings.binding)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the binding. |
+
+<a name="Channel+hasExtensions"></a>
+
+### channel.hasExtensions() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Channel</code>](#Channel)  
+**Mixes**: [<code>hasExtensions</code>](#MixinSpecificationExtensions.hasExtensions)  
+<a name="Channel+extensions"></a>
+
+### channel.extensions() ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Channel</code>](#Channel)  
+**Mixes**: [<code>extensions</code>](#MixinSpecificationExtensions.extensions)  
+<a name="Channel+extensionKeys"></a>
+
+### channel.extensionKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Channel</code>](#Channel)  
+**Mixes**: [<code>extensionKeys</code>](#MixinSpecificationExtensions.extensionKeys)  
+<a name="Channel+extKeys"></a>
+
+### channel.extKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Channel</code>](#Channel)  
+**Mixes**: [<code>extKeys</code>](#MixinSpecificationExtensions.extKeys)  
+<a name="Channel+hasExtension"></a>
+
+### channel.hasExtension(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Channel</code>](#Channel)  
+**Mixes**: [<code>hasExtension</code>](#MixinSpecificationExtensions.hasExtension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="Channel+extension"></a>
+
+### channel.extension(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>Channel</code>](#Channel)  
+**Mixes**: [<code>extension</code>](#MixinSpecificationExtensions.extension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="Channel+hasExt"></a>
+
+### channel.hasExt(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Channel</code>](#Channel)  
+**Mixes**: [<code>hasExt</code>](#MixinSpecificationExtensions.hasExt)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="Channel+ext"></a>
+
+### channel.ext(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>Channel</code>](#Channel)  
+**Mixes**: [<code>ext</code>](#MixinSpecificationExtensions.ext)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise throw an error. |
 
 <a name="Base+json"></a>
 
@@ -538,29 +908,117 @@ Implements functions to deal with a Components object.
 <a name="Contact"></a>
 
 ## Contact ⇐ [<code>Base</code>](#Base)
-Implements functions to deal with the Contact object.
-
 **Kind**: global class  
 **Extends**: [<code>Base</code>](#Base)  
+**Mixes**: [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
 
 * [Contact](#Contact) ⇐ [<code>Base</code>](#Base)
-    * [.name()](#Contact+name) ⇒ <code>string</code>
-    * [.url()](#Contact+url) ⇒ <code>string</code>
-    * [.email()](#Contact+email) ⇒ <code>string</code>
+    * [new Contact()](#new_Contact_new)
+    * [.hasName()](#Contact+hasName) ⇒ <code>boolean</code>
+    * [.name()](#Contact+name) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasUrl()](#Contact+hasUrl) ⇒ <code>boolean</code>
+    * [.url()](#Contact+url) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasEmail()](#Contact+hasEmail) ⇒ <code>boolean</code>
+    * [.email()](#Contact+email) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasExtensions()](#Contact+hasExtensions) ⇒ <code>boolean</code>
+    * [.extensions()](#Contact+extensions) ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+    * [.extensionKeys()](#Contact+extensionKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.extKeys()](#Contact+extKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasExtension(key)](#Contact+hasExtension) ⇒ <code>boolean</code>
+    * [.extension(key)](#Contact+extension) ⇒ <code>Any</code>
+    * [.hasExt(key)](#Contact+hasExt) ⇒ <code>boolean</code>
+    * [.ext(key)](#Contact+ext) ⇒ <code>Any</code>
     * [.json()](#Base+json) ⇒ <code>Any</code>
 
+<a name="new_Contact_new"></a>
+
+### new Contact()
+Implements functions to deal with the Contact object.
+
+<a name="Contact+hasName"></a>
+
+### contact.hasName() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Contact</code>](#Contact)  
 <a name="Contact+name"></a>
 
-### contact.name() ⇒ <code>string</code>
+### contact.name() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>Contact</code>](#Contact)  
+<a name="Contact+hasUrl"></a>
+
+### contact.hasUrl() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>Contact</code>](#Contact)  
 <a name="Contact+url"></a>
 
-### contact.url() ⇒ <code>string</code>
+### contact.url() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>Contact</code>](#Contact)  
+<a name="Contact+hasEmail"></a>
+
+### contact.hasEmail() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>Contact</code>](#Contact)  
 <a name="Contact+email"></a>
 
-### contact.email() ⇒ <code>string</code>
+### contact.email() ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance method of [<code>Contact</code>](#Contact)  
+<a name="Contact+hasExtensions"></a>
+
+### contact.hasExtensions() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Contact</code>](#Contact)  
+**Mixes**: [<code>hasExtensions</code>](#MixinSpecificationExtensions.hasExtensions)  
+<a name="Contact+extensions"></a>
+
+### contact.extensions() ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Contact</code>](#Contact)  
+**Mixes**: [<code>extensions</code>](#MixinSpecificationExtensions.extensions)  
+<a name="Contact+extensionKeys"></a>
+
+### contact.extensionKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Contact</code>](#Contact)  
+**Mixes**: [<code>extensionKeys</code>](#MixinSpecificationExtensions.extensionKeys)  
+<a name="Contact+extKeys"></a>
+
+### contact.extKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Contact</code>](#Contact)  
+**Mixes**: [<code>extKeys</code>](#MixinSpecificationExtensions.extKeys)  
+<a name="Contact+hasExtension"></a>
+
+### contact.hasExtension(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Contact</code>](#Contact)  
+**Mixes**: [<code>hasExtension</code>](#MixinSpecificationExtensions.hasExtension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="Contact+extension"></a>
+
+### contact.extension(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>Contact</code>](#Contact)  
+**Mixes**: [<code>extension</code>](#MixinSpecificationExtensions.extension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="Contact+hasExt"></a>
+
+### contact.hasExt(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Contact</code>](#Contact)  
+**Mixes**: [<code>hasExt</code>](#MixinSpecificationExtensions.hasExt)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="Contact+ext"></a>
+
+### contact.ext(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>Contact</code>](#Contact)  
+**Mixes**: [<code>ext</code>](#MixinSpecificationExtensions.ext)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise throw an error. |
+
 <a name="Base+json"></a>
 
 ### contact.json() ⇒ <code>Any</code>
@@ -568,24 +1026,104 @@ Implements functions to deal with the Contact object.
 <a name="CorrelationId"></a>
 
 ## CorrelationId ⇐ [<code>Base</code>](#Base)
-Implements functions to deal with a CorrelationId object.
-
 **Kind**: global class  
 **Extends**: [<code>Base</code>](#Base)  
+**Mixes**: [<code>MixinDescription</code>](#MixinDescription), [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
 
 * [CorrelationId](#CorrelationId) ⇐ [<code>Base</code>](#Base)
-    * [.description()](#CorrelationId+description) ⇒ <code>string</code>
+    * [new CorrelationId()](#new_CorrelationId_new)
     * [.location()](#CorrelationId+location) ⇒ <code>string</code>
+    * [.hasDescription()](#CorrelationId+hasDescription) ⇒ <code>boolean</code>
+    * [.description()](#CorrelationId+description) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasExtensions()](#CorrelationId+hasExtensions) ⇒ <code>boolean</code>
+    * [.extensions()](#CorrelationId+extensions) ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+    * [.extensionKeys()](#CorrelationId+extensionKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.extKeys()](#CorrelationId+extKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasExtension(key)](#CorrelationId+hasExtension) ⇒ <code>boolean</code>
+    * [.extension(key)](#CorrelationId+extension) ⇒ <code>Any</code>
+    * [.hasExt(key)](#CorrelationId+hasExt) ⇒ <code>boolean</code>
+    * [.ext(key)](#CorrelationId+ext) ⇒ <code>Any</code>
     * [.json()](#Base+json) ⇒ <code>Any</code>
 
-<a name="CorrelationId+description"></a>
+<a name="new_CorrelationId_new"></a>
 
-### correlationId.description() ⇒ <code>string</code>
-**Kind**: instance method of [<code>CorrelationId</code>](#CorrelationId)  
+### new CorrelationId()
+Implements functions to deal with a CorrelationId object.
+
 <a name="CorrelationId+location"></a>
 
 ### correlationId.location() ⇒ <code>string</code>
 **Kind**: instance method of [<code>CorrelationId</code>](#CorrelationId)  
+<a name="CorrelationId+hasDescription"></a>
+
+### correlationId.hasDescription() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>CorrelationId</code>](#CorrelationId)  
+**Mixes**: [<code>hasDescription</code>](#MixinDescription.hasDescription)  
+<a name="CorrelationId+description"></a>
+
+### correlationId.description() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>CorrelationId</code>](#CorrelationId)  
+**Mixes**: [<code>description</code>](#MixinDescription.description)  
+<a name="CorrelationId+hasExtensions"></a>
+
+### correlationId.hasExtensions() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>CorrelationId</code>](#CorrelationId)  
+**Mixes**: [<code>hasExtensions</code>](#MixinSpecificationExtensions.hasExtensions)  
+<a name="CorrelationId+extensions"></a>
+
+### correlationId.extensions() ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>CorrelationId</code>](#CorrelationId)  
+**Mixes**: [<code>extensions</code>](#MixinSpecificationExtensions.extensions)  
+<a name="CorrelationId+extensionKeys"></a>
+
+### correlationId.extensionKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>CorrelationId</code>](#CorrelationId)  
+**Mixes**: [<code>extensionKeys</code>](#MixinSpecificationExtensions.extensionKeys)  
+<a name="CorrelationId+extKeys"></a>
+
+### correlationId.extKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>CorrelationId</code>](#CorrelationId)  
+**Mixes**: [<code>extKeys</code>](#MixinSpecificationExtensions.extKeys)  
+<a name="CorrelationId+hasExtension"></a>
+
+### correlationId.hasExtension(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>CorrelationId</code>](#CorrelationId)  
+**Mixes**: [<code>hasExtension</code>](#MixinSpecificationExtensions.hasExtension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="CorrelationId+extension"></a>
+
+### correlationId.extension(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>CorrelationId</code>](#CorrelationId)  
+**Mixes**: [<code>extension</code>](#MixinSpecificationExtensions.extension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="CorrelationId+hasExt"></a>
+
+### correlationId.hasExt(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>CorrelationId</code>](#CorrelationId)  
+**Mixes**: [<code>hasExt</code>](#MixinSpecificationExtensions.hasExt)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="CorrelationId+ext"></a>
+
+### correlationId.ext(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>CorrelationId</code>](#CorrelationId)  
+**Mixes**: [<code>ext</code>](#MixinSpecificationExtensions.ext)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise throw an error. |
+
 <a name="Base+json"></a>
 
 ### correlationId.json() ⇒ <code>Any</code>
@@ -593,24 +1131,104 @@ Implements functions to deal with a CorrelationId object.
 <a name="ExternalDocs"></a>
 
 ## ExternalDocs ⇐ [<code>Base</code>](#Base)
-Implements functions to deal with an ExternalDocs object.
-
 **Kind**: global class  
 **Extends**: [<code>Base</code>](#Base)  
+**Mixes**: [<code>MixinDescription</code>](#MixinDescription), [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
 
 * [ExternalDocs](#ExternalDocs) ⇐ [<code>Base</code>](#Base)
-    * [.description()](#ExternalDocs+description) ⇒ <code>string</code>
+    * [new ExternalDocs()](#new_ExternalDocs_new)
     * [.url()](#ExternalDocs+url) ⇒ <code>string</code>
+    * [.hasDescription()](#ExternalDocs+hasDescription) ⇒ <code>boolean</code>
+    * [.description()](#ExternalDocs+description) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasExtensions()](#ExternalDocs+hasExtensions) ⇒ <code>boolean</code>
+    * [.extensions()](#ExternalDocs+extensions) ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+    * [.extensionKeys()](#ExternalDocs+extensionKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.extKeys()](#ExternalDocs+extKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasExtension(key)](#ExternalDocs+hasExtension) ⇒ <code>boolean</code>
+    * [.extension(key)](#ExternalDocs+extension) ⇒ <code>Any</code>
+    * [.hasExt(key)](#ExternalDocs+hasExt) ⇒ <code>boolean</code>
+    * [.ext(key)](#ExternalDocs+ext) ⇒ <code>Any</code>
     * [.json()](#Base+json) ⇒ <code>Any</code>
 
-<a name="ExternalDocs+description"></a>
+<a name="new_ExternalDocs_new"></a>
 
-### externalDocs.description() ⇒ <code>string</code>
-**Kind**: instance method of [<code>ExternalDocs</code>](#ExternalDocs)  
+### new ExternalDocs()
+Implements functions to deal with an ExternalDocs object.
+
 <a name="ExternalDocs+url"></a>
 
 ### externalDocs.url() ⇒ <code>string</code>
 **Kind**: instance method of [<code>ExternalDocs</code>](#ExternalDocs)  
+<a name="ExternalDocs+hasDescription"></a>
+
+### externalDocs.hasDescription() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>ExternalDocs</code>](#ExternalDocs)  
+**Mixes**: [<code>hasDescription</code>](#MixinDescription.hasDescription)  
+<a name="ExternalDocs+description"></a>
+
+### externalDocs.description() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>ExternalDocs</code>](#ExternalDocs)  
+**Mixes**: [<code>description</code>](#MixinDescription.description)  
+<a name="ExternalDocs+hasExtensions"></a>
+
+### externalDocs.hasExtensions() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>ExternalDocs</code>](#ExternalDocs)  
+**Mixes**: [<code>hasExtensions</code>](#MixinSpecificationExtensions.hasExtensions)  
+<a name="ExternalDocs+extensions"></a>
+
+### externalDocs.extensions() ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>ExternalDocs</code>](#ExternalDocs)  
+**Mixes**: [<code>extensions</code>](#MixinSpecificationExtensions.extensions)  
+<a name="ExternalDocs+extensionKeys"></a>
+
+### externalDocs.extensionKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>ExternalDocs</code>](#ExternalDocs)  
+**Mixes**: [<code>extensionKeys</code>](#MixinSpecificationExtensions.extensionKeys)  
+<a name="ExternalDocs+extKeys"></a>
+
+### externalDocs.extKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>ExternalDocs</code>](#ExternalDocs)  
+**Mixes**: [<code>extKeys</code>](#MixinSpecificationExtensions.extKeys)  
+<a name="ExternalDocs+hasExtension"></a>
+
+### externalDocs.hasExtension(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>ExternalDocs</code>](#ExternalDocs)  
+**Mixes**: [<code>hasExtension</code>](#MixinSpecificationExtensions.hasExtension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="ExternalDocs+extension"></a>
+
+### externalDocs.extension(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>ExternalDocs</code>](#ExternalDocs)  
+**Mixes**: [<code>extension</code>](#MixinSpecificationExtensions.extension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="ExternalDocs+hasExt"></a>
+
+### externalDocs.hasExt(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>ExternalDocs</code>](#ExternalDocs)  
+**Mixes**: [<code>hasExt</code>](#MixinSpecificationExtensions.hasExt)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="ExternalDocs+ext"></a>
+
+### externalDocs.ext(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>ExternalDocs</code>](#ExternalDocs)  
+**Mixes**: [<code>ext</code>](#MixinSpecificationExtensions.ext)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise throw an error. |
+
 <a name="Base+json"></a>
 
 ### externalDocs.json() ⇒ <code>Any</code>
@@ -620,13 +1238,28 @@ Implements functions to deal with an ExternalDocs object.
 ## Info ⇐ [<code>Base</code>](#Base)
 **Kind**: global class  
 **Extends**: [<code>Base</code>](#Base)  
+**Mixes**: [<code>MixinDescription</code>](#MixinDescription), [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
 
 * [Info](#Info) ⇐ [<code>Base</code>](#Base)
     * [new Info()](#new_Info_new)
     * [.title()](#Info+title) ⇒ <code>string</code>
     * [.version()](#Info+version) ⇒ <code>string</code>
-    * [.license()](#Info+license) ⇒ [<code>License</code>](#License)
-    * [.contact()](#Info+contact) ⇒ [<code>Contact</code>](#Contact)
+    * [.hasTermsOfService()](#Info+hasTermsOfService) ⇒ <code>boolean</code>
+    * [.termsOfService()](#Info+termsOfService) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasLicense()](#Info+hasLicense) ⇒ <code>boolean</code>
+    * [.license()](#Info+license) ⇒ [<code>License</code>](#License) \| <code>null</code>
+    * [.hasContact()](#Info+hasContact) ⇒ <code>boolean</code>
+    * [.contact()](#Info+contact) ⇒ [<code>Contact</code>](#Contact) \| <code>null</code>
+    * [.hasDescription()](#Info+hasDescription) ⇒ <code>boolean</code>
+    * [.description()](#Info+description) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasExtensions()](#Info+hasExtensions) ⇒ <code>boolean</code>
+    * [.extensions()](#Info+extensions) ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+    * [.extensionKeys()](#Info+extensionKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.extKeys()](#Info+extKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasExtension(key)](#Info+hasExtension) ⇒ <code>boolean</code>
+    * [.extension(key)](#Info+extension) ⇒ <code>Any</code>
+    * [.hasExt(key)](#Info+hasExt) ⇒ <code>boolean</code>
+    * [.ext(key)](#Info+ext) ⇒ <code>Any</code>
     * [.json()](#Base+json) ⇒ <code>Any</code>
 
 <a name="new_Info_new"></a>
@@ -642,14 +1275,100 @@ Implements functions to deal with the Info object.
 
 ### info.version() ⇒ <code>string</code>
 **Kind**: instance method of [<code>Info</code>](#Info)  
+<a name="Info+hasTermsOfService"></a>
+
+### info.hasTermsOfService() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Info</code>](#Info)  
+<a name="Info+termsOfService"></a>
+
+### info.termsOfService() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>Info</code>](#Info)  
+<a name="Info+hasLicense"></a>
+
+### info.hasLicense() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Info</code>](#Info)  
 <a name="Info+license"></a>
 
-### info.license() ⇒ [<code>License</code>](#License)
+### info.license() ⇒ [<code>License</code>](#License) \| <code>null</code>
+**Kind**: instance method of [<code>Info</code>](#Info)  
+<a name="Info+hasContact"></a>
+
+### info.hasContact() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>Info</code>](#Info)  
 <a name="Info+contact"></a>
 
-### info.contact() ⇒ [<code>Contact</code>](#Contact)
+### info.contact() ⇒ [<code>Contact</code>](#Contact) \| <code>null</code>
 **Kind**: instance method of [<code>Info</code>](#Info)  
+<a name="Info+hasDescription"></a>
+
+### info.hasDescription() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Info</code>](#Info)  
+**Mixes**: [<code>hasDescription</code>](#MixinDescription.hasDescription)  
+<a name="Info+description"></a>
+
+### info.description() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>Info</code>](#Info)  
+**Mixes**: [<code>description</code>](#MixinDescription.description)  
+<a name="Info+hasExtensions"></a>
+
+### info.hasExtensions() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Info</code>](#Info)  
+**Mixes**: [<code>hasExtensions</code>](#MixinSpecificationExtensions.hasExtensions)  
+<a name="Info+extensions"></a>
+
+### info.extensions() ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Info</code>](#Info)  
+**Mixes**: [<code>extensions</code>](#MixinSpecificationExtensions.extensions)  
+<a name="Info+extensionKeys"></a>
+
+### info.extensionKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Info</code>](#Info)  
+**Mixes**: [<code>extensionKeys</code>](#MixinSpecificationExtensions.extensionKeys)  
+<a name="Info+extKeys"></a>
+
+### info.extKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Info</code>](#Info)  
+**Mixes**: [<code>extKeys</code>](#MixinSpecificationExtensions.extKeys)  
+<a name="Info+hasExtension"></a>
+
+### info.hasExtension(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Info</code>](#Info)  
+**Mixes**: [<code>hasExtension</code>](#MixinSpecificationExtensions.hasExtension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="Info+extension"></a>
+
+### info.extension(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>Info</code>](#Info)  
+**Mixes**: [<code>extension</code>](#MixinSpecificationExtensions.extension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="Info+hasExt"></a>
+
+### info.hasExt(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Info</code>](#Info)  
+**Mixes**: [<code>hasExt</code>](#MixinSpecificationExtensions.hasExt)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="Info+ext"></a>
+
+### info.ext(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>Info</code>](#Info)  
+**Mixes**: [<code>ext</code>](#MixinSpecificationExtensions.ext)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise throw an error. |
+
 <a name="Base+json"></a>
 
 ### info.json() ⇒ <code>Any</code>
@@ -657,24 +1376,102 @@ Implements functions to deal with the Info object.
 <a name="License"></a>
 
 ## License ⇐ [<code>Base</code>](#Base)
-Implements functions to deal with the License object.
-
 **Kind**: global class  
 **Extends**: [<code>Base</code>](#Base)  
+**Mixes**: [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
 
 * [License](#License) ⇐ [<code>Base</code>](#Base)
+    * [new License()](#new_License_new)
     * [.name()](#License+name) ⇒ <code>string</code>
-    * [.url()](#License+url) ⇒ <code>string</code>
+    * [.hasUrl()](#License+hasUrl) ⇒ <code>boolean</code>
+    * [.url()](#License+url) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasExtensions()](#License+hasExtensions) ⇒ <code>boolean</code>
+    * [.extensions()](#License+extensions) ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+    * [.extensionKeys()](#License+extensionKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.extKeys()](#License+extKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasExtension(key)](#License+hasExtension) ⇒ <code>boolean</code>
+    * [.extension(key)](#License+extension) ⇒ <code>Any</code>
+    * [.hasExt(key)](#License+hasExt) ⇒ <code>boolean</code>
+    * [.ext(key)](#License+ext) ⇒ <code>Any</code>
     * [.json()](#Base+json) ⇒ <code>Any</code>
+
+<a name="new_License_new"></a>
+
+### new License()
+Implements functions to deal with the License object.
 
 <a name="License+name"></a>
 
 ### license.name() ⇒ <code>string</code>
 **Kind**: instance method of [<code>License</code>](#License)  
+<a name="License+hasUrl"></a>
+
+### license.hasUrl() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>License</code>](#License)  
 <a name="License+url"></a>
 
-### license.url() ⇒ <code>string</code>
+### license.url() ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance method of [<code>License</code>](#License)  
+<a name="License+hasExtensions"></a>
+
+### license.hasExtensions() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>License</code>](#License)  
+**Mixes**: [<code>hasExtensions</code>](#MixinSpecificationExtensions.hasExtensions)  
+<a name="License+extensions"></a>
+
+### license.extensions() ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>License</code>](#License)  
+**Mixes**: [<code>extensions</code>](#MixinSpecificationExtensions.extensions)  
+<a name="License+extensionKeys"></a>
+
+### license.extensionKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>License</code>](#License)  
+**Mixes**: [<code>extensionKeys</code>](#MixinSpecificationExtensions.extensionKeys)  
+<a name="License+extKeys"></a>
+
+### license.extKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>License</code>](#License)  
+**Mixes**: [<code>extKeys</code>](#MixinSpecificationExtensions.extKeys)  
+<a name="License+hasExtension"></a>
+
+### license.hasExtension(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>License</code>](#License)  
+**Mixes**: [<code>hasExtension</code>](#MixinSpecificationExtensions.hasExtension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="License+extension"></a>
+
+### license.extension(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>License</code>](#License)  
+**Mixes**: [<code>extension</code>](#MixinSpecificationExtensions.extension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="License+hasExt"></a>
+
+### license.hasExt(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>License</code>](#License)  
+**Mixes**: [<code>hasExt</code>](#MixinSpecificationExtensions.hasExt)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="License+ext"></a>
+
+### license.ext(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>License</code>](#License)  
+**Mixes**: [<code>ext</code>](#MixinSpecificationExtensions.ext)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise throw an error. |
+
 <a name="Base+json"></a>
 
 ### license.json() ⇒ <code>Any</code>
@@ -682,10 +1479,18 @@ Implements functions to deal with the License object.
 <a name="MessageTrait"></a>
 
 ## MessageTrait ⇐ [<code>Base</code>](#Base)
-Implements functions to deal with a MessageTrait object.
-
 **Kind**: global class  
 **Extends**: [<code>Base</code>](#Base)  
+
+* [MessageTrait](#MessageTrait) ⇐ [<code>Base</code>](#Base)
+    * [new MessageTrait()](#new_MessageTrait_new)
+    * [.json()](#Base+json) ⇒ <code>Any</code>
+
+<a name="new_MessageTrait_new"></a>
+
+### new MessageTrait()
+Implements functions to deal with a MessageTrait object.
+
 <a name="Base+json"></a>
 
 ### messageTrait.json() ⇒ <code>Any</code>
@@ -697,6 +1502,7 @@ Implements functions to deal with a the common properties that Message and Messa
 
 **Kind**: global class  
 **Extends**: [<code>Base</code>](#Base)  
+**Mixes**: [<code>MixinDescription</code>](#MixinDescription), [<code>MixinExternalDocs</code>](#MixinExternalDocs), [<code>MixinTags</code>](#MixinTags), [<code>MixinBindings</code>](#MixinBindings), [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
 
 * [MessageTraitable](#MessageTraitable) ⇐ [<code>Base</code>](#Base)
     * [.headers()](#MessageTraitable+headers) ⇒ [<code>Schema</code>](#Schema)
@@ -704,16 +1510,36 @@ Implements functions to deal with a the common properties that Message and Messa
     * [.correlationId()](#MessageTraitable+correlationId) ⇒ [<code>CorrelationId</code>](#CorrelationId)
     * [.schemaFormat()](#MessageTraitable+schemaFormat) ⇒ <code>string</code>
     * [.contentType()](#MessageTraitable+contentType) ⇒ <code>string</code>
-    * [.name()](#MessageTraitable+name) ⇒ <code>string</code>
-    * [.title()](#MessageTraitable+title) ⇒ <code>string</code>
-    * [.summary()](#MessageTraitable+summary) ⇒ <code>string</code>
-    * [.description()](#MessageTraitable+description) ⇒ <code>string</code>
-    * [.externalDocs()](#MessageTraitable+externalDocs) ⇒ [<code>ExternalDocs</code>](#ExternalDocs)
+    * [.hasName()](#MessageTraitable+hasName) ⇒ <code>boolean</code>
+    * [.name()](#MessageTraitable+name) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasTitle()](#MessageTraitable+hasTitle) ⇒ <code>boolean</code>
+    * [.title()](#MessageTraitable+title) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasSummary()](#MessageTraitable+hasSummary) ⇒ <code>boolean</code>
+    * [.summary()](#MessageTraitable+summary) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasExamples()](#MessageTraitable+hasExamples) ⇒ <code>boolean</code>
+    * [.examples()](#MessageTraitable+examples) ⇒ <code>Array.&lt;Any&gt;</code> \| <code>null</code>
+    * [.hasDescription()](#MessageTraitable+hasDescription) ⇒ <code>boolean</code>
+    * [.description()](#MessageTraitable+description) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasExternalDocs()](#MessageTraitable+hasExternalDocs) ⇒ <code>boolean</code>
+    * [.externalDocs()](#MessageTraitable+externalDocs) ⇒ [<code>ExternalDocs</code>](#ExternalDocs) \| <code>null</code>
     * [.hasTags()](#MessageTraitable+hasTags) ⇒ <code>boolean</code>
-    * [.tags()](#MessageTraitable+tags) ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag)
-    * [.bindings()](#MessageTraitable+bindings) ⇒ <code>Object</code>
-    * [.binding(name)](#MessageTraitable+binding) ⇒ <code>Object</code>
-    * [.examples()](#MessageTraitable+examples) ⇒ <code>Array.&lt;any&gt;</code>
+    * [.tags()](#MessageTraitable+tags) ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag) \| <code>null</code>
+    * [.tagNames()](#MessageTraitable+tagNames) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasTag(name)](#MessageTraitable+hasTag) ⇒ <code>boolean</code>
+    * [.tag(name)](#MessageTraitable+tag) ⇒ [<code>Tag</code>](#Tag) \| <code>null</code>
+    * [.hasBindings()](#MessageTraitable+hasBindings) ⇒ <code>boolean</code>
+    * [.bindings()](#MessageTraitable+bindings) ⇒ <code>Object</code> \| <code>null</code>
+    * [.bindingProtocols()](#MessageTraitable+bindingProtocols) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasBinding(name)](#MessageTraitable+hasBinding) ⇒ <code>boolean</code>
+    * [.binding(name)](#MessageTraitable+binding) ⇒ <code>Object</code> \| <code>null</code>
+    * [.hasExtensions()](#MessageTraitable+hasExtensions) ⇒ <code>boolean</code>
+    * [.extensions()](#MessageTraitable+extensions) ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+    * [.extensionKeys()](#MessageTraitable+extensionKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.extKeys()](#MessageTraitable+extKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasExtension(key)](#MessageTraitable+hasExtension) ⇒ <code>boolean</code>
+    * [.extension(key)](#MessageTraitable+extension) ⇒ <code>Any</code>
+    * [.hasExt(key)](#MessageTraitable+hasExt) ⇒ <code>boolean</code>
+    * [.ext(key)](#MessageTraitable+ext) ⇒ <code>Any</code>
     * [.json()](#Base+json) ⇒ <code>Any</code>
 
 <a name="MessageTraitable+headers"></a>
@@ -741,51 +1567,188 @@ Implements functions to deal with a the common properties that Message and Messa
 
 ### messageTraitable.contentType() ⇒ <code>string</code>
 **Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+<a name="MessageTraitable+hasName"></a>
+
+### messageTraitable.hasName() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
 <a name="MessageTraitable+name"></a>
 
-### messageTraitable.name() ⇒ <code>string</code>
+### messageTraitable.name() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+<a name="MessageTraitable+hasTitle"></a>
+
+### messageTraitable.hasTitle() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
 <a name="MessageTraitable+title"></a>
 
-### messageTraitable.title() ⇒ <code>string</code>
+### messageTraitable.title() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+<a name="MessageTraitable+hasSummary"></a>
+
+### messageTraitable.hasSummary() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
 <a name="MessageTraitable+summary"></a>
 
-### messageTraitable.summary() ⇒ <code>string</code>
+### messageTraitable.summary() ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+<a name="MessageTraitable+hasExamples"></a>
+
+### messageTraitable.hasExamples() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+<a name="MessageTraitable+examples"></a>
+
+### messageTraitable.examples() ⇒ <code>Array.&lt;Any&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+<a name="MessageTraitable+hasDescription"></a>
+
+### messageTraitable.hasDescription() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>hasDescription</code>](#MixinDescription.hasDescription)  
 <a name="MessageTraitable+description"></a>
 
-### messageTraitable.description() ⇒ <code>string</code>
+### messageTraitable.description() ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>description</code>](#MixinDescription.description)  
+<a name="MessageTraitable+hasExternalDocs"></a>
+
+### messageTraitable.hasExternalDocs() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>hasExternalDocs</code>](#MixinExternalDocs.hasExternalDocs)  
 <a name="MessageTraitable+externalDocs"></a>
 
-### messageTraitable.externalDocs() ⇒ [<code>ExternalDocs</code>](#ExternalDocs)
+### messageTraitable.externalDocs() ⇒ [<code>ExternalDocs</code>](#ExternalDocs) \| <code>null</code>
 **Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>externalDocs</code>](#MixinExternalDocs.externalDocs)  
 <a name="MessageTraitable+hasTags"></a>
 
 ### messageTraitable.hasTags() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>hasTags</code>](#MixinTags.hasTags)  
 <a name="MessageTraitable+tags"></a>
 
-### messageTraitable.tags() ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag)
+### messageTraitable.tags() ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag) \| <code>null</code>
 **Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>tags</code>](#MixinTags.tags)  
+<a name="MessageTraitable+tagNames"></a>
+
+### messageTraitable.tagNames() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>tagNames</code>](#MixinTags.tagNames)  
+<a name="MessageTraitable+hasTag"></a>
+
+### messageTraitable.hasTag(name) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>hasTag</code>](#MixinTags.hasTag)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the tag. |
+
+<a name="MessageTraitable+tag"></a>
+
+### messageTraitable.tag(name) ⇒ [<code>Tag</code>](#Tag) \| <code>null</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>tag</code>](#MixinTags.tag)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the tag. |
+
+<a name="MessageTraitable+hasBindings"></a>
+
+### messageTraitable.hasBindings() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>hasBindings</code>](#MixinBindings.hasBindings)  
 <a name="MessageTraitable+bindings"></a>
 
-### messageTraitable.bindings() ⇒ <code>Object</code>
+### messageTraitable.bindings() ⇒ <code>Object</code> \| <code>null</code>
 **Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
-<a name="MessageTraitable+binding"></a>
+**Mixes**: [<code>bindings</code>](#MixinBindings.bindings)  
+<a name="MessageTraitable+bindingProtocols"></a>
 
-### messageTraitable.binding(name) ⇒ <code>Object</code>
+### messageTraitable.bindingProtocols() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
 **Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>bindingProtocols</code>](#MixinBindings.bindingProtocols)  
+<a name="MessageTraitable+hasBinding"></a>
+
+### messageTraitable.hasBinding(name) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>hasBinding</code>](#MixinBindings.hasBinding)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | name | <code>string</code> | Name of the binding. |
 
-<a name="MessageTraitable+examples"></a>
+<a name="MessageTraitable+binding"></a>
 
-### messageTraitable.examples() ⇒ <code>Array.&lt;any&gt;</code>
+### messageTraitable.binding(name) ⇒ <code>Object</code> \| <code>null</code>
 **Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>binding</code>](#MixinBindings.binding)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the binding. |
+
+<a name="MessageTraitable+hasExtensions"></a>
+
+### messageTraitable.hasExtensions() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>hasExtensions</code>](#MixinSpecificationExtensions.hasExtensions)  
+<a name="MessageTraitable+extensions"></a>
+
+### messageTraitable.extensions() ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>extensions</code>](#MixinSpecificationExtensions.extensions)  
+<a name="MessageTraitable+extensionKeys"></a>
+
+### messageTraitable.extensionKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>extensionKeys</code>](#MixinSpecificationExtensions.extensionKeys)  
+<a name="MessageTraitable+extKeys"></a>
+
+### messageTraitable.extKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>extKeys</code>](#MixinSpecificationExtensions.extKeys)  
+<a name="MessageTraitable+hasExtension"></a>
+
+### messageTraitable.hasExtension(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>hasExtension</code>](#MixinSpecificationExtensions.hasExtension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="MessageTraitable+extension"></a>
+
+### messageTraitable.extension(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>extension</code>](#MixinSpecificationExtensions.extension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="MessageTraitable+hasExt"></a>
+
+### messageTraitable.hasExt(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>hasExt</code>](#MixinSpecificationExtensions.hasExt)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="MessageTraitable+ext"></a>
+
+### messageTraitable.ext(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>MessageTraitable</code>](#MessageTraitable)  
+**Mixes**: [<code>ext</code>](#MixinSpecificationExtensions.ext)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise throw an error. |
+
 <a name="Base+json"></a>
 
 ### messageTraitable.json() ⇒ <code>Any</code>
@@ -808,16 +1771,36 @@ Implements functions to deal with a Message object.
     * [.correlationId()](#MessageTraitable+correlationId) ⇒ [<code>CorrelationId</code>](#CorrelationId)
     * [.schemaFormat()](#MessageTraitable+schemaFormat) ⇒ <code>string</code>
     * [.contentType()](#MessageTraitable+contentType) ⇒ <code>string</code>
-    * [.name()](#MessageTraitable+name) ⇒ <code>string</code>
-    * [.title()](#MessageTraitable+title) ⇒ <code>string</code>
-    * [.summary()](#MessageTraitable+summary) ⇒ <code>string</code>
-    * [.description()](#MessageTraitable+description) ⇒ <code>string</code>
-    * [.externalDocs()](#MessageTraitable+externalDocs) ⇒ [<code>ExternalDocs</code>](#ExternalDocs)
+    * [.hasName()](#MessageTraitable+hasName) ⇒ <code>boolean</code>
+    * [.name()](#MessageTraitable+name) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasTitle()](#MessageTraitable+hasTitle) ⇒ <code>boolean</code>
+    * [.title()](#MessageTraitable+title) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasSummary()](#MessageTraitable+hasSummary) ⇒ <code>boolean</code>
+    * [.summary()](#MessageTraitable+summary) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasExamples()](#MessageTraitable+hasExamples) ⇒ <code>boolean</code>
+    * [.examples()](#MessageTraitable+examples) ⇒ <code>Array.&lt;Any&gt;</code> \| <code>null</code>
+    * [.hasDescription()](#MessageTraitable+hasDescription) ⇒ <code>boolean</code>
+    * [.description()](#MessageTraitable+description) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasExternalDocs()](#MessageTraitable+hasExternalDocs) ⇒ <code>boolean</code>
+    * [.externalDocs()](#MessageTraitable+externalDocs) ⇒ [<code>ExternalDocs</code>](#ExternalDocs) \| <code>null</code>
     * [.hasTags()](#MessageTraitable+hasTags) ⇒ <code>boolean</code>
-    * [.tags()](#MessageTraitable+tags) ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag)
-    * [.bindings()](#MessageTraitable+bindings) ⇒ <code>Object</code>
-    * [.binding(name)](#MessageTraitable+binding) ⇒ <code>Object</code>
-    * [.examples()](#MessageTraitable+examples) ⇒ <code>Array.&lt;any&gt;</code>
+    * [.tags()](#MessageTraitable+tags) ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag) \| <code>null</code>
+    * [.tagNames()](#MessageTraitable+tagNames) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasTag(name)](#MessageTraitable+hasTag) ⇒ <code>boolean</code>
+    * [.tag(name)](#MessageTraitable+tag) ⇒ [<code>Tag</code>](#Tag) \| <code>null</code>
+    * [.hasBindings()](#MessageTraitable+hasBindings) ⇒ <code>boolean</code>
+    * [.bindings()](#MessageTraitable+bindings) ⇒ <code>Object</code> \| <code>null</code>
+    * [.bindingProtocols()](#MessageTraitable+bindingProtocols) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasBinding(name)](#MessageTraitable+hasBinding) ⇒ <code>boolean</code>
+    * [.binding(name)](#MessageTraitable+binding) ⇒ <code>Object</code> \| <code>null</code>
+    * [.hasExtensions()](#MessageTraitable+hasExtensions) ⇒ <code>boolean</code>
+    * [.extensions()](#MessageTraitable+extensions) ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+    * [.extensionKeys()](#MessageTraitable+extensionKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.extKeys()](#MessageTraitable+extKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasExtension(key)](#MessageTraitable+hasExtension) ⇒ <code>boolean</code>
+    * [.extension(key)](#MessageTraitable+extension) ⇒ <code>Any</code>
+    * [.hasExt(key)](#MessageTraitable+hasExt) ⇒ <code>boolean</code>
+    * [.ext(key)](#MessageTraitable+ext) ⇒ <code>Any</code>
     * [.json()](#Base+json) ⇒ <code>Any</code>
 
 <a name="Message+uid"></a>
@@ -861,51 +1844,188 @@ Implements functions to deal with a Message object.
 
 ### message.contentType() ⇒ <code>string</code>
 **Kind**: instance method of [<code>Message</code>](#Message)  
+<a name="MessageTraitable+hasName"></a>
+
+### message.hasName() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
 <a name="MessageTraitable+name"></a>
 
-### message.name() ⇒ <code>string</code>
+### message.name() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
+<a name="MessageTraitable+hasTitle"></a>
+
+### message.hasTitle() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>Message</code>](#Message)  
 <a name="MessageTraitable+title"></a>
 
-### message.title() ⇒ <code>string</code>
+### message.title() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
+<a name="MessageTraitable+hasSummary"></a>
+
+### message.hasSummary() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>Message</code>](#Message)  
 <a name="MessageTraitable+summary"></a>
 
-### message.summary() ⇒ <code>string</code>
+### message.summary() ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance method of [<code>Message</code>](#Message)  
+<a name="MessageTraitable+hasExamples"></a>
+
+### message.hasExamples() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
+<a name="MessageTraitable+examples"></a>
+
+### message.examples() ⇒ <code>Array.&lt;Any&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
+<a name="MessageTraitable+hasDescription"></a>
+
+### message.hasDescription() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>hasDescription</code>](#MixinDescription.hasDescription)  
 <a name="MessageTraitable+description"></a>
 
-### message.description() ⇒ <code>string</code>
+### message.description() ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>description</code>](#MixinDescription.description)  
+<a name="MessageTraitable+hasExternalDocs"></a>
+
+### message.hasExternalDocs() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>hasExternalDocs</code>](#MixinExternalDocs.hasExternalDocs)  
 <a name="MessageTraitable+externalDocs"></a>
 
-### message.externalDocs() ⇒ [<code>ExternalDocs</code>](#ExternalDocs)
+### message.externalDocs() ⇒ [<code>ExternalDocs</code>](#ExternalDocs) \| <code>null</code>
 **Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>externalDocs</code>](#MixinExternalDocs.externalDocs)  
 <a name="MessageTraitable+hasTags"></a>
 
 ### message.hasTags() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>hasTags</code>](#MixinTags.hasTags)  
 <a name="MessageTraitable+tags"></a>
 
-### message.tags() ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag)
+### message.tags() ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag) \| <code>null</code>
 **Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>tags</code>](#MixinTags.tags)  
+<a name="MessageTraitable+tagNames"></a>
+
+### message.tagNames() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>tagNames</code>](#MixinTags.tagNames)  
+<a name="MessageTraitable+hasTag"></a>
+
+### message.hasTag(name) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>hasTag</code>](#MixinTags.hasTag)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the tag. |
+
+<a name="MessageTraitable+tag"></a>
+
+### message.tag(name) ⇒ [<code>Tag</code>](#Tag) \| <code>null</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>tag</code>](#MixinTags.tag)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the tag. |
+
+<a name="MessageTraitable+hasBindings"></a>
+
+### message.hasBindings() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>hasBindings</code>](#MixinBindings.hasBindings)  
 <a name="MessageTraitable+bindings"></a>
 
-### message.bindings() ⇒ <code>Object</code>
+### message.bindings() ⇒ <code>Object</code> \| <code>null</code>
 **Kind**: instance method of [<code>Message</code>](#Message)  
-<a name="MessageTraitable+binding"></a>
+**Mixes**: [<code>bindings</code>](#MixinBindings.bindings)  
+<a name="MessageTraitable+bindingProtocols"></a>
 
-### message.binding(name) ⇒ <code>Object</code>
+### message.bindingProtocols() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
 **Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>bindingProtocols</code>](#MixinBindings.bindingProtocols)  
+<a name="MessageTraitable+hasBinding"></a>
+
+### message.hasBinding(name) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>hasBinding</code>](#MixinBindings.hasBinding)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | name | <code>string</code> | Name of the binding. |
 
-<a name="MessageTraitable+examples"></a>
+<a name="MessageTraitable+binding"></a>
 
-### message.examples() ⇒ <code>Array.&lt;any&gt;</code>
+### message.binding(name) ⇒ <code>Object</code> \| <code>null</code>
 **Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>binding</code>](#MixinBindings.binding)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the binding. |
+
+<a name="MessageTraitable+hasExtensions"></a>
+
+### message.hasExtensions() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>hasExtensions</code>](#MixinSpecificationExtensions.hasExtensions)  
+<a name="MessageTraitable+extensions"></a>
+
+### message.extensions() ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>extensions</code>](#MixinSpecificationExtensions.extensions)  
+<a name="MessageTraitable+extensionKeys"></a>
+
+### message.extensionKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>extensionKeys</code>](#MixinSpecificationExtensions.extensionKeys)  
+<a name="MessageTraitable+extKeys"></a>
+
+### message.extKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>extKeys</code>](#MixinSpecificationExtensions.extKeys)  
+<a name="MessageTraitable+hasExtension"></a>
+
+### message.hasExtension(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>hasExtension</code>](#MixinSpecificationExtensions.hasExtension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="MessageTraitable+extension"></a>
+
+### message.extension(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>extension</code>](#MixinSpecificationExtensions.extension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="MessageTraitable+hasExt"></a>
+
+### message.hasExt(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>hasExt</code>](#MixinSpecificationExtensions.hasExt)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="MessageTraitable+ext"></a>
+
+### message.ext(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>Message</code>](#Message)  
+**Mixes**: [<code>ext</code>](#MixinSpecificationExtensions.ext)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise throw an error. |
+
 <a name="Base+json"></a>
 
 ### message.json() ⇒ <code>Any</code>
@@ -948,118 +2068,416 @@ Implements functions to deal with a OAuthFlow object.
 <a name="OperationTrait"></a>
 
 ## OperationTrait ⇐ [<code>OperationTraitable</code>](#OperationTraitable)
-Implements functions to deal with a OperationTrait object.
-
 **Kind**: global class  
 **Extends**: [<code>OperationTraitable</code>](#OperationTraitable)  
 
 * [OperationTrait](#OperationTrait) ⇐ [<code>OperationTraitable</code>](#OperationTraitable)
-    * [.id()](#OperationTraitable+id) ⇒ <code>string</code>
-    * [.summary()](#OperationTraitable+summary) ⇒ <code>string</code>
-    * [.description()](#OperationTraitable+description) ⇒ <code>string</code>
+    * [new OperationTrait()](#new_OperationTrait_new)
+    * [.hasId()](#OperationTraitable+hasId) ⇒ <code>boolean</code>
+    * [.id()](#OperationTraitable+id) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasSummary()](#OperationTraitable+hasSummary) ⇒ <code>boolean</code>
+    * [.summary()](#OperationTraitable+summary) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasDescription()](#OperationTraitable+hasDescription) ⇒ <code>boolean</code>
+    * [.description()](#OperationTraitable+description) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasExternalDocs()](#OperationTraitable+hasExternalDocs) ⇒ <code>boolean</code>
+    * [.externalDocs()](#OperationTraitable+externalDocs) ⇒ [<code>ExternalDocs</code>](#ExternalDocs) \| <code>null</code>
     * [.hasTags()](#OperationTraitable+hasTags) ⇒ <code>boolean</code>
-    * [.tags()](#OperationTraitable+tags) ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag)
-    * [.externalDocs()](#OperationTraitable+externalDocs) ⇒ [<code>ExternalDocs</code>](#ExternalDocs)
-    * [.bindings()](#OperationTraitable+bindings) ⇒ <code>Object</code>
-    * [.binding(name)](#OperationTraitable+binding) ⇒ <code>Object</code>
-    * [.json()](#Base+json) ⇒ <code>Any</code>
+    * [.tags()](#OperationTraitable+tags) ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag) \| <code>null</code>
+    * [.tagNames()](#OperationTraitable+tagNames) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasTag(name)](#OperationTraitable+hasTag) ⇒ <code>boolean</code>
+    * [.tag(name)](#OperationTraitable+tag) ⇒ [<code>Tag</code>](#Tag) \| <code>null</code>
+    * [.hasBindings()](#OperationTraitable+hasBindings) ⇒ <code>boolean</code>
+    * [.bindings()](#OperationTraitable+bindings) ⇒ <code>Object</code> \| <code>null</code>
+    * [.bindingProtocols()](#OperationTraitable+bindingProtocols) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasBinding(name)](#OperationTraitable+hasBinding) ⇒ <code>boolean</code>
+    * [.binding(name)](#OperationTraitable+binding) ⇒ <code>Object</code> \| <code>null</code>
+    * [.hasExtensions()](#OperationTraitable+hasExtensions) ⇒ <code>boolean</code>
+    * [.extensions()](#OperationTraitable+extensions) ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+    * [.extensionKeys()](#OperationTraitable+extensionKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.extKeys()](#OperationTraitable+extKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasExtension(key)](#OperationTraitable+hasExtension) ⇒ <code>boolean</code>
+    * [.extension(key)](#OperationTraitable+extension) ⇒ <code>Any</code>
+    * [.hasExt(key)](#OperationTraitable+hasExt) ⇒ <code>boolean</code>
+    * [.ext(key)](#OperationTraitable+ext) ⇒ <code>Any</code>
 
+<a name="new_OperationTrait_new"></a>
+
+### new OperationTrait()
+Implements functions to deal with a OperationTrait object.
+
+<a name="OperationTraitable+hasId"></a>
+
+### operationTrait.hasId() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
 <a name="OperationTraitable+id"></a>
 
-### operationTrait.id() ⇒ <code>string</code>
+### operationTrait.id() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+<a name="OperationTraitable+hasSummary"></a>
+
+### operationTrait.hasSummary() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
 <a name="OperationTraitable+summary"></a>
 
-### operationTrait.summary() ⇒ <code>string</code>
+### operationTrait.summary() ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+<a name="OperationTraitable+hasDescription"></a>
+
+### operationTrait.hasDescription() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>hasDescription</code>](#MixinDescription.hasDescription)  
 <a name="OperationTraitable+description"></a>
 
-### operationTrait.description() ⇒ <code>string</code>
+### operationTrait.description() ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>description</code>](#MixinDescription.description)  
+<a name="OperationTraitable+hasExternalDocs"></a>
+
+### operationTrait.hasExternalDocs() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>hasExternalDocs</code>](#MixinExternalDocs.hasExternalDocs)  
+<a name="OperationTraitable+externalDocs"></a>
+
+### operationTrait.externalDocs() ⇒ [<code>ExternalDocs</code>](#ExternalDocs) \| <code>null</code>
+**Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>externalDocs</code>](#MixinExternalDocs.externalDocs)  
 <a name="OperationTraitable+hasTags"></a>
 
 ### operationTrait.hasTags() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>hasTags</code>](#MixinTags.hasTags)  
 <a name="OperationTraitable+tags"></a>
 
-### operationTrait.tags() ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag)
+### operationTrait.tags() ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag) \| <code>null</code>
 **Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
-<a name="OperationTraitable+externalDocs"></a>
+**Mixes**: [<code>tags</code>](#MixinTags.tags)  
+<a name="OperationTraitable+tagNames"></a>
 
-### operationTrait.externalDocs() ⇒ [<code>ExternalDocs</code>](#ExternalDocs)
+### operationTrait.tagNames() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
 **Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>tagNames</code>](#MixinTags.tagNames)  
+<a name="OperationTraitable+hasTag"></a>
+
+### operationTrait.hasTag(name) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>hasTag</code>](#MixinTags.hasTag)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the tag. |
+
+<a name="OperationTraitable+tag"></a>
+
+### operationTrait.tag(name) ⇒ [<code>Tag</code>](#Tag) \| <code>null</code>
+**Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>tag</code>](#MixinTags.tag)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the tag. |
+
+<a name="OperationTraitable+hasBindings"></a>
+
+### operationTrait.hasBindings() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>hasBindings</code>](#MixinBindings.hasBindings)  
 <a name="OperationTraitable+bindings"></a>
 
-### operationTrait.bindings() ⇒ <code>Object</code>
+### operationTrait.bindings() ⇒ <code>Object</code> \| <code>null</code>
 **Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
-<a name="OperationTraitable+binding"></a>
+**Mixes**: [<code>bindings</code>](#MixinBindings.bindings)  
+<a name="OperationTraitable+bindingProtocols"></a>
 
-### operationTrait.binding(name) ⇒ <code>Object</code>
+### operationTrait.bindingProtocols() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
 **Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>bindingProtocols</code>](#MixinBindings.bindingProtocols)  
+<a name="OperationTraitable+hasBinding"></a>
+
+### operationTrait.hasBinding(name) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>hasBinding</code>](#MixinBindings.hasBinding)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | name | <code>string</code> | Name of the binding. |
 
-<a name="Base+json"></a>
+<a name="OperationTraitable+binding"></a>
 
-### operationTrait.json() ⇒ <code>Any</code>
+### operationTrait.binding(name) ⇒ <code>Object</code> \| <code>null</code>
 **Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>binding</code>](#MixinBindings.binding)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the binding. |
+
+<a name="OperationTraitable+hasExtensions"></a>
+
+### operationTrait.hasExtensions() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>hasExtensions</code>](#MixinSpecificationExtensions.hasExtensions)  
+<a name="OperationTraitable+extensions"></a>
+
+### operationTrait.extensions() ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>extensions</code>](#MixinSpecificationExtensions.extensions)  
+<a name="OperationTraitable+extensionKeys"></a>
+
+### operationTrait.extensionKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>extensionKeys</code>](#MixinSpecificationExtensions.extensionKeys)  
+<a name="OperationTraitable+extKeys"></a>
+
+### operationTrait.extKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>extKeys</code>](#MixinSpecificationExtensions.extKeys)  
+<a name="OperationTraitable+hasExtension"></a>
+
+### operationTrait.hasExtension(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>hasExtension</code>](#MixinSpecificationExtensions.hasExtension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="OperationTraitable+extension"></a>
+
+### operationTrait.extension(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>extension</code>](#MixinSpecificationExtensions.extension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="OperationTraitable+hasExt"></a>
+
+### operationTrait.hasExt(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>hasExt</code>](#MixinSpecificationExtensions.hasExt)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="OperationTraitable+ext"></a>
+
+### operationTrait.ext(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>OperationTrait</code>](#OperationTrait)  
+**Mixes**: [<code>ext</code>](#MixinSpecificationExtensions.ext)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise throw an error. |
+
 <a name="OperationTraitable"></a>
 
 ## OperationTraitable ⇐ [<code>Base</code>](#Base)
-Implements functions to deal with the common properties Operation and OperationTrait object have.
-
 **Kind**: global class  
 **Extends**: [<code>Base</code>](#Base)  
+**Mixes**: [<code>MixinDescription</code>](#MixinDescription), [<code>MixinExternalDocs</code>](#MixinExternalDocs), [<code>MixinTags</code>](#MixinTags), [<code>MixinBindings</code>](#MixinBindings), [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
 
 * [OperationTraitable](#OperationTraitable) ⇐ [<code>Base</code>](#Base)
-    * [.id()](#OperationTraitable+id) ⇒ <code>string</code>
-    * [.summary()](#OperationTraitable+summary) ⇒ <code>string</code>
-    * [.description()](#OperationTraitable+description) ⇒ <code>string</code>
+    * [new OperationTraitable()](#new_OperationTraitable_new)
+    * [.hasId()](#OperationTraitable+hasId) ⇒ <code>boolean</code>
+    * [.id()](#OperationTraitable+id) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasSummary()](#OperationTraitable+hasSummary) ⇒ <code>boolean</code>
+    * [.summary()](#OperationTraitable+summary) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasDescription()](#OperationTraitable+hasDescription) ⇒ <code>boolean</code>
+    * [.description()](#OperationTraitable+description) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasExternalDocs()](#OperationTraitable+hasExternalDocs) ⇒ <code>boolean</code>
+    * [.externalDocs()](#OperationTraitable+externalDocs) ⇒ [<code>ExternalDocs</code>](#ExternalDocs) \| <code>null</code>
     * [.hasTags()](#OperationTraitable+hasTags) ⇒ <code>boolean</code>
-    * [.tags()](#OperationTraitable+tags) ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag)
-    * [.externalDocs()](#OperationTraitable+externalDocs) ⇒ [<code>ExternalDocs</code>](#ExternalDocs)
-    * [.bindings()](#OperationTraitable+bindings) ⇒ <code>Object</code>
-    * [.binding(name)](#OperationTraitable+binding) ⇒ <code>Object</code>
+    * [.tags()](#OperationTraitable+tags) ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag) \| <code>null</code>
+    * [.tagNames()](#OperationTraitable+tagNames) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasTag(name)](#OperationTraitable+hasTag) ⇒ <code>boolean</code>
+    * [.tag(name)](#OperationTraitable+tag) ⇒ [<code>Tag</code>](#Tag) \| <code>null</code>
+    * [.hasBindings()](#OperationTraitable+hasBindings) ⇒ <code>boolean</code>
+    * [.bindings()](#OperationTraitable+bindings) ⇒ <code>Object</code> \| <code>null</code>
+    * [.bindingProtocols()](#OperationTraitable+bindingProtocols) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasBinding(name)](#OperationTraitable+hasBinding) ⇒ <code>boolean</code>
+    * [.binding(name)](#OperationTraitable+binding) ⇒ <code>Object</code> \| <code>null</code>
+    * [.hasExtensions()](#OperationTraitable+hasExtensions) ⇒ <code>boolean</code>
+    * [.extensions()](#OperationTraitable+extensions) ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+    * [.extensionKeys()](#OperationTraitable+extensionKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.extKeys()](#OperationTraitable+extKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasExtension(key)](#OperationTraitable+hasExtension) ⇒ <code>boolean</code>
+    * [.extension(key)](#OperationTraitable+extension) ⇒ <code>Any</code>
+    * [.hasExt(key)](#OperationTraitable+hasExt) ⇒ <code>boolean</code>
+    * [.ext(key)](#OperationTraitable+ext) ⇒ <code>Any</code>
     * [.json()](#Base+json) ⇒ <code>Any</code>
 
+<a name="new_OperationTraitable_new"></a>
+
+### new OperationTraitable()
+Implements functions to deal with the common properties Operation and OperationTrait object have.
+
+<a name="OperationTraitable+hasId"></a>
+
+### operationTraitable.hasId() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
 <a name="OperationTraitable+id"></a>
 
-### operationTraitable.id() ⇒ <code>string</code>
+### operationTraitable.id() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+<a name="OperationTraitable+hasSummary"></a>
+
+### operationTraitable.hasSummary() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
 <a name="OperationTraitable+summary"></a>
 
-### operationTraitable.summary() ⇒ <code>string</code>
+### operationTraitable.summary() ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+<a name="OperationTraitable+hasDescription"></a>
+
+### operationTraitable.hasDescription() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>hasDescription</code>](#MixinDescription.hasDescription)  
 <a name="OperationTraitable+description"></a>
 
-### operationTraitable.description() ⇒ <code>string</code>
+### operationTraitable.description() ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>description</code>](#MixinDescription.description)  
+<a name="OperationTraitable+hasExternalDocs"></a>
+
+### operationTraitable.hasExternalDocs() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>hasExternalDocs</code>](#MixinExternalDocs.hasExternalDocs)  
+<a name="OperationTraitable+externalDocs"></a>
+
+### operationTraitable.externalDocs() ⇒ [<code>ExternalDocs</code>](#ExternalDocs) \| <code>null</code>
+**Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>externalDocs</code>](#MixinExternalDocs.externalDocs)  
 <a name="OperationTraitable+hasTags"></a>
 
 ### operationTraitable.hasTags() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>hasTags</code>](#MixinTags.hasTags)  
 <a name="OperationTraitable+tags"></a>
 
-### operationTraitable.tags() ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag)
+### operationTraitable.tags() ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag) \| <code>null</code>
 **Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
-<a name="OperationTraitable+externalDocs"></a>
+**Mixes**: [<code>tags</code>](#MixinTags.tags)  
+<a name="OperationTraitable+tagNames"></a>
 
-### operationTraitable.externalDocs() ⇒ [<code>ExternalDocs</code>](#ExternalDocs)
+### operationTraitable.tagNames() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
 **Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>tagNames</code>](#MixinTags.tagNames)  
+<a name="OperationTraitable+hasTag"></a>
+
+### operationTraitable.hasTag(name) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>hasTag</code>](#MixinTags.hasTag)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the tag. |
+
+<a name="OperationTraitable+tag"></a>
+
+### operationTraitable.tag(name) ⇒ [<code>Tag</code>](#Tag) \| <code>null</code>
+**Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>tag</code>](#MixinTags.tag)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the tag. |
+
+<a name="OperationTraitable+hasBindings"></a>
+
+### operationTraitable.hasBindings() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>hasBindings</code>](#MixinBindings.hasBindings)  
 <a name="OperationTraitable+bindings"></a>
 
-### operationTraitable.bindings() ⇒ <code>Object</code>
+### operationTraitable.bindings() ⇒ <code>Object</code> \| <code>null</code>
 **Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
-<a name="OperationTraitable+binding"></a>
+**Mixes**: [<code>bindings</code>](#MixinBindings.bindings)  
+<a name="OperationTraitable+bindingProtocols"></a>
 
-### operationTraitable.binding(name) ⇒ <code>Object</code>
+### operationTraitable.bindingProtocols() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
 **Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>bindingProtocols</code>](#MixinBindings.bindingProtocols)  
+<a name="OperationTraitable+hasBinding"></a>
+
+### operationTraitable.hasBinding(name) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>hasBinding</code>](#MixinBindings.hasBinding)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | name | <code>string</code> | Name of the binding. |
+
+<a name="OperationTraitable+binding"></a>
+
+### operationTraitable.binding(name) ⇒ <code>Object</code> \| <code>null</code>
+**Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>binding</code>](#MixinBindings.binding)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the binding. |
+
+<a name="OperationTraitable+hasExtensions"></a>
+
+### operationTraitable.hasExtensions() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>hasExtensions</code>](#MixinSpecificationExtensions.hasExtensions)  
+<a name="OperationTraitable+extensions"></a>
+
+### operationTraitable.extensions() ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>extensions</code>](#MixinSpecificationExtensions.extensions)  
+<a name="OperationTraitable+extensionKeys"></a>
+
+### operationTraitable.extensionKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>extensionKeys</code>](#MixinSpecificationExtensions.extensionKeys)  
+<a name="OperationTraitable+extKeys"></a>
+
+### operationTraitable.extKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>extKeys</code>](#MixinSpecificationExtensions.extKeys)  
+<a name="OperationTraitable+hasExtension"></a>
+
+### operationTraitable.hasExtension(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>hasExtension</code>](#MixinSpecificationExtensions.hasExtension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="OperationTraitable+extension"></a>
+
+### operationTraitable.extension(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>extension</code>](#MixinSpecificationExtensions.extension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="OperationTraitable+hasExt"></a>
+
+### operationTraitable.hasExt(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>hasExt</code>](#MixinSpecificationExtensions.hasExt)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="OperationTraitable+ext"></a>
+
+### operationTraitable.ext(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>OperationTraitable</code>](#OperationTraitable)  
+**Mixes**: [<code>ext</code>](#MixinSpecificationExtensions.ext)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise throw an error. |
 
 <a name="Base+json"></a>
 
@@ -1068,73 +2486,229 @@ Implements functions to deal with the common properties Operation and OperationT
 <a name="Operation"></a>
 
 ## Operation ⇐ [<code>OperationTraitable</code>](#OperationTraitable)
-Implements functions to deal with an Operation object.
-
 **Kind**: global class  
 **Extends**: [<code>OperationTraitable</code>](#OperationTraitable)  
 
 * [Operation](#Operation) ⇐ [<code>OperationTraitable</code>](#OperationTraitable)
+    * [new Operation()](#new_Operation_new)
+    * [.hasSingleMessage()](#Operation+hasSingleMessage) ⇒ <code>boolean</code>
     * [.hasMultipleMessages()](#Operation+hasMultipleMessages) ⇒ <code>boolean</code>
-    * [.messages()](#Operation+messages) ⇒ [<code>Array.&lt;Message&gt;</code>](#Message)
-    * [.message()](#Operation+message) ⇒ [<code>Message</code>](#Message)
-    * [.id()](#OperationTraitable+id) ⇒ <code>string</code>
-    * [.summary()](#OperationTraitable+summary) ⇒ <code>string</code>
-    * [.description()](#OperationTraitable+description) ⇒ <code>string</code>
+    * [.messages()](#Operation+messages) ⇒ [<code>Array.&lt;Message&gt;</code>](#Message) \| <code>null</code>
+    * [.message()](#Operation+message) ⇒ [<code>Message</code>](#Message) \| <code>null</code>
+    * [.hasId()](#OperationTraitable+hasId) ⇒ <code>boolean</code>
+    * [.id()](#OperationTraitable+id) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasSummary()](#OperationTraitable+hasSummary) ⇒ <code>boolean</code>
+    * [.summary()](#OperationTraitable+summary) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasDescription()](#OperationTraitable+hasDescription) ⇒ <code>boolean</code>
+    * [.description()](#OperationTraitable+description) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasExternalDocs()](#OperationTraitable+hasExternalDocs) ⇒ <code>boolean</code>
+    * [.externalDocs()](#OperationTraitable+externalDocs) ⇒ [<code>ExternalDocs</code>](#ExternalDocs) \| <code>null</code>
     * [.hasTags()](#OperationTraitable+hasTags) ⇒ <code>boolean</code>
-    * [.tags()](#OperationTraitable+tags) ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag)
-    * [.externalDocs()](#OperationTraitable+externalDocs) ⇒ [<code>ExternalDocs</code>](#ExternalDocs)
-    * [.bindings()](#OperationTraitable+bindings) ⇒ <code>Object</code>
-    * [.binding(name)](#OperationTraitable+binding) ⇒ <code>Object</code>
+    * [.tags()](#OperationTraitable+tags) ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag) \| <code>null</code>
+    * [.tagNames()](#OperationTraitable+tagNames) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasTag(name)](#OperationTraitable+hasTag) ⇒ <code>boolean</code>
+    * [.tag(name)](#OperationTraitable+tag) ⇒ [<code>Tag</code>](#Tag) \| <code>null</code>
+    * [.hasBindings()](#OperationTraitable+hasBindings) ⇒ <code>boolean</code>
+    * [.bindings()](#OperationTraitable+bindings) ⇒ <code>Object</code> \| <code>null</code>
+    * [.bindingProtocols()](#OperationTraitable+bindingProtocols) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasBinding(name)](#OperationTraitable+hasBinding) ⇒ <code>boolean</code>
+    * [.binding(name)](#OperationTraitable+binding) ⇒ <code>Object</code> \| <code>null</code>
+    * [.hasExtensions()](#OperationTraitable+hasExtensions) ⇒ <code>boolean</code>
+    * [.extensions()](#OperationTraitable+extensions) ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+    * [.extensionKeys()](#OperationTraitable+extensionKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.extKeys()](#OperationTraitable+extKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasExtension(key)](#OperationTraitable+hasExtension) ⇒ <code>boolean</code>
+    * [.extension(key)](#OperationTraitable+extension) ⇒ <code>Any</code>
+    * [.hasExt(key)](#OperationTraitable+hasExt) ⇒ <code>boolean</code>
+    * [.ext(key)](#OperationTraitable+ext) ⇒ <code>Any</code>
     * [.json()](#Base+json) ⇒ <code>Any</code>
 
+<a name="new_Operation_new"></a>
+
+### new Operation()
+Implements functions to deal with an Operation object.
+
+<a name="Operation+hasSingleMessage"></a>
+
+### operation.hasSingleMessage() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Operation</code>](#Operation)  
 <a name="Operation+hasMultipleMessages"></a>
 
 ### operation.hasMultipleMessages() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>Operation</code>](#Operation)  
 <a name="Operation+messages"></a>
 
-### operation.messages() ⇒ [<code>Array.&lt;Message&gt;</code>](#Message)
+### operation.messages() ⇒ [<code>Array.&lt;Message&gt;</code>](#Message) \| <code>null</code>
 **Kind**: instance method of [<code>Operation</code>](#Operation)  
 <a name="Operation+message"></a>
 
-### operation.message() ⇒ [<code>Message</code>](#Message)
+### operation.message() ⇒ [<code>Message</code>](#Message) \| <code>null</code>
+**Kind**: instance method of [<code>Operation</code>](#Operation)  
+<a name="OperationTraitable+hasId"></a>
+
+### operation.hasId() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>Operation</code>](#Operation)  
 <a name="OperationTraitable+id"></a>
 
-### operation.id() ⇒ <code>string</code>
+### operation.id() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>Operation</code>](#Operation)  
+<a name="OperationTraitable+hasSummary"></a>
+
+### operation.hasSummary() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>Operation</code>](#Operation)  
 <a name="OperationTraitable+summary"></a>
 
-### operation.summary() ⇒ <code>string</code>
+### operation.summary() ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance method of [<code>Operation</code>](#Operation)  
+<a name="OperationTraitable+hasDescription"></a>
+
+### operation.hasDescription() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>hasDescription</code>](#MixinDescription.hasDescription)  
 <a name="OperationTraitable+description"></a>
 
-### operation.description() ⇒ <code>string</code>
+### operation.description() ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>description</code>](#MixinDescription.description)  
+<a name="OperationTraitable+hasExternalDocs"></a>
+
+### operation.hasExternalDocs() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>hasExternalDocs</code>](#MixinExternalDocs.hasExternalDocs)  
+<a name="OperationTraitable+externalDocs"></a>
+
+### operation.externalDocs() ⇒ [<code>ExternalDocs</code>](#ExternalDocs) \| <code>null</code>
+**Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>externalDocs</code>](#MixinExternalDocs.externalDocs)  
 <a name="OperationTraitable+hasTags"></a>
 
 ### operation.hasTags() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>hasTags</code>](#MixinTags.hasTags)  
 <a name="OperationTraitable+tags"></a>
 
-### operation.tags() ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag)
+### operation.tags() ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag) \| <code>null</code>
 **Kind**: instance method of [<code>Operation</code>](#Operation)  
-<a name="OperationTraitable+externalDocs"></a>
+**Mixes**: [<code>tags</code>](#MixinTags.tags)  
+<a name="OperationTraitable+tagNames"></a>
 
-### operation.externalDocs() ⇒ [<code>ExternalDocs</code>](#ExternalDocs)
+### operation.tagNames() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
 **Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>tagNames</code>](#MixinTags.tagNames)  
+<a name="OperationTraitable+hasTag"></a>
+
+### operation.hasTag(name) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>hasTag</code>](#MixinTags.hasTag)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the tag. |
+
+<a name="OperationTraitable+tag"></a>
+
+### operation.tag(name) ⇒ [<code>Tag</code>](#Tag) \| <code>null</code>
+**Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>tag</code>](#MixinTags.tag)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the tag. |
+
+<a name="OperationTraitable+hasBindings"></a>
+
+### operation.hasBindings() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>hasBindings</code>](#MixinBindings.hasBindings)  
 <a name="OperationTraitable+bindings"></a>
 
-### operation.bindings() ⇒ <code>Object</code>
+### operation.bindings() ⇒ <code>Object</code> \| <code>null</code>
 **Kind**: instance method of [<code>Operation</code>](#Operation)  
-<a name="OperationTraitable+binding"></a>
+**Mixes**: [<code>bindings</code>](#MixinBindings.bindings)  
+<a name="OperationTraitable+bindingProtocols"></a>
 
-### operation.binding(name) ⇒ <code>Object</code>
+### operation.bindingProtocols() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
 **Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>bindingProtocols</code>](#MixinBindings.bindingProtocols)  
+<a name="OperationTraitable+hasBinding"></a>
+
+### operation.hasBinding(name) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>hasBinding</code>](#MixinBindings.hasBinding)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | name | <code>string</code> | Name of the binding. |
+
+<a name="OperationTraitable+binding"></a>
+
+### operation.binding(name) ⇒ <code>Object</code> \| <code>null</code>
+**Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>binding</code>](#MixinBindings.binding)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the binding. |
+
+<a name="OperationTraitable+hasExtensions"></a>
+
+### operation.hasExtensions() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>hasExtensions</code>](#MixinSpecificationExtensions.hasExtensions)  
+<a name="OperationTraitable+extensions"></a>
+
+### operation.extensions() ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>extensions</code>](#MixinSpecificationExtensions.extensions)  
+<a name="OperationTraitable+extensionKeys"></a>
+
+### operation.extensionKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>extensionKeys</code>](#MixinSpecificationExtensions.extensionKeys)  
+<a name="OperationTraitable+extKeys"></a>
+
+### operation.extKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>extKeys</code>](#MixinSpecificationExtensions.extKeys)  
+<a name="OperationTraitable+hasExtension"></a>
+
+### operation.hasExtension(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>hasExtension</code>](#MixinSpecificationExtensions.hasExtension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="OperationTraitable+extension"></a>
+
+### operation.extension(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>extension</code>](#MixinSpecificationExtensions.extension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="OperationTraitable+hasExt"></a>
+
+### operation.hasExt(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>hasExt</code>](#MixinSpecificationExtensions.hasExt)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="OperationTraitable+ext"></a>
+
+### operation.ext(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>Operation</code>](#Operation)  
+**Mixes**: [<code>ext</code>](#MixinSpecificationExtensions.ext)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise throw an error. |
 
 <a name="Base+json"></a>
 
@@ -1143,27 +2717,23 @@ Implements functions to deal with an Operation object.
 <a name="PublishOperation"></a>
 
 ## PublishOperation ⇐ [<code>Operation</code>](#Operation)
-Implements functions to deal with a PublishOperation object.
-
 **Kind**: global class  
 **Extends**: [<code>Operation</code>](#Operation)  
 
 * [PublishOperation](#PublishOperation) ⇐ [<code>Operation</code>](#Operation)
+    * [new PublishOperation()](#new_PublishOperation_new)
     * [.isPublish()](#PublishOperation+isPublish) ⇒ <code>boolean</code>
     * [.isSubscribe()](#PublishOperation+isSubscribe) ⇒ <code>boolean</code>
     * [.kind()](#PublishOperation+kind) ⇒ <code>string</code>
+    * [.hasSingleMessage()](#Operation+hasSingleMessage) ⇒ <code>boolean</code>
     * [.hasMultipleMessages()](#Operation+hasMultipleMessages) ⇒ <code>boolean</code>
-    * [.messages()](#Operation+messages) ⇒ [<code>Array.&lt;Message&gt;</code>](#Message)
-    * [.message()](#Operation+message) ⇒ [<code>Message</code>](#Message)
-    * [.id()](#OperationTraitable+id) ⇒ <code>string</code>
-    * [.summary()](#OperationTraitable+summary) ⇒ <code>string</code>
-    * [.description()](#OperationTraitable+description) ⇒ <code>string</code>
-    * [.hasTags()](#OperationTraitable+hasTags) ⇒ <code>boolean</code>
-    * [.tags()](#OperationTraitable+tags) ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag)
-    * [.externalDocs()](#OperationTraitable+externalDocs) ⇒ [<code>ExternalDocs</code>](#ExternalDocs)
-    * [.bindings()](#OperationTraitable+bindings) ⇒ <code>Object</code>
-    * [.binding(name)](#OperationTraitable+binding) ⇒ <code>Object</code>
-    * [.json()](#Base+json) ⇒ <code>Any</code>
+    * [.messages()](#Operation+messages) ⇒ [<code>Array.&lt;Message&gt;</code>](#Message) \| <code>null</code>
+    * [.message()](#Operation+message) ⇒ [<code>Message</code>](#Message) \| <code>null</code>
+
+<a name="new_PublishOperation_new"></a>
+
+### new PublishOperation()
+Implements functions to deal with a PublishOperation object.
 
 <a name="PublishOperation+isPublish"></a>
 
@@ -1177,58 +2747,21 @@ Implements functions to deal with a PublishOperation object.
 
 ### publishOperation.kind() ⇒ <code>string</code>
 **Kind**: instance method of [<code>PublishOperation</code>](#PublishOperation)  
+<a name="Operation+hasSingleMessage"></a>
+
+### publishOperation.hasSingleMessage() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>PublishOperation</code>](#PublishOperation)  
 <a name="Operation+hasMultipleMessages"></a>
 
 ### publishOperation.hasMultipleMessages() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>PublishOperation</code>](#PublishOperation)  
 <a name="Operation+messages"></a>
 
-### publishOperation.messages() ⇒ [<code>Array.&lt;Message&gt;</code>](#Message)
+### publishOperation.messages() ⇒ [<code>Array.&lt;Message&gt;</code>](#Message) \| <code>null</code>
 **Kind**: instance method of [<code>PublishOperation</code>](#PublishOperation)  
 <a name="Operation+message"></a>
 
-### publishOperation.message() ⇒ [<code>Message</code>](#Message)
-**Kind**: instance method of [<code>PublishOperation</code>](#PublishOperation)  
-<a name="OperationTraitable+id"></a>
-
-### publishOperation.id() ⇒ <code>string</code>
-**Kind**: instance method of [<code>PublishOperation</code>](#PublishOperation)  
-<a name="OperationTraitable+summary"></a>
-
-### publishOperation.summary() ⇒ <code>string</code>
-**Kind**: instance method of [<code>PublishOperation</code>](#PublishOperation)  
-<a name="OperationTraitable+description"></a>
-
-### publishOperation.description() ⇒ <code>string</code>
-**Kind**: instance method of [<code>PublishOperation</code>](#PublishOperation)  
-<a name="OperationTraitable+hasTags"></a>
-
-### publishOperation.hasTags() ⇒ <code>boolean</code>
-**Kind**: instance method of [<code>PublishOperation</code>](#PublishOperation)  
-<a name="OperationTraitable+tags"></a>
-
-### publishOperation.tags() ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag)
-**Kind**: instance method of [<code>PublishOperation</code>](#PublishOperation)  
-<a name="OperationTraitable+externalDocs"></a>
-
-### publishOperation.externalDocs() ⇒ [<code>ExternalDocs</code>](#ExternalDocs)
-**Kind**: instance method of [<code>PublishOperation</code>](#PublishOperation)  
-<a name="OperationTraitable+bindings"></a>
-
-### publishOperation.bindings() ⇒ <code>Object</code>
-**Kind**: instance method of [<code>PublishOperation</code>](#PublishOperation)  
-<a name="OperationTraitable+binding"></a>
-
-### publishOperation.binding(name) ⇒ <code>Object</code>
-**Kind**: instance method of [<code>PublishOperation</code>](#PublishOperation)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| name | <code>string</code> | Name of the binding. |
-
-<a name="Base+json"></a>
-
-### publishOperation.json() ⇒ <code>Any</code>
+### publishOperation.message() ⇒ [<code>Message</code>](#Message) \| <code>null</code>
 **Kind**: instance method of [<code>PublishOperation</code>](#PublishOperation)  
 <a name="Schema"></a>
 
@@ -1549,24 +3082,43 @@ Implements functions to deal with a ServerSecurityRequirement object.
 <a name="ServerVariable"></a>
 
 ## ServerVariable ⇐ [<code>Base</code>](#Base)
-Implements functions to deal with a ServerVariable object.
-
 **Kind**: global class  
 **Extends**: [<code>Base</code>](#Base)  
+**Mixes**: [<code>MixinDescription</code>](#MixinDescription), [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
 
 * [ServerVariable](#ServerVariable) ⇐ [<code>Base</code>](#Base)
-    * [.allowedValues()](#ServerVariable+allowedValues) ⇒ <code>Array.&lt;any&gt;</code>
-    * [.allows(name)](#ServerVariable+allows) ⇒ <code>boolean</code>
+    * [new ServerVariable()](#new_ServerVariable_new)
     * [.hasAllowedValues()](#ServerVariable+hasAllowedValues) ⇒ <code>boolean</code>
-    * [.defaultValue()](#ServerVariable+defaultValue) ⇒ <code>string</code>
+    * [.allowedValues()](#ServerVariable+allowedValues) ⇒ <code>Array.&lt;Any&gt;</code> \| <code>null</code>
+    * [.allows(name)](#ServerVariable+allows) ⇒ <code>boolean</code>
     * [.hasDefaultValue()](#ServerVariable+hasDefaultValue) ⇒ <code>boolean</code>
-    * [.description()](#ServerVariable+description) ⇒ <code>string</code>
-    * [.examples()](#ServerVariable+examples) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.defaultValue()](#ServerVariable+defaultValue) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasExamples()](#ServerVariable+hasExamples) ⇒ <code>boolean</code>
+    * [.examples()](#ServerVariable+examples) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasDescription()](#ServerVariable+hasDescription) ⇒ <code>boolean</code>
+    * [.description()](#ServerVariable+description) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasExtensions()](#ServerVariable+hasExtensions) ⇒ <code>boolean</code>
+    * [.extensions()](#ServerVariable+extensions) ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+    * [.extensionKeys()](#ServerVariable+extensionKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.extKeys()](#ServerVariable+extKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasExtension(key)](#ServerVariable+hasExtension) ⇒ <code>boolean</code>
+    * [.extension(key)](#ServerVariable+extension) ⇒ <code>Any</code>
+    * [.hasExt(key)](#ServerVariable+hasExt) ⇒ <code>boolean</code>
+    * [.ext(key)](#ServerVariable+ext) ⇒ <code>Any</code>
     * [.json()](#Base+json) ⇒ <code>Any</code>
 
+<a name="new_ServerVariable_new"></a>
+
+### new ServerVariable()
+Implements functions to deal with a ServerVariable object.
+
+<a name="ServerVariable+hasAllowedValues"></a>
+
+### serverVariable.hasAllowedValues() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>ServerVariable</code>](#ServerVariable)  
 <a name="ServerVariable+allowedValues"></a>
 
-### serverVariable.allowedValues() ⇒ <code>Array.&lt;any&gt;</code>
+### serverVariable.allowedValues() ⇒ <code>Array.&lt;Any&gt;</code> \| <code>null</code>
 **Kind**: instance method of [<code>ServerVariable</code>](#ServerVariable)  
 <a name="ServerVariable+allows"></a>
 
@@ -1577,26 +3129,92 @@ Implements functions to deal with a ServerVariable object.
 | --- | --- | --- |
 | name | <code>string</code> | Name of the variable. |
 
-<a name="ServerVariable+hasAllowedValues"></a>
-
-### serverVariable.hasAllowedValues() ⇒ <code>boolean</code>
-**Kind**: instance method of [<code>ServerVariable</code>](#ServerVariable)  
-<a name="ServerVariable+defaultValue"></a>
-
-### serverVariable.defaultValue() ⇒ <code>string</code>
-**Kind**: instance method of [<code>ServerVariable</code>](#ServerVariable)  
 <a name="ServerVariable+hasDefaultValue"></a>
 
 ### serverVariable.hasDefaultValue() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>ServerVariable</code>](#ServerVariable)  
-<a name="ServerVariable+description"></a>
+<a name="ServerVariable+defaultValue"></a>
 
-### serverVariable.description() ⇒ <code>string</code>
+### serverVariable.defaultValue() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>ServerVariable</code>](#ServerVariable)  
+<a name="ServerVariable+hasExamples"></a>
+
+### serverVariable.hasExamples() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>ServerVariable</code>](#ServerVariable)  
 <a name="ServerVariable+examples"></a>
 
-### serverVariable.examples() ⇒ <code>Array.&lt;string&gt;</code>
+### serverVariable.examples() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
 **Kind**: instance method of [<code>ServerVariable</code>](#ServerVariable)  
+<a name="ServerVariable+hasDescription"></a>
+
+### serverVariable.hasDescription() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>ServerVariable</code>](#ServerVariable)  
+**Mixes**: [<code>hasDescription</code>](#MixinDescription.hasDescription)  
+<a name="ServerVariable+description"></a>
+
+### serverVariable.description() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>ServerVariable</code>](#ServerVariable)  
+**Mixes**: [<code>description</code>](#MixinDescription.description)  
+<a name="ServerVariable+hasExtensions"></a>
+
+### serverVariable.hasExtensions() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>ServerVariable</code>](#ServerVariable)  
+**Mixes**: [<code>hasExtensions</code>](#MixinSpecificationExtensions.hasExtensions)  
+<a name="ServerVariable+extensions"></a>
+
+### serverVariable.extensions() ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>ServerVariable</code>](#ServerVariable)  
+**Mixes**: [<code>extensions</code>](#MixinSpecificationExtensions.extensions)  
+<a name="ServerVariable+extensionKeys"></a>
+
+### serverVariable.extensionKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>ServerVariable</code>](#ServerVariable)  
+**Mixes**: [<code>extensionKeys</code>](#MixinSpecificationExtensions.extensionKeys)  
+<a name="ServerVariable+extKeys"></a>
+
+### serverVariable.extKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>ServerVariable</code>](#ServerVariable)  
+**Mixes**: [<code>extKeys</code>](#MixinSpecificationExtensions.extKeys)  
+<a name="ServerVariable+hasExtension"></a>
+
+### serverVariable.hasExtension(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>ServerVariable</code>](#ServerVariable)  
+**Mixes**: [<code>hasExtension</code>](#MixinSpecificationExtensions.hasExtension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="ServerVariable+extension"></a>
+
+### serverVariable.extension(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>ServerVariable</code>](#ServerVariable)  
+**Mixes**: [<code>extension</code>](#MixinSpecificationExtensions.extension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="ServerVariable+hasExt"></a>
+
+### serverVariable.hasExt(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>ServerVariable</code>](#ServerVariable)  
+**Mixes**: [<code>hasExt</code>](#MixinSpecificationExtensions.hasExt)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="ServerVariable+ext"></a>
+
+### serverVariable.ext(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>ServerVariable</code>](#ServerVariable)  
+**Mixes**: [<code>ext</code>](#MixinSpecificationExtensions.ext)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise throw an error. |
+
 <a name="Base+json"></a>
 
 ### serverVariable.json() ⇒ <code>Any</code>
@@ -1604,28 +3222,44 @@ Implements functions to deal with a ServerVariable object.
 <a name="Server"></a>
 
 ## Server ⇐ [<code>Base</code>](#Base)
-Implements functions to deal with a Server object.
-
 **Kind**: global class  
 **Extends**: [<code>Base</code>](#Base)  
+**Mixes**: [<code>MixinDescription</code>](#MixinDescription), [<code>MixinBindings</code>](#MixinBindings), [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
 
 * [Server](#Server) ⇐ [<code>Base</code>](#Base)
-    * [.description()](#Server+description) ⇒ <code>string</code>
+    * [new Server()](#new_Server_new)
     * [.url()](#Server+url) ⇒ <code>string</code>
     * [.protocol()](#Server+protocol) ⇒ <code>string</code>
-    * [.protocolVersion()](#Server+protocolVersion) ⇒ <code>string</code>
-    * [.variables()](#Server+variables) ⇒ <code>Object.&lt;string, ServerVariable&gt;</code>
-    * [.variable(name)](#Server+variable) ⇒ [<code>ServerVariable</code>](#ServerVariable)
+    * [.hasProtocolVersion()](#Server+hasProtocolVersion) ⇒ <code>boolean</code>
+    * [.protocolVersion()](#Server+protocolVersion) ⇒ <code>string</code> \| <code>null</code>
     * [.hasVariables()](#Server+hasVariables) ⇒ <code>boolean</code>
-    * [.security()](#Server+security) ⇒ [<code>Array.&lt;ServerSecurityRequirement&gt;</code>](#ServerSecurityRequirement)
-    * [.bindings()](#Server+bindings) ⇒ <code>Object</code>
-    * [.binding(name)](#Server+binding) ⇒ <code>Object</code>
+    * [.variables()](#Server+variables) ⇒ <code>Object.&lt;string, ServerVariable&gt;</code> \| <code>null</code>
+    * [.hasVariable(name)](#Server+hasVariable) ⇒ <code>boolean</code>
+    * [.variable(name)](#Server+variable) ⇒ [<code>ServerVariable</code>](#ServerVariable) \| <code>null</code>
+    * [.hasSecurity()](#Server+hasSecurity) ⇒ <code>boolean</code>
+    * [.security()](#Server+security) ⇒ [<code>Array.&lt;ServerSecurityRequirement&gt;</code>](#ServerSecurityRequirement) \| <code>null</code>
+    * [.hasDescription()](#Server+hasDescription) ⇒ <code>boolean</code>
+    * [.description()](#Server+description) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasBindings()](#Server+hasBindings) ⇒ <code>boolean</code>
+    * [.bindings()](#Server+bindings) ⇒ <code>Object</code> \| <code>null</code>
+    * [.bindingProtocols()](#Server+bindingProtocols) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasBinding(name)](#Server+hasBinding) ⇒ <code>boolean</code>
+    * [.binding(name)](#Server+binding) ⇒ <code>Object</code> \| <code>null</code>
+    * [.hasExtensions()](#Server+hasExtensions) ⇒ <code>boolean</code>
+    * [.extensions()](#Server+extensions) ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+    * [.extensionKeys()](#Server+extensionKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.extKeys()](#Server+extKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasExtension(key)](#Server+hasExtension) ⇒ <code>boolean</code>
+    * [.extension(key)](#Server+extension) ⇒ <code>Any</code>
+    * [.hasExt(key)](#Server+hasExt) ⇒ <code>boolean</code>
+    * [.ext(key)](#Server+ext) ⇒ <code>Any</code>
     * [.json()](#Base+json) ⇒ <code>Any</code>
 
-<a name="Server+description"></a>
+<a name="new_Server_new"></a>
 
-### server.description() ⇒ <code>string</code>
-**Kind**: instance method of [<code>Server</code>](#Server)  
+### new Server()
+Implements functions to deal with a Server object.
+
 <a name="Server+url"></a>
 
 ### server.url() ⇒ <code>string</code>
@@ -1634,43 +3268,152 @@ Implements functions to deal with a Server object.
 
 ### server.protocol() ⇒ <code>string</code>
 **Kind**: instance method of [<code>Server</code>](#Server)  
+<a name="Server+hasProtocolVersion"></a>
+
+### server.hasProtocolVersion() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Server</code>](#Server)  
 <a name="Server+protocolVersion"></a>
 
-### server.protocolVersion() ⇒ <code>string</code>
+### server.protocolVersion() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>Server</code>](#Server)  
+<a name="Server+hasVariables"></a>
+
+### server.hasVariables() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>Server</code>](#Server)  
 <a name="Server+variables"></a>
 
-### server.variables() ⇒ <code>Object.&lt;string, ServerVariable&gt;</code>
+### server.variables() ⇒ <code>Object.&lt;string, ServerVariable&gt;</code> \| <code>null</code>
 **Kind**: instance method of [<code>Server</code>](#Server)  
-<a name="Server+variable"></a>
+<a name="Server+hasVariable"></a>
 
-### server.variable(name) ⇒ [<code>ServerVariable</code>](#ServerVariable)
+### server.hasVariable(name) ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>Server</code>](#Server)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | name | <code>string</code> | Name of the server variable. |
 
-<a name="Server+hasVariables"></a>
+<a name="Server+variable"></a>
 
-### server.hasVariables() ⇒ <code>boolean</code>
-**Kind**: instance method of [<code>Server</code>](#Server)  
-<a name="Server+security"></a>
-
-### server.security() ⇒ [<code>Array.&lt;ServerSecurityRequirement&gt;</code>](#ServerSecurityRequirement)
-**Kind**: instance method of [<code>Server</code>](#Server)  
-<a name="Server+bindings"></a>
-
-### server.bindings() ⇒ <code>Object</code>
-**Kind**: instance method of [<code>Server</code>](#Server)  
-<a name="Server+binding"></a>
-
-### server.binding(name) ⇒ <code>Object</code>
+### server.variable(name) ⇒ [<code>ServerVariable</code>](#ServerVariable) \| <code>null</code>
 **Kind**: instance method of [<code>Server</code>](#Server)  
 
 | Param | Type | Description |
 | --- | --- | --- |
+| name | <code>string</code> | Name of the server variable. |
+
+<a name="Server+hasSecurity"></a>
+
+### server.hasSecurity() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Server</code>](#Server)  
+<a name="Server+security"></a>
+
+### server.security() ⇒ [<code>Array.&lt;ServerSecurityRequirement&gt;</code>](#ServerSecurityRequirement) \| <code>null</code>
+**Kind**: instance method of [<code>Server</code>](#Server)  
+<a name="Server+hasDescription"></a>
+
+### server.hasDescription() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Server</code>](#Server)  
+**Mixes**: [<code>hasDescription</code>](#MixinDescription.hasDescription)  
+<a name="Server+description"></a>
+
+### server.description() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: instance method of [<code>Server</code>](#Server)  
+**Mixes**: [<code>description</code>](#MixinDescription.description)  
+<a name="Server+hasBindings"></a>
+
+### server.hasBindings() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Server</code>](#Server)  
+**Mixes**: [<code>hasBindings</code>](#MixinBindings.hasBindings)  
+<a name="Server+bindings"></a>
+
+### server.bindings() ⇒ <code>Object</code> \| <code>null</code>
+**Kind**: instance method of [<code>Server</code>](#Server)  
+**Mixes**: [<code>bindings</code>](#MixinBindings.bindings)  
+<a name="Server+bindingProtocols"></a>
+
+### server.bindingProtocols() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Server</code>](#Server)  
+**Mixes**: [<code>bindingProtocols</code>](#MixinBindings.bindingProtocols)  
+<a name="Server+hasBinding"></a>
+
+### server.hasBinding(name) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Server</code>](#Server)  
+**Mixes**: [<code>hasBinding</code>](#MixinBindings.hasBinding)  
+
+| Param | Type | Description |
+| --- | --- | --- |
 | name | <code>string</code> | Name of the binding. |
+
+<a name="Server+binding"></a>
+
+### server.binding(name) ⇒ <code>Object</code> \| <code>null</code>
+**Kind**: instance method of [<code>Server</code>](#Server)  
+**Mixes**: [<code>binding</code>](#MixinBindings.binding)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the binding. |
+
+<a name="Server+hasExtensions"></a>
+
+### server.hasExtensions() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Server</code>](#Server)  
+**Mixes**: [<code>hasExtensions</code>](#MixinSpecificationExtensions.hasExtensions)  
+<a name="Server+extensions"></a>
+
+### server.extensions() ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Server</code>](#Server)  
+**Mixes**: [<code>extensions</code>](#MixinSpecificationExtensions.extensions)  
+<a name="Server+extensionKeys"></a>
+
+### server.extensionKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Server</code>](#Server)  
+**Mixes**: [<code>extensionKeys</code>](#MixinSpecificationExtensions.extensionKeys)  
+<a name="Server+extKeys"></a>
+
+### server.extKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Server</code>](#Server)  
+**Mixes**: [<code>extKeys</code>](#MixinSpecificationExtensions.extKeys)  
+<a name="Server+hasExtension"></a>
+
+### server.hasExtension(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Server</code>](#Server)  
+**Mixes**: [<code>hasExtension</code>](#MixinSpecificationExtensions.hasExtension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="Server+extension"></a>
+
+### server.extension(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>Server</code>](#Server)  
+**Mixes**: [<code>extension</code>](#MixinSpecificationExtensions.extension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="Server+hasExt"></a>
+
+### server.hasExt(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Server</code>](#Server)  
+**Mixes**: [<code>hasExt</code>](#MixinSpecificationExtensions.hasExt)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="Server+ext"></a>
+
+### server.ext(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>Server</code>](#Server)  
+**Mixes**: [<code>ext</code>](#MixinSpecificationExtensions.ext)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise throw an error. |
 
 <a name="Base+json"></a>
 
@@ -1679,27 +3422,23 @@ Implements functions to deal with a Server object.
 <a name="SubscribeOperation"></a>
 
 ## SubscribeOperation ⇐ [<code>Operation</code>](#Operation)
-Implements functions to deal with a SubscribeOperation object.
-
 **Kind**: global class  
 **Extends**: [<code>Operation</code>](#Operation)  
 
 * [SubscribeOperation](#SubscribeOperation) ⇐ [<code>Operation</code>](#Operation)
+    * [new SubscribeOperation()](#new_SubscribeOperation_new)
     * [.isPublish()](#SubscribeOperation+isPublish) ⇒ <code>boolean</code>
     * [.isSubscribe()](#SubscribeOperation+isSubscribe) ⇒ <code>boolean</code>
     * [.kind()](#SubscribeOperation+kind) ⇒ <code>string</code>
+    * [.hasSingleMessage()](#Operation+hasSingleMessage) ⇒ <code>boolean</code>
     * [.hasMultipleMessages()](#Operation+hasMultipleMessages) ⇒ <code>boolean</code>
-    * [.messages()](#Operation+messages) ⇒ [<code>Array.&lt;Message&gt;</code>](#Message)
-    * [.message()](#Operation+message) ⇒ [<code>Message</code>](#Message)
-    * [.id()](#OperationTraitable+id) ⇒ <code>string</code>
-    * [.summary()](#OperationTraitable+summary) ⇒ <code>string</code>
-    * [.description()](#OperationTraitable+description) ⇒ <code>string</code>
-    * [.hasTags()](#OperationTraitable+hasTags) ⇒ <code>boolean</code>
-    * [.tags()](#OperationTraitable+tags) ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag)
-    * [.externalDocs()](#OperationTraitable+externalDocs) ⇒ [<code>ExternalDocs</code>](#ExternalDocs)
-    * [.bindings()](#OperationTraitable+bindings) ⇒ <code>Object</code>
-    * [.binding(name)](#OperationTraitable+binding) ⇒ <code>Object</code>
-    * [.json()](#Base+json) ⇒ <code>Any</code>
+    * [.messages()](#Operation+messages) ⇒ [<code>Array.&lt;Message&gt;</code>](#Message) \| <code>null</code>
+    * [.message()](#Operation+message) ⇒ [<code>Message</code>](#Message) \| <code>null</code>
+
+<a name="new_SubscribeOperation_new"></a>
+
+### new SubscribeOperation()
+Implements functions to deal with a SubscribeOperation object.
 
 <a name="SubscribeOperation+isPublish"></a>
 
@@ -1713,89 +3452,334 @@ Implements functions to deal with a SubscribeOperation object.
 
 ### subscribeOperation.kind() ⇒ <code>string</code>
 **Kind**: instance method of [<code>SubscribeOperation</code>](#SubscribeOperation)  
+<a name="Operation+hasSingleMessage"></a>
+
+### subscribeOperation.hasSingleMessage() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>SubscribeOperation</code>](#SubscribeOperation)  
 <a name="Operation+hasMultipleMessages"></a>
 
 ### subscribeOperation.hasMultipleMessages() ⇒ <code>boolean</code>
 **Kind**: instance method of [<code>SubscribeOperation</code>](#SubscribeOperation)  
 <a name="Operation+messages"></a>
 
-### subscribeOperation.messages() ⇒ [<code>Array.&lt;Message&gt;</code>](#Message)
+### subscribeOperation.messages() ⇒ [<code>Array.&lt;Message&gt;</code>](#Message) \| <code>null</code>
 **Kind**: instance method of [<code>SubscribeOperation</code>](#SubscribeOperation)  
 <a name="Operation+message"></a>
 
-### subscribeOperation.message() ⇒ [<code>Message</code>](#Message)
-**Kind**: instance method of [<code>SubscribeOperation</code>](#SubscribeOperation)  
-<a name="OperationTraitable+id"></a>
-
-### subscribeOperation.id() ⇒ <code>string</code>
-**Kind**: instance method of [<code>SubscribeOperation</code>](#SubscribeOperation)  
-<a name="OperationTraitable+summary"></a>
-
-### subscribeOperation.summary() ⇒ <code>string</code>
-**Kind**: instance method of [<code>SubscribeOperation</code>](#SubscribeOperation)  
-<a name="OperationTraitable+description"></a>
-
-### subscribeOperation.description() ⇒ <code>string</code>
-**Kind**: instance method of [<code>SubscribeOperation</code>](#SubscribeOperation)  
-<a name="OperationTraitable+hasTags"></a>
-
-### subscribeOperation.hasTags() ⇒ <code>boolean</code>
-**Kind**: instance method of [<code>SubscribeOperation</code>](#SubscribeOperation)  
-<a name="OperationTraitable+tags"></a>
-
-### subscribeOperation.tags() ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag)
-**Kind**: instance method of [<code>SubscribeOperation</code>](#SubscribeOperation)  
-<a name="OperationTraitable+externalDocs"></a>
-
-### subscribeOperation.externalDocs() ⇒ [<code>ExternalDocs</code>](#ExternalDocs)
-**Kind**: instance method of [<code>SubscribeOperation</code>](#SubscribeOperation)  
-<a name="OperationTraitable+bindings"></a>
-
-### subscribeOperation.bindings() ⇒ <code>Object</code>
-**Kind**: instance method of [<code>SubscribeOperation</code>](#SubscribeOperation)  
-<a name="OperationTraitable+binding"></a>
-
-### subscribeOperation.binding(name) ⇒ <code>Object</code>
-**Kind**: instance method of [<code>SubscribeOperation</code>](#SubscribeOperation)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| name | <code>string</code> | Name of the binding. |
-
-<a name="Base+json"></a>
-
-### subscribeOperation.json() ⇒ <code>Any</code>
+### subscribeOperation.message() ⇒ [<code>Message</code>](#Message) \| <code>null</code>
 **Kind**: instance method of [<code>SubscribeOperation</code>](#SubscribeOperation)  
 <a name="Tag"></a>
 
 ## Tag ⇐ [<code>Base</code>](#Base)
-Implements functions to deal with a Tag object.
-
 **Kind**: global class  
 **Extends**: [<code>Base</code>](#Base)  
+**Mixes**: [<code>MixinDescription</code>](#MixinDescription), [<code>MixinExternalDocs</code>](#MixinExternalDocs), [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
 
 * [Tag](#Tag) ⇐ [<code>Base</code>](#Base)
+    * [new Tag()](#new_Tag_new)
     * [.name()](#Tag+name) ⇒ <code>string</code>
-    * [.description()](#Tag+description) ⇒ <code>string</code>
-    * [.externalDocs()](#Tag+externalDocs) ⇒ [<code>ExternalDocs</code>](#ExternalDocs)
+    * [.hasDescription()](#Tag+hasDescription) ⇒ <code>boolean</code>
+    * [.description()](#Tag+description) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasExternalDocs()](#Tag+hasExternalDocs) ⇒ <code>boolean</code>
+    * [.externalDocs()](#Tag+externalDocs) ⇒ [<code>ExternalDocs</code>](#ExternalDocs) \| <code>null</code>
+    * [.hasExtensions()](#Tag+hasExtensions) ⇒ <code>boolean</code>
+    * [.extensions()](#Tag+extensions) ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+    * [.extensionKeys()](#Tag+extensionKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.extKeys()](#Tag+extKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasExtension(key)](#Tag+hasExtension) ⇒ <code>boolean</code>
+    * [.extension(key)](#Tag+extension) ⇒ <code>Any</code>
+    * [.hasExt(key)](#Tag+hasExt) ⇒ <code>boolean</code>
+    * [.ext(key)](#Tag+ext) ⇒ <code>Any</code>
     * [.json()](#Base+json) ⇒ <code>Any</code>
+
+<a name="new_Tag_new"></a>
+
+### new Tag()
+Implements functions to deal with a Tag object.
 
 <a name="Tag+name"></a>
 
 ### tag.name() ⇒ <code>string</code>
 **Kind**: instance method of [<code>Tag</code>](#Tag)  
+<a name="Tag+hasDescription"></a>
+
+### tag.hasDescription() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Tag</code>](#Tag)  
+**Mixes**: [<code>hasDescription</code>](#MixinDescription.hasDescription)  
 <a name="Tag+description"></a>
 
-### tag.description() ⇒ <code>string</code>
+### tag.description() ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance method of [<code>Tag</code>](#Tag)  
+**Mixes**: [<code>description</code>](#MixinDescription.description)  
+<a name="Tag+hasExternalDocs"></a>
+
+### tag.hasExternalDocs() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Tag</code>](#Tag)  
+**Mixes**: [<code>hasExternalDocs</code>](#MixinExternalDocs.hasExternalDocs)  
 <a name="Tag+externalDocs"></a>
 
-### tag.externalDocs() ⇒ [<code>ExternalDocs</code>](#ExternalDocs)
+### tag.externalDocs() ⇒ [<code>ExternalDocs</code>](#ExternalDocs) \| <code>null</code>
 **Kind**: instance method of [<code>Tag</code>](#Tag)  
+**Mixes**: [<code>externalDocs</code>](#MixinExternalDocs.externalDocs)  
+<a name="Tag+hasExtensions"></a>
+
+### tag.hasExtensions() ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Tag</code>](#Tag)  
+**Mixes**: [<code>hasExtensions</code>](#MixinSpecificationExtensions.hasExtensions)  
+<a name="Tag+extensions"></a>
+
+### tag.extensions() ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Tag</code>](#Tag)  
+**Mixes**: [<code>extensions</code>](#MixinSpecificationExtensions.extensions)  
+<a name="Tag+extensionKeys"></a>
+
+### tag.extensionKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Tag</code>](#Tag)  
+**Mixes**: [<code>extensionKeys</code>](#MixinSpecificationExtensions.extensionKeys)  
+<a name="Tag+extKeys"></a>
+
+### tag.extKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance method of [<code>Tag</code>](#Tag)  
+**Mixes**: [<code>extKeys</code>](#MixinSpecificationExtensions.extKeys)  
+<a name="Tag+hasExtension"></a>
+
+### tag.hasExtension(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Tag</code>](#Tag)  
+**Mixes**: [<code>hasExtension</code>](#MixinSpecificationExtensions.hasExtension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="Tag+extension"></a>
+
+### tag.extension(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>Tag</code>](#Tag)  
+**Mixes**: [<code>extension</code>](#MixinSpecificationExtensions.extension)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="Tag+hasExt"></a>
+
+### tag.hasExt(key) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Tag</code>](#Tag)  
+**Mixes**: [<code>hasExt</code>](#MixinSpecificationExtensions.hasExt)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="Tag+ext"></a>
+
+### tag.ext(key) ⇒ <code>Any</code>
+**Kind**: instance method of [<code>Tag</code>](#Tag)  
+**Mixes**: [<code>ext</code>](#MixinSpecificationExtensions.ext)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise throw an error. |
+
 <a name="Base+json"></a>
 
 ### tag.json() ⇒ <code>Any</code>
 **Kind**: instance method of [<code>Tag</code>](#Tag)  
+<a name="MixinBindings"></a>
+
+## MixinBindings
+Implements functions to deal with the Bindings object.
+
+**Kind**: global mixin  
+
+* [MixinBindings](#MixinBindings)
+    * [.hasBindings()](#MixinBindings.hasBindings) ⇒ <code>boolean</code>
+    * [.bindings()](#MixinBindings.bindings) ⇒ <code>Object</code> \| <code>null</code>
+    * [.bindingProtocols()](#MixinBindings.bindingProtocols) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasBinding(name)](#MixinBindings.hasBinding) ⇒ <code>boolean</code>
+    * [.binding(name)](#MixinBindings.binding) ⇒ <code>Object</code> \| <code>null</code>
+
+<a name="MixinBindings.hasBindings"></a>
+
+### MixinBindings.hasBindings() ⇒ <code>boolean</code>
+**Kind**: static method of [<code>MixinBindings</code>](#MixinBindings)  
+<a name="MixinBindings.bindings"></a>
+
+### MixinBindings.bindings() ⇒ <code>Object</code> \| <code>null</code>
+**Kind**: static method of [<code>MixinBindings</code>](#MixinBindings)  
+<a name="MixinBindings.bindingProtocols"></a>
+
+### MixinBindings.bindingProtocols() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: static method of [<code>MixinBindings</code>](#MixinBindings)  
+<a name="MixinBindings.hasBinding"></a>
+
+### MixinBindings.hasBinding(name) ⇒ <code>boolean</code>
+**Kind**: static method of [<code>MixinBindings</code>](#MixinBindings)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the binding. |
+
+<a name="MixinBindings.binding"></a>
+
+### MixinBindings.binding(name) ⇒ <code>Object</code> \| <code>null</code>
+**Kind**: static method of [<code>MixinBindings</code>](#MixinBindings)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the binding. |
+
+<a name="MixinDescription"></a>
+
+## MixinDescription
+Implements functions to deal with the description field.
+
+**Kind**: global mixin  
+
+* [MixinDescription](#MixinDescription)
+    * [.hasDescription()](#MixinDescription.hasDescription) ⇒ <code>boolean</code>
+    * [.description()](#MixinDescription.description) ⇒ <code>string</code> \| <code>null</code>
+
+<a name="MixinDescription.hasDescription"></a>
+
+### MixinDescription.hasDescription() ⇒ <code>boolean</code>
+**Kind**: static method of [<code>MixinDescription</code>](#MixinDescription)  
+<a name="MixinDescription.description"></a>
+
+### MixinDescription.description() ⇒ <code>string</code> \| <code>null</code>
+**Kind**: static method of [<code>MixinDescription</code>](#MixinDescription)  
+<a name="MixinExternalDocs"></a>
+
+## MixinExternalDocs
+Implements functions to deal with the ExternalDocs object.
+
+**Kind**: global mixin  
+
+* [MixinExternalDocs](#MixinExternalDocs)
+    * [.hasExternalDocs()](#MixinExternalDocs.hasExternalDocs) ⇒ <code>boolean</code>
+    * [.externalDocs()](#MixinExternalDocs.externalDocs) ⇒ [<code>ExternalDocs</code>](#ExternalDocs) \| <code>null</code>
+
+<a name="MixinExternalDocs.hasExternalDocs"></a>
+
+### MixinExternalDocs.hasExternalDocs() ⇒ <code>boolean</code>
+**Kind**: static method of [<code>MixinExternalDocs</code>](#MixinExternalDocs)  
+<a name="MixinExternalDocs.externalDocs"></a>
+
+### MixinExternalDocs.externalDocs() ⇒ [<code>ExternalDocs</code>](#ExternalDocs) \| <code>null</code>
+**Kind**: static method of [<code>MixinExternalDocs</code>](#MixinExternalDocs)  
+<a name="MixinSpecificationExtensions"></a>
+
+## MixinSpecificationExtensions
+Implements functions to deal with the SpecificationExtensions object.
+
+**Kind**: global mixin  
+
+* [MixinSpecificationExtensions](#MixinSpecificationExtensions)
+    * [.hasExtensions()](#MixinSpecificationExtensions.hasExtensions) ⇒ <code>boolean</code>
+    * [.extensions()](#MixinSpecificationExtensions.extensions) ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+    * [.extensionKeys()](#MixinSpecificationExtensions.extensionKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.extKeys()](#MixinSpecificationExtensions.extKeys) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasExtension(key)](#MixinSpecificationExtensions.hasExtension) ⇒ <code>boolean</code>
+    * [.extension(key)](#MixinSpecificationExtensions.extension) ⇒ <code>Any</code>
+    * [.hasExt(key)](#MixinSpecificationExtensions.hasExt) ⇒ <code>boolean</code>
+    * [.ext(key)](#MixinSpecificationExtensions.ext) ⇒ <code>Any</code>
+
+<a name="MixinSpecificationExtensions.hasExtensions"></a>
+
+### MixinSpecificationExtensions.hasExtensions() ⇒ <code>boolean</code>
+**Kind**: static method of [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
+<a name="MixinSpecificationExtensions.extensions"></a>
+
+### MixinSpecificationExtensions.extensions() ⇒ <code>Object.&lt;string, Any&gt;</code> \| <code>null</code>
+**Kind**: static method of [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
+<a name="MixinSpecificationExtensions.extensionKeys"></a>
+
+### MixinSpecificationExtensions.extensionKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: static method of [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
+<a name="MixinSpecificationExtensions.extKeys"></a>
+
+### MixinSpecificationExtensions.extKeys() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: static method of [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
+<a name="MixinSpecificationExtensions.hasExtension"></a>
+
+### MixinSpecificationExtensions.hasExtension(key) ⇒ <code>boolean</code>
+**Kind**: static method of [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="MixinSpecificationExtensions.extension"></a>
+
+### MixinSpecificationExtensions.extension(key) ⇒ <code>Any</code>
+**Kind**: static method of [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="MixinSpecificationExtensions.hasExt"></a>
+
+### MixinSpecificationExtensions.hasExt(key) ⇒ <code>boolean</code>
+**Kind**: static method of [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise function throw an error. |
+
+<a name="MixinSpecificationExtensions.ext"></a>
+
+### MixinSpecificationExtensions.ext(key) ⇒ <code>Any</code>
+**Kind**: static method of [<code>MixinSpecificationExtensions</code>](#MixinSpecificationExtensions)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Extension key. Must start with `x-` prefix. Otherwise throw an error. |
+
+<a name="MixinTags"></a>
+
+## MixinTags
+Implements functions to deal with the Tags object.
+
+**Kind**: global mixin  
+
+* [MixinTags](#MixinTags)
+    * [.hasTags()](#MixinTags.hasTags) ⇒ <code>boolean</code>
+    * [.tags()](#MixinTags.tags) ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag) \| <code>null</code>
+    * [.tagNames()](#MixinTags.tagNames) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+    * [.hasTag(name)](#MixinTags.hasTag) ⇒ <code>boolean</code>
+    * [.tag(name)](#MixinTags.tag) ⇒ [<code>Tag</code>](#Tag) \| <code>null</code>
+
+<a name="MixinTags.hasTags"></a>
+
+### MixinTags.hasTags() ⇒ <code>boolean</code>
+**Kind**: static method of [<code>MixinTags</code>](#MixinTags)  
+<a name="MixinTags.tags"></a>
+
+### MixinTags.tags() ⇒ [<code>Array.&lt;Tag&gt;</code>](#Tag) \| <code>null</code>
+**Kind**: static method of [<code>MixinTags</code>](#MixinTags)  
+<a name="MixinTags.tagNames"></a>
+
+### MixinTags.tagNames() ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: static method of [<code>MixinTags</code>](#MixinTags)  
+<a name="MixinTags.hasTag"></a>
+
+### MixinTags.hasTag(name) ⇒ <code>boolean</code>
+**Kind**: static method of [<code>MixinTags</code>](#MixinTags)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the tag. |
+
+<a name="MixinTags.tag"></a>
+
+### MixinTags.tag(name) ⇒ [<code>Tag</code>](#Tag) \| <code>null</code>
+**Kind**: static method of [<code>MixinTags</code>](#MixinTags)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name of the tag. |
+
 <a name="assignUidToParameterSchemas"></a>
 
 ## assignUidToParameterSchemas(doc)

@@ -3,6 +3,10 @@ const AsyncAPIDocument = require('../../lib/models/asyncapi');
 const fs = require('fs');
 const path = require('path');
 
+const { assertMixinTagsInheritance } = require('../mixins/tags_test');
+const { assertMixinExternalDocsInheritance } = require('../mixins/external-docs_test');
+const { assertMixinSpecificationExtensionsInheritance } = require('../mixins/specification-extensions_test');
+
 describe('AsyncAPIDocument', function() {
   describe('assignUidToParameterSchemas()', function() {
     it('should assign uids to parameters', function() {
@@ -12,13 +16,31 @@ describe('AsyncAPIDocument', function() {
       expect(d.json()).to.be.deep.equal(expectedDoc);
     });
   });
-  describe('#ext()', function() {
-    it('should support extensions', function() {
-      const doc = { 'x-test': 'testing' };
+
+  describe('#version()', function() {
+    it('should return the asyncapi version as string', function() {
+      const doc = { asyncapi: '2.0.0' };
       const d = new AsyncAPIDocument(doc);
-      expect(d.ext('x-test')).to.be.equal(doc['x-test']);
-      expect(d.extension('x-test')).to.be.equal(doc['x-test']);
-      expect(d.extensions()).to.be.deep.equal({ 'x-test': 'testing' });
+      expect(d.version()).to.be.equal(doc.asyncapi);
+    });
+  });
+
+  describe('#hasId()', function() {
+    it('should return a boolean indicating if the AsyncAPI document has id', function() {
+      const doc = { id: 'id' };
+      const docNoId = { test: 'testing' };
+      const d = new AsyncAPIDocument(doc);
+      const d2 = new AsyncAPIDocument(docNoId);
+      expect(d.hasId()).to.be.true;
+      expect(d2.hasId()).to.be.false;
+    });
+  });
+
+  describe('#id()', function() {
+    it('should return the id string', function() {
+      const doc = { id: 'urn:test' };
+      const d = new AsyncAPIDocument(doc);
+      expect(d.id()).to.be.equal(doc.id);
     });
   });
 
@@ -28,14 +50,6 @@ describe('AsyncAPIDocument', function() {
       const d = new AsyncAPIDocument(doc);
       expect(d.info().constructor.name).to.be.equal('Info');
       expect(d.info().json()).to.be.equal(doc.info);
-    });
-  });
-
-  describe('#id()', function() {
-    it('should return the id string', function() {
-      const doc = { id: 'urn:test' };
-      const d = new AsyncAPIDocument(doc);
-      expect(d.id()).to.be.equal(doc.id);
     });
   });
 
@@ -59,6 +73,30 @@ describe('AsyncAPIDocument', function() {
       expect(d.servers().test1.json()).to.equal(doc.servers.test1);
       expect(d.servers().test2.constructor.name).to.equal('Server');
       expect(d.servers().test2.json()).to.equal(doc.servers.test2);
+    });
+  });
+
+  describe('#serverNames()', function() {
+    it('should return an empty array', function() {
+      const doc = { test: 'testing' };
+      const d = new AsyncAPIDocument(doc);
+      expect(Array.isArray(d.serverNames())).to.be.false;
+      expect(d.serverNames()).to.be.null;
+    });
+    it('should return an array of strings', function() {
+      const doc = { servers: { test1: { url: 'test1' }, test2: { url: 'test2' } } };
+      const d = new AsyncAPIDocument(doc);
+      expect(Array.isArray(d.serverNames())).to.be.equal(true);
+      expect(d.serverNames()).to.deep.equal(['test1', 'test2']);
+    });
+  });
+
+  describe('#hasServer()', function() {
+    it('should return a boolean indicating if the AsyncAPI document has appropriate server', function() {
+      const doc = { servers: { test1: { url: 'test1' }, test2: { url: 'test2' } } };
+      const d = new AsyncAPIDocument(doc);
+      expect(d.hasServer("test1")).to.equal(true);
+      expect(d.hasServer("test3")).to.equal(false);
     });
   });
 
@@ -107,6 +145,12 @@ describe('AsyncAPIDocument', function() {
   });
 
   describe('#channelNames()', function() {
+    it('should return an empty array', function() {
+      const doc = { test: 'testing' };
+      const d = new AsyncAPIDocument(doc);
+      expect(Array.isArray(d.channelNames())).to.be.false;
+      expect(d.channelNames()).to.be.null;
+    });
     it('should return an array of strings', function() {
       const doc = { channels: { test1: { description: 'test1' }, test2: { description: 'test2' } } };
       const d = new AsyncAPIDocument(doc);
@@ -114,6 +158,16 @@ describe('AsyncAPIDocument', function() {
       expect(d.channelNames()).to.deep.equal(['test1', 'test2']);
     });
   });
+
+  describe('#hasChannel()', function() {
+    it('should return a boolean indicating if the AsyncAPI document has appropriate channel', function() {
+      const doc = { channels: { test1: { description: 'test1' }, test2: { description: 'test2' } } };
+      const d = new AsyncAPIDocument(doc);
+      expect(d.hasChannel("test1")).to.equal(true);
+      expect(d.hasChannel("test3")).to.equal(false);
+    });
+  });
+
 
   describe('#channel()', function() {
     it('should return a specific channel object', function() {
@@ -136,6 +190,30 @@ describe('AsyncAPIDocument', function() {
     });
   });
 
+  describe('#hasDefaultContentType()', function() {
+    it('should return a boolean indicating if the AsyncAPI document has defaultContentType', function() {
+      const doc = { defaultContentType: 'application/json' };
+      const doc2 = { test: 'testing' };
+      const d = new AsyncAPIDocument(doc);
+      const d2 = new AsyncAPIDocument(doc2);
+      expect(d.hasDefaultContentType()).to.be.true;
+      expect(d2.hasDefaultContentType()).to.be.false;
+    });
+  });
+
+  describe('#defaultContentType()', function() {
+    it('should return null if defaultContentType is not specified', function() {
+      const doc = { test: 'testing' };
+      const d = new AsyncAPIDocument(doc);
+      expect(d.defaultContentType()).to.be.equal(null);
+    });
+    it('should return the defaultContentType string', function() {
+      const doc = { defaultContentType: 'application/json' };
+      const d = new AsyncAPIDocument(doc);
+      expect(d.defaultContentType()).to.be.equal(doc.defaultContentType);
+    });
+  });
+
   describe('#hasComponents()', function() {
     it('should return a boolean indicating if the AsyncAPI document has components', function() {
       const doc = { components: { test1: { description: 'test1' }, test2: { description: 'test2' } } };
@@ -153,17 +231,6 @@ describe('AsyncAPIDocument', function() {
       const d = new AsyncAPIDocument(doc);
       expect(d.components().constructor.name).to.equal('Components');
       expect(d.components().json()).to.equal(doc.components);
-    });
-  });
-
-  describe('#tags()', function() {
-    it('should return an array of tags', function() {
-      const doc = { tags: [{ name: 'test1' }, { name: 'test2' }] };
-      const d = new AsyncAPIDocument(doc);
-      d.tags().forEach((t, i) => {
-        expect(t.constructor.name).to.be.equal('Tag');
-        expect(t.json()).to.be.equal(doc.tags[i]);
-      });
     });
   });
 
@@ -203,6 +270,39 @@ describe('AsyncAPIDocument', function() {
         expect(t.json().test).to.be.equal(true);
       });
     });
+  });
+
+  describe('#hasSchemas()', function() {
+    it('should return true if there is a schema in channels', function() {
+      const doc = {
+        channels: {
+          some_channel: {
+            subscribe: {
+              message: {
+                name: 'some_map',
+                payload: {
+                  type: 'array',
+                  $id: 'payloadSchema',
+                  test: true,
+                }
+              }
+            }
+          }
+        }
+      };
+      const d = new AsyncAPIDocument(doc);
+      expect(d.hasSchemas()).to.equal(true);
+    });
+    // it('should return true if there is a schema in components', function() {
+    //   const doc = { channels: { test: { publish: { message: { name: 'test', test: false, k: 1 } } } } };
+    //   const d = new AsyncAPIDocument(doc);
+    //   expect(d.hasSchemas()).to.equal(true);
+    // });
+    // it('should return false if there are no messages neither in components nor in channels operations', function() {
+    //   const doc = { channels: { test: { publish: { } } }, components: { } };
+    //   const d = new AsyncAPIDocument(doc);
+    //   expect(d.hasSchemas()).to.equal(false);
+    // });
   });
 
   describe('#allSchemas()', function() {
@@ -336,4 +436,8 @@ describe('AsyncAPIDocument', function() {
       }
     });
   });
+
+  assertMixinTagsInheritance(AsyncAPIDocument);
+  assertMixinExternalDocsInheritance(AsyncAPIDocument);
+  assertMixinSpecificationExtensionsInheritance(AsyncAPIDocument);
 });
