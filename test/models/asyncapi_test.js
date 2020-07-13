@@ -43,10 +43,13 @@ describe('AsyncAPIDocument', function() {
     it('should return a boolean indicating if the AsyncAPI document has servers', function() {
       const doc = { servers: { test1: { url: 'test1' }, test2: { url: 'test2' } } };
       const docNoServers = { test: 'testing' };
+      const docServersWithoutKeys = { servers: {} };
       const d = new AsyncAPIDocument(doc);
       const d2 = new AsyncAPIDocument(docNoServers);
+      const d3 = new AsyncAPIDocument(docServersWithoutKeys);
       expect(d.hasServers()).to.equal(true);
       expect(d2.hasServers()).to.equal(false);
+      expect(d3.hasServers()).to.equal(false);
     });
   });
 
@@ -140,10 +143,13 @@ describe('AsyncAPIDocument', function() {
     it('should return a boolean indicating if the AsyncAPI document has components', function() {
       const doc = { components: { test1: { description: 'test1' }, test2: { description: 'test2' } } };
       const docNoComponents = { test: 'testing' };
+      const docComponentsWithoutKeys = { components: {} };
       const d = new AsyncAPIDocument(doc);
       const d2 = new AsyncAPIDocument(docNoComponents);
+      const d3 = new AsyncAPIDocument(docComponentsWithoutKeys);
       expect(d.hasComponents()).to.equal(true);
       expect(d2.hasComponents()).to.equal(false);
+      expect(d3.hasComponents()).to.equal(false);
     });
   });
 
