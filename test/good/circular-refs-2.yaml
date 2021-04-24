@@ -8,114 +8,135 @@ channels:
     subscribe:
       message:
         payload:
-          $ref: '#/components/schemas/NonRecursive'
-  nonRecursiveExternalFile:
-    publish:
-      message:
-        payload:
-          $ref: './good/circular-refs-file-ref-2.yaml#/NonRecursive'
-  recursive:
-    subscribe:
-      message:
-        payload:
-          $ref: '#/components/schemas/RecursiveSelf'
-    # Dummy check circular references in custom extensions in non-schema object
-    x-recursive:
-      $ref: '#/components/schemas/RecursiveSelf'
-
-  recursiveExternalFile:
-    publish:
-      message:
-        payload:
-          $ref: './good/circular-refs-file-ref-2.yaml#/Recursive'
-        # Dummy check circular references in bindings (also custom)
-        bindings:
-          resursiveBinding:
-            someValue: foobar
-            recursive:
-              $ref: '#/channels/recursiveExternalFile/publish/message/bindings/resursiveBinding'
+          type: object
 
 components:
   schemas:
-    NonRecursive:
-      type: object
-      properties:
-        child:
-          $ref: '#/components/schemas/NonRecursiveChild'
-    NonRecursiveChild:
-      type: object
-      properties:
-        value:
-          type: string
     RecursiveSelf:
       type: object
       properties:
-        selfObject:
-          type: object
-          properties:
-            recursive:
-              $ref: '#/components/schemas/RecursiveSelf'
-            nonRecursive:
-              type: string
-        selfItems:
+        circular:
           type: array
           items:
             $ref: '#/components/schemas/RecursiveSelf'
-        selfAncestor:
-          type: object
-          properties:
-            recursive: 
-              $ref: '#/components/schemas/RecursiveAncestor'
-        selfInline:
-          $ref: '#/components/schemas/RecursiveSelf'
-      # Dummy check circular references in custom extensions
-      x-recursive:
-        $ref: '#/components/schemas/RecursiveSelf'
-    RecursiveAncestor:
-      type: object
-      properties:
-        ancestorChildren:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecursiveSelf'
-        ancestorSomething:
-          type: string
-    RecursiveComplex:
-      type: [object, array]
-      patternProperties:
-        ^foo: 
-          $ref: '#/components/schemas/RecursiveComplex'
-      contains:
-        $ref: '#/components/schemas/RecursiveComplex'
-      items:
-        - type: string
-        - $ref: '#/components/schemas/RecursiveComplex'
-      if:
-        $ref: '#/components/schemas/RecursiveAncestor'
-      then:
-        $ref: '#/components/schemas/RecursiveComplex'
-    NormalSchemaA:
-      type: object
-      properties:
-        schemaBReference:
-          $ref: '#/components/schemas/NormalSchemaB'
-        schemaCReference:
-          $ref: '#/components/schemas/NormalSchemaC'
-        commonEnumName:
-          type: string
-          enum:
-            - ENUM_1
-            - ENUM_2
-    NormalSchemaB:
-      type: string
-      enum:
-        - ENUM_A
-        - ENUM_B
-        - ENUM_C
-        - ENUM_D
-    NormalSchemaC:
-      allOf:
-        - $ref: '#/components/schemas/NormalSchemaB'
-        - type: string
-          enum:
-            - ENUM_E
+# asyncapi: 2.0.0
+# info:
+#   title: My Circular API
+#   version: '1.0.0'
+
+# channels:
+#   nonRecursive:
+#     subscribe:
+#       message:
+#         payload:
+#           $ref: '#/components/schemas/NonRecursive'
+#   nonRecursiveExternalFile:
+#     publish:
+#       message:
+#         payload:
+#           $ref: './good/circular-refs-file-ref-2.yaml#/NonRecursive'
+#   recursive:
+#     subscribe:
+#       message:
+#         payload:
+#           $ref: '#/components/schemas/RecursiveSelf'
+#     # Dummy check circular references in custom extensions in non-schema object
+#     x-recursive:
+#       $ref: '#/components/schemas/RecursiveSelf'
+
+#   recursiveExternalFile:
+#     publish:
+#       message:
+#         payload:
+#           $ref: './good/circular-refs-file-ref-2.yaml#/Recursive'
+#         # Dummy check circular references in bindings (also custom)
+#         bindings:
+#           resursiveBinding:
+#             someValue: foobar
+#             recursive:
+#               $ref: '#/channels/recursiveExternalFile/publish/message/bindings/resursiveBinding'
+
+# components:
+#   schemas:
+#     NonRecursive:
+#       type: object
+#       properties:
+#         child:
+#           $ref: '#/components/schemas/NonRecursiveChild'
+#     NonRecursiveChild:
+#       type: object
+#       properties:
+#         value:
+#           type: string
+#     RecursiveSelf:
+#       type: object
+#       properties:
+#         selfObject:
+#           type: object
+#           properties:
+#             recursive:
+#               $ref: '#/components/schemas/RecursiveSelf'
+#             nonRecursive:
+#               type: string
+#         selfItems:
+#           type: array
+#           items:
+#             $ref: '#/components/schemas/RecursiveSelf'
+#         selfAncestor:
+#           type: object
+#           properties:
+#             recursive: 
+#               $ref: '#/components/schemas/RecursiveAncestor'
+#         selfInline:
+#           $ref: '#/components/schemas/RecursiveSelf'
+#       # Dummy check circular references in custom extensions
+#       x-recursive:
+#         $ref: '#/components/schemas/RecursiveSelf'
+#     RecursiveAncestor:
+#       type: object
+#       properties:
+#         ancestorChildren:
+#           type: array
+#           items:
+#             $ref: '#/components/schemas/RecursiveSelf'
+#         ancestorSomething:
+#           type: string
+#     RecursiveComplex:
+#       type: [object, array]
+#       patternProperties:
+#         ^foo: 
+#           $ref: '#/components/schemas/RecursiveComplex'
+#       contains:
+#         $ref: '#/components/schemas/RecursiveComplex'
+#       items:
+#         - type: string
+#         - $ref: '#/components/schemas/RecursiveComplex'
+#       if:
+#         $ref: '#/components/schemas/RecursiveAncestor'
+#       then:
+#         $ref: '#/components/schemas/RecursiveComplex'
+#     NormalSchemaA:
+#       type: object
+#       properties:
+#         schemaBReference:
+#           $ref: '#/components/schemas/NormalSchemaB'
+#         schemaCReference:
+#           $ref: '#/components/schemas/NormalSchemaC'
+#         commonEnumName:
+#           type: string
+#           enum:
+#             - ENUM_1
+#             - ENUM_2
+#     NormalSchemaB:
+#       type: string
+#       enum:
+#         - ENUM_A
+#         - ENUM_B
+#         - ENUM_C
+#         - ENUM_D
+#     NormalSchemaC:
+#       allOf:
+#         - $ref: '#/components/schemas/NormalSchemaB'
+#         - type: string
+#           enum:
+#             - ENUM_E
