@@ -15,6 +15,7 @@ const inputYAMLNoComponents = fs.readFileSync(path.resolve(__dirname, './good/as
 const inputYAMLNoChannels = fs.readFileSync(path.resolve(__dirname, './good/asyncapi-no-channels.yml'), 'utf8');
 const inputYAMLMessagesChannels = fs.readFileSync(path.resolve(__dirname, './good/asyncapi-messages-channels.yml'), 'utf8');
 const inputYAMLCircular = fs.readFileSync(path.resolve(__dirname, './good/circular-refs.yaml'), 'utf8');
+const inputYAMLCircular2 = fs.readFileSync(path.resolve(__dirname, './good/circular-refs-2.yaml'), 'utf8');
 const inputJSON = fs.readFileSync(path.resolve(__dirname, './good/asyncapi.json'), 'utf8');
 const invalidAsyncapiYAML = fs.readFileSync(path.resolve(__dirname, './wrong/invalid-asyncapi.yaml'), 'utf8');
 const invalidAsyncpiJSON = fs.readFileSync(path.resolve(__dirname, './wrong/invalid-asyncapi.json'), 'utf8');
@@ -582,6 +583,50 @@ describe('parse()', function() {
     //NormalSchemaB is referred twice, from NormalSchemaA and NormalSchemaC. 
     //If seenObjects array is not handled properly, once NormalSchemaB is seen for a second time while traversing NormalSchemaC, then NormalSchemaC is marked as object holding circular refs
     //This is why it is important to check that NormalSchemaC is or sure not marked as circular
+    expect(result.components().schema('NormalSchemaC').isCircular()).to.equal(false);
+  });
+
+  it.only('should properly mark circular references', async function() {
+    const result = await parser.parse(inputYAMLCircular2, { path: __filename });
+
+    // NonRecursive
+    expect(result.components().schema('NonRecursive').isCircular()).to.equal(false);
+    expect(result.components().schema('NonRecursive').properties()['child'].isCircular()).to.equal(false);
+
+    // RecursiveSelf
+    const RecursiveSelf = result.components().schema('RecursiveSelf').json()
+    expect(result.components().schema('RecursiveSelf').isCircular()).to.equal(false);
+
+    // RecursiveSelf -> selfObject
+    expect(result.components().schema('RecursiveSelf').properties()['selfObject'].properties()['recursive'].isCircular()).to.equal(true);
+    expect(result.components().schema('RecursiveSelf').properties()['selfObject'].properties()['recursive'].ext('x-parser-original-ref')).to.be.equal(RecursiveSelf);
+    expect(result.components().schema('RecursiveSelf').properties()['selfObject'].properties()['nonRecursive'].isCircular()).to.equal(false);
+
+    // RecursiveSelf -> selfItems
+    expect(result.components().schema('RecursiveSelf').properties()['selfItems'].items().isCircular()).to.equal(true);
+    expect(result.components().schema('RecursiveSelf').properties()['selfItems'].items().ext('x-parser-original-ref')).to.be.equal(RecursiveSelf);
+
+    // RecursiveSelf -> selfAncestor
+    expect(result.components().schema('RecursiveSelf').properties()['selfAncestor'].properties()['recursive'].isCircular()).to.equal(false);
+    expect(result.components().schema('RecursiveSelf').properties()['selfAncestor'].properties()['recursive'].properties()['ancestorChildren'].items().isCircular()).to.equal(true);
+    expect(result.components().schema('RecursiveSelf').properties()['selfAncestor'].properties()['recursive'].properties()['ancestorChildren'].items().ext('x-parser-original-ref')).to.be.equal(RecursiveSelf);
+    expect(result.components().schema('RecursiveSelf').properties()['selfAncestor'].properties()['recursive'].properties()['ancestorSomething'].isCircular()).to.equal(false);
+
+    // RecursiveSelf -> selfInline
+    expect(result.components().schema('RecursiveSelf').properties()['selfInline'].isCircular()).to.equal(true);
+    expect(result.components().schema('RecursiveSelf').properties()['selfInline'].ext('x-parser-original-ref')).to.be.equal(RecursiveSelf);
+
+    // RecursiveSelf -> x-recursive
+    expect(result.components().schema('RecursiveSelf').ext('x-recursive')['x-parser-circular']).to.equal(true);
+    expect(result.components().schema('RecursiveSelf').ext('x-recursive')['x-parser-original-ref']).to.be.equal(RecursiveSelf);
+
+    // RecursiveAncestor -> x-recursive
+    expect(result.components().schema('RecursiveAncestor').isCircular()).to.equal(false);
+    expect(result.components().schema('RecursiveAncestor').properties()['ancestorChildren'].items().isCircular()).to.equal(true);
+
+    // NormalSchemaB is referred twice, from NormalSchemaA and NormalSchemaC. 
+    // If refs `cache` Set is not handled properly, once NormalSchemaB is seen for a second time while traversing NormalSchemaC, then NormalSchemaC is marked as object holding circular refs
+    // This is why it is important to check that NormalSchemaC is or sure not marked as circular
     expect(result.components().schema('NormalSchemaC').isCircular()).to.equal(false);
   });
 });

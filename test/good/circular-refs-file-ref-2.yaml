@@ -1,0 +1,17 @@
+Recursive:
+  type: object
+  properties:
+    testExt:
+      $ref: '#/HaveRecursive'
+HaveRecursive:
+  type: object
+  properties:
+    children:
+      type: array
+      items:
+        $ref: '#/Recursive'
+NonRecursive:
+  type: object
+  properties:
+    children:
+      type: array
