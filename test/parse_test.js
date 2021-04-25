@@ -593,12 +593,14 @@ describe('parse()', function() {
     const b = result._json.components.schemas.RecursiveSelf.properties.selfObject.properties.recursive;
     const c = result._json.components.schemas.RecursiveSelf.properties.selfItems.items;
     const d = result._json.components.schemas.RecursiveSelf.properties.selfInline;
+    const e = result._json.components.schemas.RecursiveSelf.properties.selfAncestor.properties.recursive;
     const x = result._json.components.schemas.RecursiveSelf['x-recursive'];
 
     // console.log(a);
     // console.log(b);
     // console.log(c);
     // console.log(d);
+    console.log(e);
     // console.log(x);
     console.log(b['x-parser-original-ref'] === a);
     console.log(c['x-parser-original-ref'] === a);
@@ -633,7 +635,7 @@ describe('parse()', function() {
     // expect(result.components().schema('RecursiveSelf').properties()['selfItems'].items().isCircular()).to.equal(true);
     // expect(result.components().schema('RecursiveSelf').properties()['selfItems'].items().ext('x-parser-original-ref')).to.be.equal(RecursiveSelf);
 
-    // // RecursiveSelf -> selfAncestor
+    // RecursiveSelf -> selfAncestor
     // expect(result.components().schema('RecursiveSelf').properties()['selfAncestor'].properties()['recursive'].isCircular()).to.equal(false);
     // expect(result.components().schema('RecursiveSelf').properties()['selfAncestor'].properties()['recursive'].properties()['ancestorChildren'].items().isCircular()).to.equal(true);
     // expect(result.components().schema('RecursiveSelf').properties()['selfAncestor'].properties()['recursive'].properties()['ancestorChildren'].items().ext('x-parser-original-ref')).to.be.equal(RecursiveSelf);

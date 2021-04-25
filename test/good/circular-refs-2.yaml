@@ -68,6 +68,8 @@
 #               $ref: '#/components/schemas/RecursiveAncestor'
 #         selfInline:
 #           $ref: '#/components/schemas/RecursiveSelf'
+#         selfSomething:
+#           type: string
 #       # Dummy check circular references in custom extensions
 #       x-recursive:
 #         $ref: '#/components/schemas/RecursiveSelf'
@@ -90,8 +92,8 @@
 #       items:
 #         - type: string
 #         - $ref: '#/components/schemas/RecursiveComplex'
-#       # if:
-#       #   $ref: '#/components/schemas/RecursiveAncestor'
+#       if:
+#         $ref: '#/components/schemas/RecursiveAncestor'
 #       then:
 #         $ref: '#/components/schemas/RecursiveComplex'
 #     NormalSchemaA:
