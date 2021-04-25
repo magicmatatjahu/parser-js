@@ -589,36 +589,32 @@ describe('parse()', function() {
   it.only('should properly mark circular references', async function() {
     const result = await parser.parse(inputYAMLCircular2, { path: __filename });
 
-    // const a = result._json.components.schemas.RecursiveSelf;
-    // const b = result._json.components.schemas.RecursiveSelf.properties.circular.items.properties.ancestorChildren.items;
-
-    // const a = result._json.components.schemas.RecursiveAncestor;
-    // const b = result._json.components.schemas.RecursiveAncestor.properties.ancestorChildren.items.properties.circular.items;
-
     const a = result._json.components.schemas.RecursiveSelf;
-    // const b = result._json.components.schemas.RecursiveSelf.properties.selfObject.properties.recursive;
-    // const c = result._json.components.schemas.RecursiveSelf.properties.selfItems.items;
-    // const d = result._json.components.schemas.RecursiveSelf.properties.selfInline;
-    // const x = result._json.components.schemas.RecursiveSelf['x-recursive'];
+    const b = result._json.components.schemas.RecursiveSelf.properties.selfObject.properties.recursive;
+    const c = result._json.components.schemas.RecursiveSelf.properties.selfItems.items;
+    const d = result._json.components.schemas.RecursiveSelf.properties.selfInline;
+    const x = result._json.components.schemas.RecursiveSelf['x-recursive'];
 
     // console.log(a);
     // console.log(b);
     // console.log(c);
     // console.log(d);
     // console.log(x);
-    // console.log(b['x-parser-original-ref'] === a);
-    // console.log(c['x-parser-original-ref'] === a);
-    // console.log(d['x-parser-original-ref'] === a);
-    // console.log(x['x-parser-original-ref'] === a);
+    console.log(b['x-parser-original-ref'] === a);
+    console.log(c['x-parser-original-ref'] === a);
+    console.log(d['x-parser-original-ref'] === a);
+    console.log(x['x-parser-original-ref'] === a);
 
-    // const a = result._json.components.schemas.RecursiveAncestor;
-    // const b = result._json.components.schemas.RecursiveAncestor.properties.ancestorChildren.items;
-    // const c = result._json.components.schemas.RecursiveAncestor.properties.ancestorChildren.items.properties.selfObject.properties.recursive;
+    const g = result._json.components.schemas.RecursiveAncestor;
+    const h = result._json.components.schemas.RecursiveAncestor.properties.ancestorChildren.items;
+    const i = result._json.components.schemas.RecursiveAncestor.properties.ancestorChildren.items.properties.selfAncestor.properties.recursive;
 
-    // console.log(a);
-    // console.log(b);
-    // console.log(c);
-    // console.log(c['x-parser-original-ref'] === b);
+    // console.log(g);
+    // console.log(h);
+    // console.log(i);
+
+    console.log(i['x-parser-original-ref'] === g);
+    console.log(h['x-parser-original-ref'] === a);
 
     // // NonRecursive
     // expect(result.components().schema('NonRecursive').isCircular()).to.equal(false);

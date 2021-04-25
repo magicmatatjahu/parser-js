@@ -137,33 +137,35 @@ components:
     RecursiveSelf:
       type: object
       properties:
-        # selfObject:
-        #   type: object
-        #   properties:
-        #     recursive:
-        #       $ref: '#/components/schemas/RecursiveSelf'
-        #     nonRecursive:
-        #       type: string
+        selfObject:
+          type: object
+          properties:
+            recursive:
+              $ref: '#/components/schemas/RecursiveSelf'
+            nonRecursive:
+              type: string
         selfItems:
           type: array
           items:
             $ref: '#/components/schemas/RecursiveSelf'
         selfInline:
           $ref: '#/components/schemas/RecursiveSelf'
-      #   selfAncestor:
-      #     type: object
-      #     properties:
-      #       recursive: 
-      #         $ref: '#/components/schemas/RecursiveAncestor'
-      # # Dummy check circular references in custom extensions
-      # x-recursive:
-      #   $ref: '#/components/schemas/RecursiveSelf'
-    # RecursiveAncestor:
-    #   type: object
-    #   properties:
-    #     ancestorChildren:
-    #       type: array
-    #       items:
-    #         $ref: '#/components/schemas/RecursiveSelf'
-    #     ancestorSomething:
-    #       type: string
+        selfAncestor:
+          type: object
+          properties:
+            recursive: 
+              $ref: '#/components/schemas/RecursiveAncestor'
+        something:
+          type: string
+      # Dummy check circular references in custom extensions
+      x-recursive:
+        $ref: '#/components/schemas/RecursiveSelf'
+    RecursiveAncestor:
+      type: object
+      properties:
+        ancestorChildren:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecursiveSelf'
+        ancestorSomething:
+          type: string
