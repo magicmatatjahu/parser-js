@@ -589,74 +589,131 @@ describe('parse()', function() {
   it.only('should properly mark circular references', async function() {
     const result = await parser.parse(inputYAMLCircular2, { path: __filename });
 
-    const a = result._json.components.schemas.RecursiveSelf;
-    const b = result._json.components.schemas.RecursiveSelf.properties.selfObject.properties.recursive;
-    const c = result._json.components.schemas.RecursiveSelf.properties.selfItems.items;
-    const d = result._json.components.schemas.RecursiveSelf.properties.selfInline;
-    const e = result._json.components.schemas.RecursiveSelf.properties.selfAncestor.properties.recursive;
-    const x = result._json.components.schemas.RecursiveSelf['x-recursive'];
+    // const a = result._json.components.schemas.RecursiveSelf;
+    // const b = result._json.components.schemas.RecursiveSelf.properties.selfObject.properties.recursive;
+    // const c = result._json.components.schemas.RecursiveSelf.properties.selfItems.items;
+    // const d = result._json.components.schemas.RecursiveSelf.properties.selfInline;
+    // const e = result._json.components.schemas.RecursiveSelf.properties.selfAncestor.properties.recursive;
+    // const x = result._json.components.schemas.RecursiveSelf['x-recursive'];
 
-    // console.log(a);
-    // console.log(b);
-    // console.log(c);
-    // console.log(d);
-    console.log(e);
-    // console.log(x);
-    console.log(b['x-parser-original-ref'] === a);
-    console.log(c['x-parser-original-ref'] === a);
-    console.log(d['x-parser-original-ref'] === a);
-    console.log(x['x-parser-original-ref'] === a);
+    // // console.log(a);
+    // // console.log(b);
+    // // console.log(c);
+    // // console.log(d);
+    // // console.log(e);
+    // // console.log(x);
+    // console.log(b['x-parser-original-ref'] === a);
+    // console.log(c['x-parser-original-ref'] === a);
+    // console.log(d['x-parser-original-ref'] === a);
+    // console.log(x['x-parser-original-ref'] === a);
 
-    const g = result._json.components.schemas.RecursiveAncestor;
-    const h = result._json.components.schemas.RecursiveAncestor.properties.ancestorChildren.items;
-    const i = result._json.components.schemas.RecursiveAncestor.properties.ancestorChildren.items.properties.selfAncestor.properties.recursive;
+    // const g = result._json.components.schemas.RecursiveAncestor;
+    // const h = result._json.components.schemas.RecursiveAncestor.properties.ancestorChildren.items;
+    // const i = result._json.components.schemas.RecursiveAncestor.properties.ancestorChildren.items.properties.selfAncestor.properties.recursive;
 
-    // console.log(g);
-    // console.log(h);
-    // console.log(i);
+    // // console.log(g);
+    // // console.log(h);
+    // // console.log(i);
 
-    console.log(i['x-parser-original-ref'] === g);
-    console.log(h['x-parser-original-ref'] === a);
+    // console.log(i['x-parser-original-ref'] === g);
+    // console.log(h['x-parser-original-ref'] === a);
 
-    // // NonRecursive
-    // expect(result.components().schema('NonRecursive').isCircular()).to.equal(false);
-    // expect(result.components().schema('NonRecursive').properties()['child'].isCircular()).to.equal(false);
+    const aa = result._json.components.schemas.RecursiveComplex;
+    const bb = result._json.components.schemas.RecursiveComplex.if;
+    const cc = result._json.components.schemas.RecursiveComplex.if.properties.ancestorChildren.items.properties.selfAncestor.properties.recursive;
+    const dd = result._json.components.schemas.RecursiveComplex.if.properties.ancestorChildren.items.properties.preAncestor.properties.recursive.properties.ancestorChildren.items.properties.preAncestor.properties.recursive;
+    const ee = result._json.components.schemas.RecursiveComplex.if.properties.ancestorChildren.items.properties.selfObject.properties.recursive;
 
-    // // RecursiveSelf
-    // const RecursiveSelf = result.components().schema('RecursiveSelf').json()
-    // expect(result.components().schema('RecursiveSelf').isCircular()).to.equal(false);
+    // console.log(bb)
+    // console.log(cc)
+    // console.log(dd)
+    // console.log(ee);
 
-    // // RecursiveSelf -> selfObject
-    // expect(result.components().schema('RecursiveSelf').properties()['selfObject'].properties()['recursive'].isCircular()).to.equal(true);
-    // expect(result.components().schema('RecursiveSelf').properties()['selfObject'].properties()['recursive'].ext('x-parser-original-ref')).to.be.equal(RecursiveSelf);
-    // expect(result.components().schema('RecursiveSelf').properties()['selfObject'].properties()['nonRecursive'].isCircular()).to.equal(false);
+    // NonRecursive
+    expect(result.components().schema('NonRecursive').isCircular()).to.equal(false);
+    expect(result.components().schema('NonRecursive').properties()['child'].isCircular()).to.equal(false);
 
-    // // RecursiveSelf -> selfItems
-    // expect(result.components().schema('RecursiveSelf').properties()['selfItems'].items().isCircular()).to.equal(true);
-    // expect(result.components().schema('RecursiveSelf').properties()['selfItems'].items().ext('x-parser-original-ref')).to.be.equal(RecursiveSelf);
+    // RecursiveSelf
+    const RecursiveSelf = result.components().schema('RecursiveSelf').json()
+    expect(result.components().schema('RecursiveSelf').isCircular()).to.equal(false);
+
+    // RecursiveSelf -> selfObject
+    expect(result.components().schema('RecursiveSelf').properties()['selfObject'].properties()['recursive'].isCircular()).to.equal(true);
+    expect(result.components().schema('RecursiveSelf').properties()['selfObject'].properties()['recursive'].ext('x-parser-original-ref')).to.be.equal(RecursiveSelf);
+    expect(result.components().schema('RecursiveSelf').properties()['selfObject'].properties()['nonRecursive'].isCircular()).to.equal(false);
+
+    // RecursiveSelf -> selfItems
+    expect(result.components().schema('RecursiveSelf').properties()['selfItems'].items().isCircular()).to.equal(true);
+    expect(result.components().schema('RecursiveSelf').properties()['selfItems'].items().ext('x-parser-original-ref')).to.be.equal(RecursiveSelf);
 
     // RecursiveSelf -> selfAncestor
-    // expect(result.components().schema('RecursiveSelf').properties()['selfAncestor'].properties()['recursive'].isCircular()).to.equal(false);
-    // expect(result.components().schema('RecursiveSelf').properties()['selfAncestor'].properties()['recursive'].properties()['ancestorChildren'].items().isCircular()).to.equal(true);
-    // expect(result.components().schema('RecursiveSelf').properties()['selfAncestor'].properties()['recursive'].properties()['ancestorChildren'].items().ext('x-parser-original-ref')).to.be.equal(RecursiveSelf);
-    // expect(result.components().schema('RecursiveSelf').properties()['selfAncestor'].properties()['recursive'].properties()['ancestorSomething'].isCircular()).to.equal(false);
+    expect(result.components().schema('RecursiveSelf').properties()['selfAncestor'].properties()['recursive'].isCircular()).to.equal(false);
+    expect(result.components().schema('RecursiveSelf').properties()['selfAncestor'].properties()['recursive'].properties()['ancestorChildren'].items().isCircular()).to.equal(true);
+    expect(result.components().schema('RecursiveSelf').properties()['selfAncestor'].properties()['recursive'].properties()['ancestorChildren'].items().ext('x-parser-original-ref')).to.be.equal(RecursiveSelf);
+    expect(result.components().schema('RecursiveSelf').properties()['selfAncestor'].properties()['recursive'].properties()['ancestorSomething'].isCircular()).to.equal(false);
 
-    // // RecursiveSelf -> selfInline
-    // expect(result.components().schema('RecursiveSelf').properties()['selfInline'].isCircular()).to.equal(true);
-    // expect(result.components().schema('RecursiveSelf').properties()['selfInline'].ext('x-parser-original-ref')).to.be.equal(RecursiveSelf);
+    // RecursiveSelf -> selfInline
+    expect(result.components().schema('RecursiveSelf').properties()['selfInline'].isCircular()).to.equal(true);
+    expect(result.components().schema('RecursiveSelf').properties()['selfInline'].ext('x-parser-original-ref')).to.be.equal(RecursiveSelf);
 
-    // // RecursiveSelf -> x-recursive
-    // expect(result.components().schema('RecursiveSelf').ext('x-recursive')['x-parser-circular']).to.equal(true);
-    // expect(result.components().schema('RecursiveSelf').ext('x-recursive')['x-parser-original-ref']).to.be.equal(RecursiveSelf);
+    // RecursiveSelf -> preAncestor
+    expect(result.components().schema('RecursiveSelf').properties()['preAncestor'].properties()['recursive'].isCircular()).to.equal(false);
+    expect(result.components().schema('RecursiveSelf').properties()['preAncestor'].properties()['recursive'].properties()['ancestorChildren'].items().isCircular()).to.equal(true);
+    expect(result.components().schema('RecursiveSelf').properties()['preAncestor'].properties()['recursive'].properties()['ancestorChildren'].items().ext('x-parser-original-ref')).to.be.equal(RecursiveSelf);
+    expect(result.components().schema('RecursiveSelf').properties()['preAncestor'].properties()['recursive'].properties()['ancestorSomething'].isCircular()).to.equal(false);
 
-    // // RecursiveAncestor -> x-recursive
-    // expect(result.components().schema('RecursiveAncestor').isCircular()).to.equal(false);
-    // expect(result.components().schema('RecursiveAncestor').properties()['ancestorChildren'].items().isCircular()).to.equal(true);
+    // RecursiveSelf -> x-recursive
+    expect(result.components().schema('RecursiveSelf').ext('x-recursive')['x-parser-circular']).to.equal(true);
+    expect(result.components().schema('RecursiveSelf').ext('x-recursive')['x-parser-original-ref']).to.be.equal(RecursiveSelf);
+
+    // RecursiveAncestor
+    const RecursiveAncestor = result.components().schema('RecursiveAncestor').json()
+    expect(result.components().schema('RecursiveAncestor').isCircular()).to.equal(false);
+    expect(result.components().schema('RecursiveAncestor').properties()['ancestorChildren'].items().isCircular()).to.equal(false);
+    expect(result.components().schema('RecursiveAncestor').properties()['ancestorChildren'].items().properties()['selfAncestor'].properties()['recursive'].isCircular()).to.equal(true);
+    expect(result.components().schema('RecursiveAncestor').properties()['ancestorChildren'].items().properties()['selfAncestor'].properties()['recursive'].ext('x-parser-original-ref')).to.be.equal(RecursiveAncestor);
+
+    // PreRecursiveAncestor
+    const PreRecursiveAncestor = result.components().schema('PreRecursiveAncestor').json()
+    expect(result.components().schema('PreRecursiveAncestor').isCircular()).to.equal(false);
+    expect(result.components().schema('PreRecursiveAncestor').properties()['ancestorChildren'].items().isCircular()).to.equal(false);
+    expect(result.components().schema('PreRecursiveAncestor').properties()['ancestorChildren'].items().properties()['preAncestor'].properties()['recursive'].isCircular()).to.equal(true);
+    expect(result.components().schema('PreRecursiveAncestor').properties()['ancestorChildren'].items().properties()['preAncestor'].properties()['recursive'].ext('x-parser-original-ref')).to.be.equal(PreRecursiveAncestor);
+
+    // RecursiveComplex
+    const RecursiveComplex = result.components().schema('RecursiveComplex').json()
+    expect(result.components().schema('RecursiveComplex').isCircular()).to.equal(false);
+    expect(result.components().schema('RecursiveComplex').patternProperties()['^foo'].isCircular()).to.equal(true);
+    expect(result.components().schema('RecursiveComplex').patternProperties()['^foo'].ext('x-parser-original-ref')).to.equal(RecursiveComplex);
+    expect(result.components().schema('RecursiveComplex').patternProperties()['^bar'].isCircular()).to.equal(false);
+    expect(result.components().schema('RecursiveComplex').patternProperties()['^bar'].ext('x-parser-original-ref')).to.equal(undefined);
+    expect(result.components().schema('RecursiveComplex').contains().isCircular()).to.equal(true);
+    expect(result.components().schema('RecursiveComplex').contains().ext('x-parser-original-ref')).to.equal(RecursiveComplex);
+    expect(result.components().schema('RecursiveComplex').then().isCircular()).to.equal(true);
+    expect(result.components().schema('RecursiveComplex').then().ext('x-parser-original-ref')).to.equal(RecursiveComplex);
+
+    // RecursiveComplex -> if
+    expect(result.components().schema('RecursiveComplex').if().isCircular()).to.equal(false);
+    expect(result.components().schema('RecursiveComplex').if().properties()['ancestorChildren'].items().isCircular()).to.equal(false);
+    expect(result.components().schema('RecursiveComplex').if().properties()['ancestorChildren'].items().properties()['selfObject'].properties()['recursive'].isCircular()).to.equal(true);
+    expect(result.components().schema('RecursiveComplex').if().properties()['ancestorChildren'].items().properties()['selfObject'].properties()['recursive'].ext('x-parser-original-ref')).to.equal(RecursiveSelf);
+    expect(result.components().schema('RecursiveComplex').if().properties()['ancestorChildren'].items().properties()['selfItems'].items().isCircular()).to.equal(true);
+    expect(result.components().schema('RecursiveComplex').if().properties()['ancestorChildren'].items().properties()['selfItems'].items().ext('x-parser-original-ref')).to.equal(RecursiveSelf);
+    expect(result.components().schema('RecursiveComplex').if().properties()['ancestorChildren'].items().properties()['selfInline'].isCircular()).to.equal(true);
+    expect(result.components().schema('RecursiveComplex').if().properties()['ancestorChildren'].items().properties()['selfInline'].ext('x-parser-original-ref')).to.equal(RecursiveSelf);
+    expect(result.components().schema('RecursiveComplex').if().properties()['ancestorChildren'].items().properties()['selfAncestor'].properties()['recursive'].isCircular()).to.equal(true);
+    expect(result.components().schema('RecursiveComplex').if().properties()['ancestorChildren'].items().properties()['selfAncestor'].properties()['recursive'].ext('x-parser-original-ref')).to.equal(RecursiveAncestor);
+
+    // RecursiveCombinedSchema
+    const RecursiveCombinedSchema = result.components().schema('RecursiveCombinedSchema').json()
+    expect(result.components().schema('RecursiveCombinedSchema').isCircular()).to.equal(false);
+    // console.log(result.components().schema('RecursiveCombinedSchema').properties()['kind'].oneOf())
+    // expect(result.components().schema('RecursiveCombinedSchema').properties()['kind'].oneOf().isCircular()).to.equal(true);
 
     // // NormalSchemaB is referred twice, from NormalSchemaA and NormalSchemaC. 
     // // If refs `cache` Set is not handled properly, once NormalSchemaB is seen for a second time while traversing NormalSchemaC, then NormalSchemaC is marked as object holding circular refs
     // // This is why it is important to check that NormalSchemaC is or sure not marked as circular
-    // expect(result.components().schema('NormalSchemaC').isCircular()).to.equal(false);
+    expect(result.components().schema('NormalSchemaC').isCircular()).to.equal(false);
   });
 });
 
