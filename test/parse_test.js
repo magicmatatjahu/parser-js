@@ -309,8 +309,8 @@ describe('parse()', function() {
     const expectedErrorObject = {
       type: 'https://github.com/asyncapi/parser-js/invalid-yaml',
       title: 'The provided YAML is not valid.',
-      detail: 'duplicated mapping key at line 2, column -4:\n    bad:\n    ^',
-      location: { startOffset: 5, startLine: 2, startColumn: -4 }
+      detail: 'duplicated mapping key (2:1)\n\n 1 | bad:\n 2 | bad:\n-----^',
+      location: { startOffset: 5, startLine: 2, startColumn: 1 }
     };
 
     await checkErrorWrapper(async () => {
@@ -498,7 +498,7 @@ describe('parse()', function() {
     const expectedErrorObject = {
       type: 'https://github.com/asyncapi/parser-js/invalid-yaml',
       title: 'The provided YAML is not valid.',
-      detail: 'bad indentation of a mapping entry at line 19, column 11:\n              $ref: "#/components/schemas/sentAt"\n              ^',
+      detail: 'bad indentation of a mapping entry (19:11)\n\n 16 |               minimum: 0\n 17 |               description: Light intensit ...\n 18 |             sentAt:\n 19 |           $ref: "#/components/schemas/sentAt"\n----------------^\n 20 | components:\n 21 |   schemas:',
       location: { startOffset: offset(460, 19), startLine: 19, startColumn: 11 }
     };
 

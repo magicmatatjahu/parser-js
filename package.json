@@ -1,6 +1,6 @@
 {
   "name": "@asyncapi/parser",
-  "version": "1.13.2",
+  "version": "1.13.0",
   "description": "JavaScript AsyncAPI parser.",
   "main": "lib/index.js",
   "types": "types.d.ts",
@@ -66,11 +66,11 @@
     "uglify-es": "^3.3.9"
   },
   "dependencies": {
-    "@apidevtools/json-schema-ref-parser": "^9.0.6",
-    "@asyncapi/specs": "^2.11.0",
+    "@apidevtools/json-schema-ref-parser": "^9.0.9",
+    "@asyncapi/specs": "^2.12.0",
     "@fmvilas/pseudo-yaml-ast": "^0.3.1",
     "ajv": "^6.10.1",
-    "js-yaml": "^3.13.1",
+    "js-yaml": "^4.1.0",
     "json-to-ast": "^2.1.0",
     "lodash.clonedeep": "^4.5.0",
     "node-fetch": "^2.6.0",
