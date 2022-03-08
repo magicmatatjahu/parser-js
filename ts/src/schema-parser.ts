@@ -28,8 +28,8 @@ export interface SchemaParser {
 
 const PARSERS = new Map<string, SchemaParser>();
 
-export async function parseSchema(data: ParseSchemaData, mimeType: string) {
-  const parser = getSchemaParser(mimeType);
+export async function parseSchema(data: ParseSchemaData, schemaFormat: string) {
+  const parser = getSchemaParser(schemaFormat);
   if (parser === undefined) {
     // throw error
   }
