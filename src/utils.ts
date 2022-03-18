@@ -65,6 +65,10 @@ export function normalizeInput(asyncapi: string | MaybeAsyncAPI): string {
   return JSON.stringify(asyncapi, undefined, 2);
 };
 
+export function normalizeExtensionName(name: string): string {
+  return name = name.startsWith('x-') ? name : `x-${name}`;
+};
+
 export function hasErrorDiagnostic(diagnostics: ISpectralDiagnostic[]): boolean {
   return diagnostics.some(diagnostic => diagnostic.severity === DiagnosticSeverity.Error);
 }
