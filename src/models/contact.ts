@@ -1,4 +1,4 @@
-import { BaseModel } from "./base";
+import type { BaseModel } from "./base";
 
 export interface ContactInterface extends BaseModel {
     name(): string;

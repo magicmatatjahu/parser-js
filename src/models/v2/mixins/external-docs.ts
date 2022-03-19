@@ -13,5 +13,6 @@ export abstract class ExternalDocumentationMixin extends BaseModel implements Ex
     if (this.hasExternalDocs()) {
       return new ExternalDocumentation(this._json.externalDocs);
     }
+    return;
   };
 }

@@ -1,8 +1,9 @@
-import { BaseModel } from "../";
-import type { BindingInterface } from "../";
+import { BaseModel } from "../base";
 
-import { Mixin } from "../mixins";
+import { Mixin } from "../utils";
 import { ExtensionsMixin } from "./mixins";
+
+import type { BindingInterface } from "../binding";
 
 export class Binding extends Mixin(BaseModel, ExtensionsMixin) implements BindingInterface {
   constructor(

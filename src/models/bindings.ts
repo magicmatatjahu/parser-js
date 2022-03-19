@@ -1,4 +1,4 @@
-import { Collection } from './collection';
-import { BindingInterface } from './binding';
+import type { Collection } from './collection';
+import type { BindingInterface } from './binding';
 
 export interface BindingsInterface extends Collection<BindingInterface> {}

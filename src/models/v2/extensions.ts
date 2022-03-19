@@ -1,4 +1,5 @@
 import { Collection } from '../';
+
 import type { ExtensionsInterface, ExtensionInterface } from "../";
 
 export class Extensions extends Collection<ExtensionInterface> implements ExtensionsInterface {

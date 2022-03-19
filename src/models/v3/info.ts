@@ -1,7 +1,8 @@
-import { InfoInterface } from "../../models/info";
 import { BaseModel } from "../base";
 import { Contact } from "./contact";
 import { License } from "./license";
+
+import type { InfoInterface } from "../../models/info";
 
 export class Info extends BaseModel implements InfoInterface {
     title(): string {

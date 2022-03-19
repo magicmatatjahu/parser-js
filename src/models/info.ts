@@ -1,6 +1,6 @@
-import { ContactInterface } from "./contact";
-import { LicenseInterface } from "./license";
-import { BaseModel } from "./base";
+import type { BaseModel } from "./base";
+import type { ContactInterface } from "./contact";
+import type { LicenseInterface } from "./license";
 
 export interface InfoInterface extends BaseModel {
     title(): string;

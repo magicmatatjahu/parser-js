@@ -1,4 +1,5 @@
 import { BaseModel } from "../";
+
 import type { ExtensionInterface } from "../";
 
 export class Extension extends BaseModel implements ExtensionInterface {

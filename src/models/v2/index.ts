@@ -1,4 +1,11 @@
 export { AsyncAPIDocument as AsyncAPIDocumentV2 } from './asyncapi';
+export { Binding as BindingV2 } from './binding';
+export { Bindings as BindingsV2 } from './bindings';
 export { Contact as ContactV2 } from './contact';
+export { Extension as ExtensionV2 } from './extension';
+export { Extensions as ExtensionsV2 } from './extensions';
+export { ExternalDocumentation as ExternalDocumentationV2 } from './external-docs';
 export { Info as InfoV2 } from './info';
 export { License as LicenseV2 } from './license';
+export { Tag as TagV2 } from './tag';
+export { Tags as TagsV2 } from './tags';

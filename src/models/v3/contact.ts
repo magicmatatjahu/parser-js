@@ -1,5 +1,6 @@
-import { ContactInterface } from "../../models/contact";
 import { BaseModel } from "../base";
+
+import type { ContactInterface } from "../../models/contact";
 
 export class Contact extends BaseModel implements ContactInterface {
     name(): string {

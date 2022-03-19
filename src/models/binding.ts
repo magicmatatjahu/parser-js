@@ -1,6 +1,5 @@
-import { BaseModel } from "./base";
-
-import { ExtensionsMixinInterface } from './mixins';
+import type { BaseModel } from "./base";
+import type { ExtensionsMixinInterface } from './mixins';
 
 export interface BindingInterface extends BaseModel, ExtensionsMixinInterface {
   protocol(): string;

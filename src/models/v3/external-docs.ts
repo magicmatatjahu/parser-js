@@ -1,7 +1,7 @@
 import { BaseModel } from "../";
 import type { ExternalDocumentationInterface } from "../";
 
-import { Mixin } from "../mixins";
+import { Mixin } from '../utils';
 import { DescriptionMixin, ExtensionsMixin } from "./mixins";
 
 export class ExternalDocumentation 

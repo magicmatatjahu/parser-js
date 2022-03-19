@@ -1,10 +1,9 @@
-import { InfoInterface } from "./info";
-import { BaseModel } from "./base";
-
 import { AsyncAPIDocumentV2 } from "./v2";
 import { AsyncAPIDocumentV3 } from "./v3";
 
-import { ExtensionsMixinInterface, ExternalDocumentationMixinInterface, TagsMixinInterface } from "./mixins";
+import type { InfoInterface } from "./info";
+import type { BaseModel } from "./base";
+import type { ExtensionsMixinInterface, ExternalDocumentationMixinInterface, TagsMixinInterface } from "./mixins";
 
 export interface AsyncAPIDocumentInterface extends BaseModel, ExtensionsMixinInterface, ExternalDocumentationMixinInterface, TagsMixinInterface {
   version(): string;

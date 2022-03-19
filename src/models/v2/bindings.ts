@@ -1,4 +1,5 @@
 import { Collection } from '../';
+
 import type { BindingsInterface, BindingInterface } from "../";
 
 export class Bindings extends Collection<BindingInterface> implements BindingsInterface {

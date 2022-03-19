@@ -2,7 +2,7 @@ import { AsyncAPIDocumentInterface } from "../../models/asyncapi";
 import { BaseModel } from "../base";
 import { Info } from "./info";
 
-import { Mixin } from '../mixins';
+import { Mixin } from '../utils';
 import { ExtensionsMixin, ExternalDocumentationMixin, TagsMixin } from './mixins';
 
 export class AsyncAPIDocument 

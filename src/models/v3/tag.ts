@@ -1,7 +1,7 @@
 import { BaseModel } from "../";
 import type { TagInterface } from "../";
 
-import { Mixin } from "../mixins";
+import { Mixin } from '../utils';
 import { DescriptionMixin, ExtensionsMixin, ExternalDocumentationMixin } from "./mixins";
 
 export class Tag 
