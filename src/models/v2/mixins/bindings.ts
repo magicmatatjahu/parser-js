@@ -15,7 +15,7 @@ export class Binding extends Mixin(BaseModel, ExtensionsMixin) implements Bindin
     _json: Record<string, any>,
     _meta: ModelMetadata = {} as any,
   ) {
-    super(_json, _meta);
+    super(_json);
   }
 
   protocol(): string {
@@ -43,13 +43,11 @@ export class Bindings extends Collection<BindingInterface> implements BindingsIn
   };
 }
 
-export abstract class BindingsMixin extends BaseModel implements BindingsMixinInterface {
+export abstract class BindingsMixin extends BaseModel<{ bindings: { [protocol: string]: unknown; } }> implements BindingsMixinInterface {
   bindings(): BindingsInterface {
     const bindings: Record<string, any> = this._json.bindings || {};
     return new Bindings(
-      Object.entries(bindings).map(([protocol, binding]) => 
-        this.createModel(Binding, binding, { id: protocol, pointer: `${this._meta.pointer}/bindings/${protocol}` })
-      )
+      Object.entries(bindings).map(([protocol, binding]) => new Binding(protocol, binding))
     );
   }
 }

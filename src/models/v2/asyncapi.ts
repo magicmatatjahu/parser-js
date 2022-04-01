@@ -1,4 +1,3 @@
-import { BaseModel } from "../base";
 import { Info } from "./info";
 import { Servers } from "./servers";
 import { Server } from "./server";
@@ -6,11 +5,14 @@ import { Server } from "./server";
 import { Mixin } from '../utils';
 import { ExtensionsMixin } from './mixins/extensions';
 
-import type { AsyncAPIDocumentInterface, InfoInterface } from "../../models";
-import type { ServersInterface } from "models/servers";
+import type { AsyncAPIDocumentInterface } from "../../models/asyncapi";
+import type { InfoInterface } from "../../models/info";
+import type { ServersInterface } from "../../models/servers";
+
+import type { AsyncAPIObject } from "../../interfaces/v2";
 
 export class AsyncAPIDocument
-  extends Mixin(BaseModel, ExtensionsMixin)
+  extends Mixin<AsyncAPIObject, ExtensionsMixin>(ExtensionsMixin)
   implements AsyncAPIDocumentInterface {
 
   version(): string {
@@ -23,7 +25,7 @@ export class AsyncAPIDocument
 
   servers(): ServersInterface {
     return new Servers(
-      Object.entries(this._json.servers).map(([serverName, server]) => 
+      Object.entries(this._json.servers || {}).map(([serverName, server]) => 
         this.createModel(Server, server, { id: serverName, pointer: `/servers/${serverName}` })
       )
     );

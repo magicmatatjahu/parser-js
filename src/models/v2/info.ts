@@ -12,6 +12,8 @@ import type { InfoInterface } from "../../models/info";
 import type { ExternalDocumentationInterface } from "../../models/external-docs";
 import type { TagsInterface } from "../../models/tags";
 
+import type { InfoObject } from "../../interfaces/v2";
+
 export class Info 
   extends Mixin(BaseModel, DescriptionMixin, ExtensionsMixin) 
   implements InfoInterface {

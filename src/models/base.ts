@@ -7,9 +7,9 @@ export interface ModelMetadata<P = unknown> {
   parent: P | null;
 }
 
-export abstract class BaseModel {
+export abstract class BaseModel<T = unknown> {
   constructor(
-    protected readonly _json: Record<string, any>,
+    protected readonly _json: T,
     protected readonly _meta: ModelMetadata = {} as any,
   ) {}
 
@@ -18,7 +18,7 @@ export abstract class BaseModel {
   json(key?: string | number) {
     if (key === undefined) return this._json;
     if (!this._json) return;
-    return this._json[String(key)];
+    return (this._json as Record<string, unknown>)[String(key)];
   }
 
   meta(): ModelMetadata {

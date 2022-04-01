@@ -1,11 +1,14 @@
-import { BaseModel } from "../base";
-
 import { Mixin } from '../utils';
 import { ExtensionsMixin } from './mixins/extensions';
 
 import type { ContactInterface } from "../../models/contact";
 
-export class Contact extends Mixin(BaseModel, ExtensionsMixin) implements ContactInterface {
+import type { ContactObject } from "../../interfaces/v2";
+
+export class Contact 
+  extends Mixin<ContactObject, ExtensionsMixin>(ExtensionsMixin) 
+  implements ContactInterface {
+    
   hasName(): boolean {
     return !!this._json.name;
   }

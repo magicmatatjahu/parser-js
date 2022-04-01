@@ -11,7 +11,7 @@ import { EXTENSION_REGEX } from '../../../constants';
 export class Extension extends BaseModel implements ExtensionInterface {
   constructor(
     private readonly _id: string,
-    _json: Record<string, any>,
+    _json: Record<string, unknown>,
     _meta: ModelMetadata = {} as any,
   ) {
     super(_json, _meta);
@@ -40,7 +40,7 @@ export class Extensions extends Collection<ExtensionInterface> implements Extens
   };
 }
 
-export abstract class ExtensionsMixin extends BaseModel implements ExtensionsMixinInterface {
+export abstract class ExtensionsMixin extends BaseModel<{ [extension: `x-${string}`]: unknown; }> implements ExtensionsMixinInterface {
   extensions(): ExtensionsInterface {
     const extensions: Extension[] = [];
     Object.entries(this._json).forEach(([key, value]) => {
