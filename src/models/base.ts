@@ -5,6 +5,7 @@ export interface ModelMetadata<P = unknown> {
   asyncapi: DetailedAsyncAPI;
   pointer: string;
   parent: P | null;
+  [key: string]: any;
 }
 
 export abstract class BaseModel {
@@ -32,8 +33,8 @@ export abstract class BaseModel {
     return `${this._meta?.pointer}/${field}`;
   }
 
-  protected createModel<T extends BaseModel>(Model: Constructor<T>, value: any, { id, parent, pointer }: { id?: string, parent?: any, pointer: string | number }): T {
-    const meta = { asyncapi: this._meta.asyncapi, parent: parent || this, pointer } as ModelMetadata;
+  protected createModel<T extends BaseModel>(Model: Constructor<T>, value: any, { id, parent, pointer, ...rest }: { id?: string, parent?: any, pointer: string | number, [key: string]: any }): T {
+    const meta = { asyncapi: this._meta.asyncapi, parent: parent || this, pointer, ...rest } as ModelMetadata;
     if (id) {
       return new Model(id, value, meta);
     }

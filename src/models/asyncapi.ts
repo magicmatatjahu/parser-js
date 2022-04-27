@@ -4,12 +4,14 @@ import { AsyncAPIDocumentV3 } from "./v3";
 import type { InfoInterface } from "./info";
 import type { BaseModel } from "./base";
 import type { ExtensionsMixinInterface } from "./mixins";
+import type { ChannelsInterface } from "./channels";
 import type { ServersInterface } from "./servers";
 import type { DetailedAsyncAPI } from "../types";
 
 export interface AsyncAPIDocumentInterface extends BaseModel, ExtensionsMixinInterface {
   version(): string;
   info(): InfoInterface;
+  channels(): ChannelsInterface;
   servers(): ServersInterface;
 }
 

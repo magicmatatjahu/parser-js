@@ -1,6 +1,7 @@
 import { Collection } from '../collection';
-import { ServerInterface } from '../server';
-import { ServersInterface } from '../servers';
+
+import type { ServersInterface } from '../servers';
+import type { ServerInterface } from '../server';
 
 export class Servers extends Collection<ServerInterface> implements ServersInterface {
   override get(id: string): ServerInterface | undefined {
