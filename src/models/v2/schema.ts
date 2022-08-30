@@ -4,6 +4,8 @@ import { Mixin } from '../utils';
 import { ExtensionsMixin } from './mixins/extensions';
 import { ExternalDocumentationMixin } from './mixins/external-docs';
 
+import { generateNameFromPath } from "../../utils";
+
 import type { ModelMetadata } from "../base";
 import type { SchemaInterface } from "../schema";
 
@@ -16,7 +18,11 @@ export class Schema extends Mixin(BaseModel, ExtensionsMixin, ExternalDocumentat
   }
 
   uid(): string {
-    return this._meta.id;
+    const uid = this._meta.id || this.$id();
+    if (uid) return uid;
+    const $ref = this.$ref();
+    if ($ref) return generateNameFromPath($ref);
+    return generateNameFromPath(this._meta.pointer);
   }
 
   $comment(): string | undefined {

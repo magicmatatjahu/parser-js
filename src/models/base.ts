@@ -1,3 +1,5 @@
+import { getDeepValue } from "../utils";
+
 import type { Constructor } from "./utils";
 import type { DetailedAsyncAPI } from "../types";
 
@@ -30,6 +32,13 @@ export abstract class BaseModel {
       return this._meta?.pointer;
     }
     return `${this._meta?.pointer}/${field}`;
+  }
+
+  $ref(): string | undefined {
+    const possibleValue = getDeepValue(this._meta.asyncapi.unparsed, this._meta.pointer);
+    if (possibleValue && typeof possibleValue === 'object' && typeof possibleValue.$ref === 'string') {
+      return possibleValue.$ref;
+    }
   }
 
   protected createModel<T extends BaseModel>(Model: Constructor<T>, value: any, { pointer, ...rest }: { pointer: string | number, [key: string]: any }): T {

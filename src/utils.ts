@@ -42,10 +42,12 @@ export function isStringifiedDocument(maybeDoc: unknown): maybeDoc is Record<str
 }
 
 export function createDetailedAsyncAPI(source: string | Record<string, unknown>, parsed: Record<string, unknown>): DetailedAsyncAPI {
+  const unparsed: Record<string, unknown> = typeof source === 'object' ? source : JSON.parse(source);
   return {
     source,
+    unparsed,
     parsed,
-    semver: getSemver((parsed as MaybeAsyncAPI).asyncapi),
+    semver: getSemver((unparsed as MaybeAsyncAPI).asyncapi),
   }
 }
 
@@ -103,6 +105,22 @@ export function mergePatch(origin: unknown, patch: unknown) {
 
 export function isObject(value: unknown): value is Record<string, any> {
   return Boolean(value) && typeof value === 'object' && Array.isArray(value) === false;
+}
+
+export function getDeepValue<T = any>(value: Record<string, any>, path: string | Array<string>, delimeter: string = '/'): T | undefined {
+  const props = Array.isArray(path) ? path : path.split(delimeter).filter(Boolean);
+  const length = props.length;
+
+  let index = 0
+  while (value != null && index < length) {
+    value = value[path[index++]];
+  }
+  return index == length ? value as T : undefined;
+}
+
+export function generateNameFromPath(path: string): string {
+  // remove all non-alphanumeric characters from string
+  return path.replace(/[^a-z0-9]/gi, '');
 }
 
 export function tilde(str: string) {
