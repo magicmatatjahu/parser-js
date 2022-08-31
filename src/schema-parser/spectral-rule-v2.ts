@@ -51,12 +51,14 @@ function rulesetFunction(parser: Parser) {
         return [];
       }
 
+      console.log((ctx.documentInventory.graph as any))
+
       const path = [...ctx.path, 'payload'];
       const spec = ctx.document.data as { asyncapi: string };
       const schemaFormat = getSchemaFormat(targetVal.schemaFormat, spec.asyncapi);
       const defaultSchemaFormat = getDefaultSchemaFormat(spec.asyncapi);
       // we don't have a parsed specification yet because we are still executing code in the context of spectral
-      const asyncapi = createDetailedAsyncAPI(ctx.document.source as string, spec);
+      const asyncapi = createDetailedAsyncAPI((ctx.document as unknown as { input: string }).input as string, spec);
 
       const input: ValidateSchemaInput = {
         asyncapi,

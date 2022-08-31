@@ -1,0 +1,11 @@
+type: 'object'
+properties:
+  property:
+    type: 'object'
+    properties: 
+      circular:
+        $ref: '#/properties/property'
+  anotherProperty:
+    type: 'string'
+  another:
+    $ref: '#/properties/anotherProperty'

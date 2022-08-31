@@ -1,4 +1,5 @@
 import { BaseModel } from "../base";
+import { getDeepValue } from "../../utils";
 
 import { Mixin } from '../utils';
 import { ExtensionsMixin } from './mixins/extensions';
@@ -10,8 +11,16 @@ import type { SchemaInterface } from "../schema";
 export class Schema extends Mixin(BaseModel, ExtensionsMixin, ExternalDocumentationMixin) implements SchemaInterface {
   constructor(
     _json: Record<string,any>,
-    protected readonly _meta: ModelMetadata & { id: string, parent: Schema | null } = {} as any
+    protected readonly _meta: ModelMetadata & { id: string, parent: Schema | null, isCircular?: boolean } = {} as any
   ) {
+    // Spectral doesn't resolve circular references like other resolvers.
+    // It leaves only references to the object that is circular.
+    if (typeof _json.$ref === 'string') {
+      _json = getDeepValue(_meta.asyncapi.unparsed, _json.$ref.replace('#', '')) || _json;
+      _meta.isCircular = true;
+    } else {
+      _meta.isCircular = false;
+    }
     super(_json, _meta);
   }
 
