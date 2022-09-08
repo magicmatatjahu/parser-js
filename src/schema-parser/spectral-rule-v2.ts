@@ -7,7 +7,7 @@ import { createDetailedAsyncAPI } from '../utils';
 import type { RuleDefinition } from '@stoplight/spectral-core';
 import type { Parser } from '../parser';
 import type { ValidateSchemaInput } from './index';
-import type { SchemaValidateResult } from '../types';
+import type { AsyncAPIObject, MaybeAsyncAPI, SchemaValidateResult } from '../types';
 import type { v2 } from '../spec-types';
 
 export function asyncApi2SchemaParserRule(parser: Parser): RuleDefinition {
@@ -42,7 +42,7 @@ function rulesetFunction(parser: Parser) {
           schemaFormat: {
             type: 'string',
           },
-          payload: true, // any
+          payload: true, // any value
         }
       },
       options: null
@@ -53,11 +53,16 @@ function rulesetFunction(parser: Parser) {
       }
 
       const path = [...ctx.path, 'payload'];
-      const spec = ctx.document.data as v2.AsyncAPIObject;
-      const schemaFormat = getSchemaFormat(targetVal.schemaFormat, spec.asyncapi);
-      const defaultSchemaFormat = getDefaultSchemaFormat(spec.asyncapi);
-      // we don't have a parsed specification yet because we are still executing code in the context of spectral
-      const asyncapi = createDetailedAsyncAPI(ctx.document.source as string, spec);
+      const { document, documentInventory } = ctx;
+
+      const parsed = (documentInventory as any).resolved as AsyncAPIObject;
+      const unparsed = document.data as AsyncAPIObject;
+      const rawInput = (document as any).rawInput as string | MaybeAsyncAPI;
+      const source = document.source as string;
+
+      const asyncapi = createDetailedAsyncAPI(parsed, unparsed, rawInput, source || undefined);
+      const schemaFormat = getSchemaFormat(targetVal.schemaFormat, parsed.asyncapi);
+      const defaultSchemaFormat = getDefaultSchemaFormat(parsed.asyncapi);
 
       const input: ValidateSchemaInput = {
         asyncapi,
@@ -68,34 +73,16 @@ function rulesetFunction(parser: Parser) {
         defaultSchemaFormat,
       }; 
 
-      let result: SchemaValidateResult[] | void;
       try {
-        result = await validateSchema(parser, input);
+        return await validateSchema(parser, input);
       } catch (err: any) {
-        if (err instanceof Error) {
-          if (err.message === 'Unknown schema format') {
-            path.pop(); // remove 'payload' as last element of path
-            path.push('schemaFormat');
-            return [
-              {
-                message: `Unknown schema format: "${schemaFormat}"`,
-                path,
-              }
-            ] as SchemaValidateResult[];
-          } 
-          return [
-            {
-              message: `Error thrown during schema validation, name: ${err.name}, message: ${err.message}, stack: ${err.stack}`,
-              path,
-            }
-          ] as SchemaValidateResult[];
-        }
+        return [
+          {
+            message: `Error thrown during schema validation, name: ${err.name}, message: ${err.message}, stack: ${err.stack}`,
+            path,
+          }
+        ] as SchemaValidateResult[];
       }
-
-      return result && result.map(r => ({
-        ...r,
-        path: r.path ? [...path, ...r.path] : path,
-      }));
     }
   );
 }

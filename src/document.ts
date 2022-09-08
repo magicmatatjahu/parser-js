@@ -8,6 +8,7 @@ import {
 } from './constants';
 
 import type { AsyncAPIDocumentInterface } from './models';
+import type { AsyncAPIObject } from './types';
 
 export function toAsyncAPIDocument(maybeDoc: unknown): AsyncAPIDocumentInterface | undefined {
   if (isAsyncAPIDocument(maybeDoc)) {
@@ -16,21 +17,21 @@ export function toAsyncAPIDocument(maybeDoc: unknown): AsyncAPIDocumentInterface
   if (!isParsedDocument(maybeDoc)) {
     return;
   }
-  return unstringify(maybeDoc) || newAsyncAPIDocument(createDetailedAsyncAPI(maybeDoc, maybeDoc as any));
+  return unstringify(maybeDoc) || newAsyncAPIDocument(createDetailedAsyncAPI(maybeDoc, maybeDoc));
 }
 
 export function isAsyncAPIDocument(maybeDoc: unknown): maybeDoc is AsyncAPIDocumentInterface {
   return maybeDoc instanceof AsyncAPIDocumentV2 || maybeDoc instanceof AsyncAPIDocumentV3;
 }
 
-export function isParsedDocument(maybeDoc: unknown): maybeDoc is Record<string, unknown> {
+export function isParsedDocument(maybeDoc: unknown): maybeDoc is AsyncAPIObject {
   if (typeof maybeDoc !== 'object' || maybeDoc === null) {
     return false;
   }
   return Boolean((maybeDoc as Record<string, unknown>)[xParserSpecParsed]);
 }
 
-export function isStringifiedDocument(maybeDoc: unknown): maybeDoc is Record<string, unknown> {
+export function isStringifiedDocument(maybeDoc: unknown): maybeDoc is AsyncAPIObject {
   if (typeof maybeDoc !== 'object' || maybeDoc === null) {
     return false;
   }

@@ -3,9 +3,11 @@ import { DiagnosticSeverity } from '@stoplight/types';
 import type { ISpectralDiagnostic } from '@stoplight/spectral-core';
 import type { AsyncAPISemver, AsyncAPIObject, DetailedAsyncAPI, MaybeAsyncAPI } from './types';
 
-export function createDetailedAsyncAPI(source: string | Record<string, unknown>, parsed: AsyncAPIObject): DetailedAsyncAPI {
+export function createDetailedAsyncAPI(parsed: AsyncAPIObject, unparsed: AsyncAPIObject, raw?: string | MaybeAsyncAPI, source?: string): DetailedAsyncAPI {
   return {
     source,
+    raw,
+    unparsed,
     parsed,
     semver: getSemver(parsed.asyncapi),
   };
@@ -42,10 +44,10 @@ export function hasWarningDiagnostic(diagnostics: ISpectralDiagnostic[]): boolea
   return diagnostics.some(diagnostic => diagnostic.severity === DiagnosticSeverity.Warning);
 }
 
-export function mergePatch(origin: unknown, patch: unknown) {
+export function mergePatch<T = any>(origin: unknown, patch: unknown): T {
   // If the patch is not an object, it replaces the origin.
   if (!isObject(patch)) {
-    return patch;
+    return patch as T;
   }
 
   const result = !isObject(origin)
@@ -60,7 +62,7 @@ export function mergePatch(origin: unknown, patch: unknown) {
       result[key] = mergePatch(result[key], patchVal);
     }
   });
-  return result;
+  return result as T;
 }
 
 export function isObject(value: unknown): value is Record<string, any> {

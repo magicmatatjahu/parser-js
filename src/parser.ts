@@ -1,15 +1,16 @@
 import { Spectral } from '@stoplight/spectral-core';
 
 import { parse } from './parse';
-import { lint, validate } from './lint';
+import { validate } from './validate';
 import { registerSchemaParser } from './schema-parser';
 import { AsyncAPISchemaParser } from './schema-parser/asyncapi-schema-parser';
 import { configureSpectral } from './spectral';
 
 import type { IConstructorOpts } from '@stoplight/spectral-core';
-import type { ParseInput, ParseOptions } from './parse';
-import type { LintOptions, ValidateOptions } from './lint';
+import type { ParseOptions } from './parse';
+import type { ValidateOptions } from './validate';
 import type { SchemaParser } from './schema-parser';
+import type { ParserInput } from './types';
 
 export interface ParserOptions {
   spectral?: Spectral | IConstructorOpts;
@@ -33,15 +34,11 @@ export class Parser {
     configureSpectral(this);
   }
 
-  parse(asyncapi: ParseInput, options?: ParseOptions) {
+  parse(asyncapi: ParserInput, options?: ParseOptions) {
     return parse(this, asyncapi, options);
   }
 
-  lint(asyncapi: ParseInput, options?: LintOptions) {
-    return lint(this, asyncapi, options);
-  }
-
-  validate(asyncapi: ParseInput, options?: ValidateOptions) {
+  validate(asyncapi: ParserInput, options?: ValidateOptions) {
     return validate(this, asyncapi, options);
   }
 

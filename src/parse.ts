@@ -1,91 +1,63 @@
 import { AsyncAPIDocumentInterface, newAsyncAPIDocument } from './models';
 
 import { customOperations } from './custom-operations';
-import { validate } from './lint';
+import { validate } from './validate';
 import { unfreeze } from './stringify';
 import { toAsyncAPIDocument } from './document';
-import { createDetailedAsyncAPI, normalizeInput } from './utils';
+import { createDetailedAsyncAPI, mergePatch } from './utils';
 
 import { xParserSpecParsed } from './constants';
 
 import type { Parser } from './parser';
-import type { ValidateOptions } from './lint';
-import type { MaybeAsyncAPI, Diagnostic } from './types';
+import type { ValidateOptions } from './validate';
+import type { ParserInput, Diagnostic } from './types';
 
-export type ParseInput = string | MaybeAsyncAPI | AsyncAPIDocumentInterface;
 export interface ParseOutput {
-  source: ParseInput;
-  parsed: AsyncAPIDocumentInterface | undefined;
+  document: AsyncAPIDocumentInterface | undefined;
   diagnostics: Diagnostic[]; 
 }
 
 export interface ParseOptions {
+  source?: string;
   applyTraits?: boolean;
   parseSchemas?: boolean;
-  validateOptions?: ValidateOptions;
-}
-
-export async function parse(parser: Parser, asyncapi: ParseInput, options?: ParseOptions): Promise<ParseOutput> {
-  const maybeDocument = toAsyncAPIDocument(asyncapi);
-  if (maybeDocument) {
-    return { 
-      source: asyncapi,
-      parsed: maybeDocument,
-      diagnostics: [],
-    };
-  }
-
-  try {
-    const document = normalizeInput(asyncapi as Exclude<ParseInput, AsyncAPIDocumentInterface>);
-    options = normalizeOptions(options);
-
-    const { validated, diagnostics } = await validate(parser, document, options.validateOptions);
-    if (validated === undefined) {
-      return {
-        source: asyncapi,
-        parsed: undefined,
-        diagnostics,
-      };
-    }
-
-    // unfreeze the object - Spectral makes resolved document "freezed" 
-    const validatedDoc = unfreeze(validated as Record<string, any>);
-    validatedDoc[String(xParserSpecParsed)] = true;
-    
-    const detailed = createDetailedAsyncAPI(asyncapi as string | Record<string, unknown>, validatedDoc);
-    await customOperations(parser, detailed, options);
-    const parsedDoc = newAsyncAPIDocument(detailed);
-  
-    return { 
-      source: asyncapi,
-      parsed: parsedDoc,
-      diagnostics,
-    };
-  } catch (err: any) {
-    // TODO: throw proper error
-    throw new Error(err.message);
-  }
+  validateOptions?: Omit<ValidateOptions, 'source'>;
 }
 
 const defaultOptions: ParseOptions = {
   applyTraits: true,
   parseSchemas: true,
 };
-function normalizeOptions(options?: ParseOptions): ParseOptions {
-  if (!options || typeof options !== 'object') {
-    return defaultOptions;
-  }
-  // shall copy
-  options = { ...defaultOptions, ...options };
 
-  // applyTraits
-  if (options.applyTraits === undefined) {
-    options.applyTraits = true;
-  }
-  // parseSchemas
-  if (options.parseSchemas === undefined) {
-    options.parseSchemas = true;
+export async function parse(parser: Parser, asyncapi: ParserInput, options: ParseOptions = {}): Promise<ParseOutput> {
+  const maybeDocument = toAsyncAPIDocument(asyncapi);
+  if (maybeDocument) {
+    return { 
+      document: maybeDocument,
+      diagnostics: [],
+    };
   }
 
-  return options;
+  options = mergePatch<ParseOptions>(defaultOptions, options);
+
+  const { raw, unparsed, validated, diagnostics } = await validate(parser, asyncapi, { ...(options.validateOptions || {}), source: options.source });
+  if (validated === undefined) {
+    return {
+      document: undefined,
+      diagnostics,
+    };
+  }
+
+  // unfreeze the object - Spectral makes resolved document "freezed" 
+  const parsed = unfreeze(validated as Record<string, any>);
+  parsed[String(xParserSpecParsed)] = true;
+  
+  const detailed = createDetailedAsyncAPI(parsed, unparsed, raw, options.source);
+  await customOperations(parser, detailed, options);
+  const document = newAsyncAPIDocument(detailed);
+
+  return { 
+    document,
+    diagnostics,
+  };
 }

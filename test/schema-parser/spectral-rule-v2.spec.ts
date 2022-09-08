@@ -1,5 +1,5 @@
 import { Parser } from '../../src/parser';
-import { validate } from '../../src/lint';
+import { validate } from '../../src/validate';
 
 import type { ISpectralDiagnostic } from '@stoplight/spectral-core';
 import type { SchemaValidateResult } from '../../src/types';
@@ -262,6 +262,10 @@ describe('aas2schemaParserRule', function() {
       {
         message: 'Unknown schema format: "not existing"',
         path: ['channels', 'channel', 'publish', 'message', 'schemaFormat']
+      },
+      {
+        message: 'Cannot parse given schema due to unknown schema format: "not existing"',
+        path: ['channels', 'channel', 'publish', 'message', 'payload']
       },
     ];
 

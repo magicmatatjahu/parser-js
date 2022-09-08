@@ -1,5 +1,5 @@
 import { Parser } from '../src/parser';
-import { validate } from '../src/lint';
+import { validate } from '../src/validate';
 
 import { specVersions } from '../src/constants';
 

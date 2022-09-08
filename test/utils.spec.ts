@@ -95,11 +95,42 @@ describe('utils', function() {
 
   describe('createDetailedAsyncAPI()', function() {
     it('should create detailed object', function () {
-      const source = '{ asyncapi: \'2.1.37\' }';
-      const parsed = { asyncapi: '2.1.37' };
-      const detailed = createDetailedAsyncAPI(source, parsed as any);
-      expect(detailed.source).toEqual(source);
+      const parsed: any = { asyncapi: '2.1.37' };
+      const detailed = createDetailedAsyncAPI(parsed, parsed);
       expect(detailed.parsed).toEqual(parsed);
+      expect(detailed.unparsed).toEqual(parsed);
+      expect(detailed.raw).toBeUndefined();
+      expect(detailed.source).toBeUndefined();
+      expect(detailed.semver.version).toEqual('2.1.37');
+      expect(detailed.semver.major).toEqual(2);
+      expect(detailed.semver.minor).toEqual(1);
+      expect(detailed.semver.patch).toEqual(37);
+      expect(detailed.semver.rc).toEqual(undefined);
+    });
+
+    it('should create detailed object (with raw data)', function () {
+      const raw = '{ asyncapi: \'2.1.37\' }';
+      const parsed: any = { asyncapi: '2.1.37' };
+      const detailed = createDetailedAsyncAPI(parsed, parsed, raw);
+      expect(detailed.parsed).toEqual(parsed);
+      expect(detailed.unparsed).toEqual(parsed);
+      expect(detailed.raw).toEqual(raw);
+      expect(detailed.source).toBeUndefined();
+      expect(detailed.semver.version).toEqual('2.1.37');
+      expect(detailed.semver.major).toEqual(2);
+      expect(detailed.semver.minor).toEqual(1);
+      expect(detailed.semver.patch).toEqual(37);
+      expect(detailed.semver.rc).toEqual(undefined);
+    });
+
+    it('should create detailed object (with source)', function () {
+      const source = 'file:///someFile.yaml';
+      const parsed: any = { asyncapi: '2.1.37' };
+      const detailed = createDetailedAsyncAPI(parsed, parsed, undefined, source);
+      expect(detailed.parsed).toEqual(parsed);
+      expect(detailed.unparsed).toEqual(parsed);
+      expect(detailed.raw).toBeUndefined();
+      expect(detailed.source).toEqual(source);
       expect(detailed.semver.version).toEqual('2.1.37');
       expect(detailed.semver.major).toEqual(2);
       expect(detailed.semver.minor).toEqual(1);

@@ -32,8 +32,8 @@ describe('stringify & unstringify', function() {
     });
 
     it('should stringify AsyncAPIDocument instance', function() {
-      const doc = { asyncapi: '2.0.0' };
-      const detailed = createDetailedAsyncAPI(doc, doc as any);
+      const doc: any = { asyncapi: '2.0.0' };
+      const detailed = createDetailedAsyncAPI(doc, doc);
       expect(typeof stringify(newAsyncAPIDocument(detailed))).toEqual('string');
     });
   });
