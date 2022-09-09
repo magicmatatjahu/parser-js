@@ -8,9 +8,11 @@ import type { Parser } from '../parser';
 import type { ParseSchemaInput } from '../schema-parser';
 import type { DetailedAsyncAPI } from '../types';
 
+import type { v2 } from '../spec-types';
+
 interface ToParseItem {
   input: ParseSchemaInput;
-  value: any;
+  value: v2.MessageObject;
 }
 
 const customSchemasPathsV2 = [
@@ -67,6 +69,9 @@ export async function parseSchemasV2(parser: Parser, detailed: DetailedAsyncAPI)
 }
 
 async function parseSchemaV2(parser: Parser, item: ToParseItem) {
-  item.value[xParserOriginalPayload] = item.input.data;
+  // save original payload only when we perform logic on custom schema format
+  if (item.input.schemaFormat !== item.input.defaultSchemaFormat) {
+    item.value[xParserOriginalPayload] = item.input.data;
+  }
   item.value.payload = await parseSchema(parser, item.input);
 }

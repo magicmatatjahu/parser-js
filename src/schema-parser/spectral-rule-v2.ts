@@ -8,7 +8,6 @@ import type { RuleDefinition } from '@stoplight/spectral-core';
 import type { Parser } from '../parser';
 import type { ValidateSchemaInput } from './index';
 import type { AsyncAPIObject, MaybeAsyncAPI, SchemaValidateResult } from '../types';
-import type { v2 } from '../spec-types';
 
 export function asyncApi2SchemaParserRule(parser: Parser): RuleDefinition {
   return {
@@ -86,3 +85,4 @@ function rulesetFunction(parser: Parser) {
     }
   );
 }
+

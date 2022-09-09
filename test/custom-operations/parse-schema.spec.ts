@@ -35,8 +35,7 @@ describe('custom operations - parse schemas', function() {
     expect(diagnostics.length > 0).toEqual(true);
 
     expect((document?.json()?.channels?.channel?.publish?.message as v2.MessageObject)?.payload).toEqual({ type: 'object' });
-    expect((document?.json()?.channels?.channel?.publish?.message as v2.MessageObject)?.[xParserOriginalPayload]).toEqual({ type: 'object' });
-    expect((document?.json()?.channels?.channel?.publish?.message as v2.MessageObject)?.payload).toEqual((document?.json()?.channels?.channel?.publish?.message as v2.MessageObject)?.[xParserOriginalPayload]);
+    expect((document?.json()?.channels?.channel?.publish?.message as v2.MessageObject)?.[xParserOriginalPayload]).toEqual(undefined);
   });
 
   it('should parse valid default schema format', async function() {
@@ -65,8 +64,7 @@ describe('custom operations - parse schemas', function() {
     expect(diagnostics.length > 0).toEqual(true);
 
     expect((document?.json()?.channels?.channel?.publish?.message as v2.MessageObject)?.payload).toEqual({ type: 'object' });
-    expect((document?.json()?.channels?.channel?.publish?.message as v2.MessageObject)?.[xParserOriginalPayload]).toEqual({ type: 'object' });
-    expect((document?.json()?.channels?.channel?.publish?.message as v2.MessageObject)?.payload).toEqual((document?.json()?.channels?.channel?.publish?.message as v2.MessageObject)?.[xParserOriginalPayload]);
+    expect((document?.json()?.channels?.channel?.publish?.message as v2.MessageObject)?.[xParserOriginalPayload]).toEqual(undefined);
   });
 
   it('should parse invalid schema format', async function() {

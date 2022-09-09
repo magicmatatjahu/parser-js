@@ -52,9 +52,10 @@ function asyncApi2IsAsyncApi(): RuleDefinition {
               }
             ];
           } else if (!specVersions.includes(targetVal.asyncapi)) {
+            const latestVersion = specVersions[specVersions.length - 1];
             return [
               {
-                message: `Version "${targetVal.asyncapi}" is not supported. Please use "${specVersions[specVersions.length - 1]}" (latest) version of the specification.`,
+                message: `Version "${targetVal.asyncapi}" is not supported. Please use "${latestVersion}" (latest) version of the specification.`,
                 path: [],
               }
             ];
