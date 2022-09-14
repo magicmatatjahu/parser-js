@@ -15,14 +15,44 @@
   "license": "Apache-2.0",
   "homepage": "https://github.com/asyncapi/parser-js",
   "sideEffects": false,
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
+  "types": "./types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./types/index.d.ts",
+        "default": "./esm/index.js"
+      },
+      "default": {
+        "types": "./types/index.d.ts",
+        "default": "./cjs/index.js"
+      }
+    },
+    "./*": {
+      "import": {
+        "types": "./types/*.d.ts",
+        "default": "./esm/*.js"
+      },
+      "default": {
+        "types": "./types/*.d.ts",
+        "default": "./cjs/*.js"
+      }
+    }
+  },
   "files": [
-    "./lib",
-    "./browser",
+    "/esm",
+    "/cjs",
+    "/types",
+    "/browser",
     "LICENSE",
     "README.md"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "npm run build:esm && npm run build:cjs && npm run build:types && npm run build:browser",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --project ./tsconfig.cjs.json",
+    "build:types": "tsc --project ./tsconfig.types.json",
     "build:browser": "webpack",
     "test": "npm run test:unit && npm run test:browser",
     "test:unit": "cross-env CI=true jest --coverage --testPathIgnorePatterns=test/browser/*",
