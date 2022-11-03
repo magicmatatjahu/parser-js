@@ -1,7 +1,7 @@
 import { JSONPath } from 'jsonpath-plus';
 
 import { xParserOriginalPayload } from '../constants';
-import { parseSchema, getSchemaFormat, getDefaultSchemaFormat } from '../schema-parser';
+import { parseSchema as coreParseSchema, getSchemaFormat, getDefaultSchemaFormat } from '../schema-parser';
 
 import type { Parser } from '../parser';
 import type { ParseSchemaInput } from '../schema-parser';
@@ -23,11 +23,27 @@ const customSchemasPathsV2 = [
 ];
 
 export async function parseSchemasV2(parser: Parser, detailed: DetailedAsyncAPI) {
+  return parseSchemas(parser, detailed, customSchemasPathsV2);
+}
+
+const customSchemasPathsV3 = [
+  // channels
+  '$.channels.*.messages.*',
+  '$.components.channels.*.messages.*',
+  // messages
+  '$.components.messages.*',
+];
+
+export async function parseSchemasV3(parser: Parser, detailed: DetailedAsyncAPI) {
+  return parseSchemas(parser, detailed, customSchemasPathsV3);
+}
+
+async function parseSchemas(parser: Parser, detailed: DetailedAsyncAPI, paths: string[]) {
   const defaultSchemaFormat = getDefaultSchemaFormat(detailed.semver.version);
   const parseItems: Array<ToParseItem> = [];
 
   const visited: Set<unknown> = new Set();
-  customSchemasPathsV2.forEach(path => {
+  paths.forEach(path => {
     JSONPath({
       path,
       json: detailed.parsed,
@@ -62,12 +78,12 @@ export async function parseSchemasV2(parser: Parser, detailed: DetailedAsyncAPI)
     });
   });
 
-  return Promise.all(parseItems.map(item => parseSchemaV2(parser, item)));
+  return Promise.all(parseItems.map(item => parseSchema(parser, item)));
 }
 
-async function parseSchemaV2(parser: Parser, item: ToParseItem) {
+async function parseSchema(parser: Parser, item: ToParseItem) {
   const originalData = item.input.data;
-  const parsedData = item.value.payload = await parseSchema(parser, item.input);
+  const parsedData = item.value.payload = await coreParseSchema(parser, item.input);
   // save original payload only when data is different (returned by custom parsers)
   if (originalData !== parsedData) {
     item.value[xParserOriginalPayload] = originalData;

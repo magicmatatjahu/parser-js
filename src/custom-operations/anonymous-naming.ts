@@ -7,7 +7,17 @@ import type {
   SchemaInterface
 } from '../models';
 
-export function anonymousNaming(document: AsyncAPIDocumentInterface) {
+export function anonymousNamingV2(document: AsyncAPIDocumentInterface) {
+  assignNameToComponentMessages(document);
+  assignNameToAnonymousMessages(document);
+
+  assignUidToComponentSchemas(document);
+  assignUidToComponentParameterSchemas(document);
+  assignUidToChannelParameterSchemas(document);
+  assignUidToAnonymousSchemas(document);
+}
+
+export function anonymousNamingV3(document: AsyncAPIDocumentInterface) {
   assignNameToComponentMessages(document);
   assignNameToAnonymousMessages(document);
 

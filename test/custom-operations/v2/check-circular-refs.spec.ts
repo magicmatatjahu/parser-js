@@ -1,5 +1,5 @@
-import { Parser } from '../../src/parser';
-import { xParserCircular } from '../../src/constants';
+import { Parser } from '../../../src/parser';
+import { xParserCircular } from '../../../src/constants';
 
 describe('custom operations - check circular references', function() {
   const parser = new Parser();

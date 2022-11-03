@@ -1,5 +1,5 @@
-import { Parser } from '../../src/parser';
-import { xParserMessageName, xParserSchemaId } from '../../src/constants';
+import { Parser } from '../../../src/parser';
+import { xParserMessageName, xParserSchemaId } from '../../../src/constants';
 
 describe('custom operations - anonymous naming', function() {
   const parser = new Parser();
