@@ -1,44 +1,45 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 
-import { aas2All as aas2AllFormats } from '../formats';
-import { truthy, pattern } from '@stoplight/spectral-functions';
+import { aas3All as aas3AllFormats } from '../formats';
+import { pattern, truthy } from '@stoplight/spectral-functions';
 
 import { channelParameters } from './functions/channelParameters';
 import { channelServers } from './functions/channelServers';
 import { messageIdUniqueness } from './functions/messageIdUniqueness';
-import { operationIdUniqueness } from './functions/operationIdUniqueness';
+import { operationChannel } from './functions/operationChannel';
+import { operationMessages } from './functions/operationMessages';
+import { replyChannel } from './functions/replyChannel';
 import { security } from './functions/security';
 import { serverVariables } from './functions/serverVariables';
-import { unusedSecuritySchemes } from './functions/unusedSecuritySchemes';
 import { checkId } from '../functions/checkId';
 import { messageExamples } from '../functions/messageExamples';
 import { schemaValidation } from '../functions/schemaValidation';
 import { uniquenessTags } from '../functions/uniquenessTags';
-import { asyncApi2SchemaParserRule } from '../../schema-parser/spectral-rule';
+import { asyncApi3SchemaParserRule } from '../../schema-parser/spectral-rule';
 
 import type { Parser } from '../../parser';
 
-export const v2CoreRuleset = {
-  description: 'Core AsyncAPI 2.x.x ruleset.',
-  formats: [...aas2AllFormats],
+export const v3CoreRuleset = {
+  description: 'Core AsyncAPI 3.x.x ruleset.',
+  formats: [...aas3AllFormats],
   rules: {
     /**
      * Server Object rules
      */
-    'asyncapi2-server-security': {
+    'asyncapi3-server-security': {
       description: 'Server have to reference a defined security schemes.',
       message: '{{error}}',
       severity: 'error',
       recommended: true,
-      given: '$.servers.*.security.*',
+      given: [
+        '$.servers.*.security.*',
+        '$.components.servers.*.security.*',
+      ],
       then: {
         function: security,
-        functionOptions: {
-          objectType: 'Server',
-        },
       },
     },
-    'asyncapi2-server-variables': {
+    'asyncapi3-server-variables': {
       description: 'Server variables must be defined and there must be no redundant variables.',
       message: '{{error}}',
       severity: 'error',
@@ -52,17 +53,20 @@ export const v2CoreRuleset = {
     /**
      * Channel Object rules
      */
-    'asyncapi2-channel-parameters': {
+    'asyncapi3-channel-parameters': {
       description: 'Channel parameters must be defined and there must be no redundant parameters.',
       message: '{{error}}',
       severity: 'error',
       recommended: true,
-      given: '$.channels.*',
+      given: [
+        '$.channels.*',
+        '$.components.channels.*',
+      ],
       then: {
         function: channelParameters,
       },
     },
-    'asyncapi2-channel-servers': {
+    'asyncapi3-channel-servers': {
       description: 'Channel servers must be defined in the "servers" object.',
       message: '{{error}}',
       severity: 'error',
@@ -76,49 +80,68 @@ export const v2CoreRuleset = {
     /**
      * Operation Object rules
      */
-    'asyncapi2-operation-operationId-uniqueness': {
-      description: '"operationId" must be unique across all the operations.',
+    'asyncapi3-operation-channel': {
+      description: 'Operation have to reference a defined channel.',
       severity: 'error',
       recommended: true,
       given: '$',
       then: {
-        function: operationIdUniqueness,
+        function: operationChannel,
       },
     },
-    'asyncapi2-operation-security': {
+    'asyncapi3-operation-messages': {
+      description: 'Operation have to reference a defined messages in a corresponding channel.',
+      severity: 'error',
+      recommended: true,
+      given: '$',
+      then: {
+        function: operationMessages,
+      },
+    },
+    'asyncapi3-operation-security': {
       description: 'Operation have to reference a defined security schemes.',
       message: '{{error}}',
       severity: 'error',
       recommended: true,
-      given: '$.channels[*][publish,subscribe].security.*',
+      given: [
+        '$.operations.*.security.*',
+        '$.components.operations.*.security.*',
+      ],
       then: {
         function: security,
-        functionOptions: {
-          objectType: 'Operation',
-        },
+      },
+    },
+    'asyncapi3-operation-reply-channel': {
+      description: 'Operation Reply have to reference a defined channel.',
+      message: '{{error}}',
+      severity: 'error',
+      recommended: true,
+      given: '$',
+      then: {
+        function: replyChannel,
       },
     },
 
     /**
      * Message Object rules
      */
-    'asyncapi2-message-examples': {
+    'asyncapi3-message-examples': {
       description: 'Examples of message object should follow by "payload" and "headers" schemas.',
       message: '{{error}}',
       severity: 'error',
       recommended: true,
       given: [
         // messages
-        '$.channels.*.[publish,subscribe].message',
-        '$.channels.*.[publish,subscribe].message.oneOf.*',
-        '$.components.channels.*.[publish,subscribe].message',
-        '$.components.channels.*.[publish,subscribe].message.oneOf.*',
+        '$.channels.*.messages.*',
+        '$.operations.*.messages.*',
+        '$.components.channels.*.messages.*',
+        '$.components.operations.*.messages.*',
         '$.components.messages.*',
         // message traits
-        '$.channels.*.[publish,subscribe].message.traits.*',
-        '$.channels.*.[publish,subscribe].message.oneOf.*.traits.*',
-        '$.components.channels.*.[publish,subscribe].message.traits.*',
-        '$.components.channels.*.[publish,subscribe].message.oneOf.*.traits.*',
+        '$.channels.*.messages.*.traits.*',
+        '$.operations.*.messages.*.traits.*',
+        '$.components.channels.*.messages.*.traits.*',
+        '$.components.operations.*.messages.*.traits.*',
         '$.components.messages.*.traits.*',
         '$.components.messageTraits.*',
       ],
@@ -126,7 +149,7 @@ export const v2CoreRuleset = {
         function: messageExamples,
       },
     },
-    'asyncapi2-message-messageId-uniqueness': {
+    'asyncapi3-message-messageId-uniqueness': {
       description: '"messageId" must be unique across all the messages.',
       severity: 'error',
       recommended: true,
@@ -139,32 +162,38 @@ export const v2CoreRuleset = {
     /**
      * Misc rules
      */
-    'asyncapi2-tags-uniqueness': {
+    'asyncapi3-tags-uniqueness': {
       description: 'Each tag must have a unique name.',
       message: '{{error}}',
       severity: 'error',
       recommended: true,
       given: [
-        // root
-        '$.tags',
+        // info
+        '$.info.tags',
+        // servers
+        '$.servers.*.tags',
+        '$.components.servers.*.tags',
+        // channels
+        '$.channels.*.tags',
+        '$.components.channels.*.tags',
         // operations
-        '$.channels.*.[publish,subscribe].tags',
-        '$.components.channels.*.[publish,subscribe].tags',
+        '$.operations.*.tags',
+        '$.components.operations.*.tags',
         // operation traits
-        '$.channels.*.[publish,subscribe].traits.*.tags',
-        '$.components.channels.*.[publish,subscribe].traits.*.tags',
+        '$.operations.*.traits.*.tags',
+        '$.components.operations.*.traits.*.tags',
         '$.components.operationTraits.*.tags',
         // messages
-        '$.channels.*.[publish,subscribe].message.tags',
-        '$.channels.*.[publish,subscribe].message.oneOf.*.tags',
-        '$.components.channels.*.[publish,subscribe].message.tags',
-        '$.components.channels.*.[publish,subscribe].message.oneOf.*.tags',
+        '$.channels.*.messages.*.tags',
+        '$.components.channels.*.messages.*.tags',
+        '$.operations.*.messages.*.tags',
+        '$.components.operations.*.messages.*.tags',
         '$.components.messages.*.tags',
         // message traits
-        '$.channels.*.[publish,subscribe].message.traits.*.tags',
-        '$.channels.*.[publish,subscribe].message.oneOf.*.traits.*.tags',
-        '$.components.channels.*.[publish,subscribe].message.traits.*.tags',
-        '$.components.channels.*.[publish,subscribe].message.oneOf.*.traits.*.tags',
+        '$.channels.*.messages.*.traits.*.tags',
+        '$.components.channels.*.messages.*.traits.*.tags',
+        '$.operations.*.messages.*.traits.*.tags',
+        '$.components.operations.*.messages.*.traits.*.tags',
         '$.components.messages.*.traits.*.tags',
         '$.components.messageTraits.*.tags',
       ],
@@ -172,16 +201,16 @@ export const v2CoreRuleset = {
         function: uniquenessTags,
       },
     },
-  },
+  }
 };
 
-export const v2SchemasRuleset = (parser: Parser) => {
+export const v3SchemasRuleset = (parser: Parser) => {
   return {
-    description: 'Schemas AsyncAPI 2.x.x ruleset.',
-    formats: [...aas2AllFormats],
+    description: 'Schemas AsyncAPI 3.x.x ruleset.',
+    formats: [...aas3AllFormats],
     rules: {
-      'asyncapi2-schemas': asyncApi2SchemaParserRule(parser),
-      'asyncapi2-schema-default': {
+      'asyncapi3-schemas': asyncApi3SchemaParserRule(parser),
+      'asyncapi3-schema-default': {
         description: 'Default must be valid against its defined schema.',
         message: '{{error}}',
         severity: 'error',
@@ -203,7 +232,7 @@ export const v2SchemasRuleset = (parser: Parser) => {
           },
         },
       },
-      'asyncapi2-schema-examples': {
+      'asyncapi3-schema-examples': {
         description: 'Examples must be valid against their defined schema.',
         message: '{{error}}',
         severity: 'error',
@@ -229,17 +258,17 @@ export const v2SchemasRuleset = (parser: Parser) => {
   };
 };
 
-export const v2RecommendedRuleset = {
-  description: 'Recommended AsyncAPI 2.x.x ruleset.',
-  formats: [...aas2AllFormats],
+export const v3RecommendedRuleset = {
+  description: 'Recommended AsyncAPI 3.x.x ruleset.',
+  formats: [...aas3AllFormats],
   rules: {
     /**
      * Root Object rules
      */
-    'asyncapi2-tags': {
-      description: 'AsyncAPI object should have non-empty "tags" array.',
+    'asyncapi3-tags': {
+      description: 'Info object should have non-empty "tags" array.',
       recommended: true,
-      given: '$',
+      given: '$.info',
       then: {
         field: 'tags',
         function: truthy,
@@ -249,12 +278,14 @@ export const v2RecommendedRuleset = {
     /**
      * Server Object rules
      */
-    'asyncapi2-server-no-empty-variable': {
+    'asyncapi3-server-no-empty-variable': {
       description: 'Server URL should not have empty variable substitution pattern.',
       recommended: true,
       given: [
-        '$.servers.*.url',
-        '$.components.servers.*.url',
+        '$.server.*.host',
+        '$.server.*.pathname',
+        '$.components.server.*.host',
+        '$.components.server.*.pathname',
       ],
       then: {
         function: pattern,
@@ -263,12 +294,12 @@ export const v2RecommendedRuleset = {
         },
       },
     },
-    'asyncapi2-server-no-trailing-slash': {
-      description: 'Server URL should not end with slash.',
+    'asyncapi3-server-host-no-trailing-slash': {
+      description: 'Server HOST should not end with slash.',
       recommended: true,
       given: [
-        '$.servers.*.url',
-        '$.components.servers.*.url',
+        '$.server.*.host',
+        '$.components.server.*.host',
       ],
       then: {
         function: pattern,
@@ -277,40 +308,60 @@ export const v2RecommendedRuleset = {
         },
       },
     },
+    'asyncapi3-server-pathname-trailing-slash': {
+      description: 'Server PATHNAME should start with slash.',
+      recommended: true,
+      given: [
+        '$.server.*.pathname',
+        '$.components.server.*.pathname',
+      ],
+      then: {
+        function: pattern,
+        functionOptions: {
+          match: '^/',
+        },
+      },
+    },
 
     /**
      * Channel Object rules
      */
-    'asyncapi2-channel-no-empty-parameter': {
+    'asyncapi3-channel-no-empty-parameter': {
       description: 'Channel address should not have empty parameter substitution pattern.',
       recommended: true,
-      given: '$.channels',
+      given: [
+        '$.channels.*.address',
+        '$.components.channels.*.address',
+      ],
       then: {
-        field: '@key',
         function: pattern,
         functionOptions: {
           notMatch: '{}',
         },
       },
     },
-    'asyncapi2-channel-no-query-nor-fragment': {
+    'asyncapi3-channel-no-query-nor-fragment': {
       description: 'Channel address should not include query ("?") or fragment ("#") delimiter.',
       recommended: true,
-      given: '$.channels',
+      given: [
+        '$.channels.*.address',
+        '$.components.channels.*.address',
+      ],
       then: {
-        field: '@key',
         function: pattern,
         functionOptions: {
           notMatch: '[\\?#]',
         },
       },
     },
-    'asyncapi2-channel-no-trailing-slash': {
+    'asyncapi3-channel-no-trailing-slash': {
       description: 'Channel address should not end with slash.',
       recommended: true,
-      given: '$.channels',
+      given: [
+        '$.channels.*.address',
+        '$.components.channels.*.address',
+      ],
       then: {
-        field: '@key',
         function: pattern,
         functionOptions: {
           notMatch: '.+\\/$',
@@ -319,32 +370,16 @@ export const v2RecommendedRuleset = {
     },
 
     /**
-     * Operation Object rules
-     */
-    'asyncapi2-operation-operationId': {
-      description: 'Operation should have an "operationId" field defined.',
-      recommended: true,
-      given: ['$.channels[*][publish,subscribe]', '$.components.channels[*][publish,subscribe]'],
-      then: {
-        function: checkId,
-        functionOptions: {
-          idField: 'operationId',
-        },
-      },
-    },
-
-    /**
      * Message Object rules
      */
-    'asyncapi2-message-messageId': {
+    'asyncapi3-message-messageId': {
       description: 'Message should have a "messageId" field defined.',
       recommended: true,
-      formats: aas2AllFormats.slice(4), // from 2.4.0
       given: [
-        '$.channels.*.[publish,subscribe][?(@property === "message" && @.oneOf == void 0)]',
-        '$.channels.*.[publish,subscribe].message.oneOf.*',
-        '$.components.channels.*.[publish,subscribe][?(@property === "message" && @.oneOf == void 0)]',
-        '$.components.channels.*.[publish,subscribe].message.oneOf.*',
+        '$.channels.*.messages.*',
+        '$.components.channels.*.messages.*',
+        '$.operations.*.messages.*',
+        '$.components.operations.*.messages.*',
         '$.components.messages.*',
       ],
       then: {
@@ -354,19 +389,5 @@ export const v2RecommendedRuleset = {
         },
       },
     },
-
-    /**
-     * Component Object rules
-     */
-    'asyncapi2-unused-securityScheme': {
-      description: 'Potentially unused security scheme has been detected in AsyncAPI document.',
-      recommended: true,
-      resolved: false,
-      severity: 'info',
-      given: '$',
-      then: {
-        function: unusedSecuritySchemes,
-      },
-    },
-  },
+  }
 };

@@ -3,6 +3,7 @@ import { Parser } from '../../src/parser';
 // rulesets
 import { coreRuleset, recommendedRuleset } from '../../src/ruleset/ruleset';
 import { v2CoreRuleset, v2SchemasRuleset, v2RecommendedRuleset } from '../../src/ruleset/v2';
+import { v3CoreRuleset, v3SchemasRuleset, v3RecommendedRuleset } from '../../src/ruleset/v3';
 
 import type { ParserOptions } from '../../src/parser';
 import type { IRuleResult, RulesetDefinition } from '@stoplight/spectral-core';
@@ -14,6 +15,9 @@ type RuleNames =
   | RulesetRules<typeof v2CoreRuleset> 
   | RulesetRules<typeof v2RecommendedRuleset>
   | RulesetRules<ReturnType<typeof v2SchemasRuleset>>
+  | RulesetRules<typeof v3CoreRuleset> 
+  | RulesetRules<typeof v3RecommendedRuleset>
+  | RulesetRules<ReturnType<typeof v3SchemasRuleset>>;
 
 type Scenario = ReadonlyArray<
   Readonly<{
@@ -47,10 +51,13 @@ function createParser(rules: Array<RuleNames>, options: ParserOptions = {}): Par
       [coreRuleset, 'off'],
       [recommendedRuleset, 'off'],
       [v2CoreRuleset, 'off'],
+      [v3CoreRuleset, 'off'],
       [v2RecommendedRuleset, 'off'],
+      [v3RecommendedRuleset, 'off'],
     ],
     rules: {
       'asyncapi2-schemas': 'off',
+      'asyncapi3-schemas': 'off',
       ...rules.reduce((obj, name) => {
         obj[name] = true;
         return obj;

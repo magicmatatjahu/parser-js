@@ -1,4 +1,4 @@
-import { aas2, aas2_0, aas2_1, aas2_2, aas2_3, aas2_4, aas2_5, aas2_6 } from '../../src/ruleset/formats';
+import { aas2, aas2_0, aas2_1, aas2_2, aas2_3, aas2_4, aas2_5, aas2_6, aas3, aas3_0 } from '../../src/ruleset/formats';
 
 describe('AsyncAPI format', () => {
   describe('AsyncAPI 2.x', () => {
@@ -113,5 +113,47 @@ describe('AsyncAPI format', () => {
         expect(aas2_6({ asyncapi: version }, null)).toBe(false);
       },
     );
+  });
+
+  describe('AsyncAPI 3.x', () => {
+    it.each(['3.0.0', '3.1.0', '3.2.0', '3.3.0', '3.0.17', '3.1.37', '3.9.0', '3.9.3'])(
+      'recognizes %s version correctly',
+      version => {
+        expect(aas3({ asyncapi: version }, null)).toBe(true);
+      },
+    );
+
+    const testCases = [
+      { asyncapi: '3.0' },
+      { asyncapi: '2' },
+      { asyncapi: '2.0' },
+      { asyncapi: '2.0.' },
+      { asyncapi: '2.0.0' },
+      { asyncapi: '2.0.01' },
+      { asyncapi: '1.0' },
+      { asyncapi: 2 },
+      { asyncapi: null },
+      { openapi: '4.0' },
+      { openapi: '2.0' },
+      { openapi: null },
+      { swagger: null },
+      { swagger: '3.0' },
+      {},
+      null,
+    ];
+
+    it.each(testCases)('does not recognize invalid document %o', document => {
+      expect(aas3(document, null)).toBe(false);
+    });
+  });
+
+  describe('AsyncAPI 3.0', () => {
+    it.each(['3.0.0', '3.0.3'])('recognizes %s version correctly', version => {
+      expect(aas3_0({ asyncapi: version }, null)).toBe(true);
+    });
+
+    it.each(['3', '3.0', '3.1.0', '3.1.3'])('does not recognize %s version', version => {
+      expect(aas3_0({ asyncapi: version }, null)).toBe(false);
+    });
   });
 });

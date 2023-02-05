@@ -1,5 +1,6 @@
 import { coreRuleset, recommendedRuleset } from './ruleset';
 import { v2CoreRuleset, v2SchemasRuleset, v2RecommendedRuleset } from './v2';
+import { v3CoreRuleset, v3SchemasRuleset, v3RecommendedRuleset } from './v3';
 
 import type { Parser } from '../parser';
 import type { RulesetDefinition } from '@stoplight/spectral-core';
@@ -15,6 +16,9 @@ export function createRuleset(parser: Parser, options?: RulesetOptions): Ruleset
   const extendedRuleset = [
     useCore && coreRuleset,
     useRecommended && recommendedRuleset,
+    useCore && v3CoreRuleset,
+    useCore && v3SchemasRuleset(parser),
+    useRecommended && v3RecommendedRuleset,
     useCore && v2CoreRuleset,
     useCore && v2SchemasRuleset(parser),
     useRecommended && v2RecommendedRuleset,

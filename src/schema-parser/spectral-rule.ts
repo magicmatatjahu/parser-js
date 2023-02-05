@@ -6,10 +6,30 @@ import { createDetailedAsyncAPI } from '../utils';
 import type { RuleDefinition } from '@stoplight/spectral-core';
 import type { Parser } from '../parser';
 import type { ValidateSchemaInput } from './index';
-import type { SchemaValidateResult } from '../types';
-import type { v2 } from '../spec-types';
+import type { AsyncAPIObject, SchemaValidateResult } from '../types';
 
 export function asyncApi2SchemaParserRule(parser: Parser): RuleDefinition {
+  return {
+    description: 'Custom schema must be correctly formatted from the point of view of the used format.',
+    message: '{{error}}',
+    severity: 'error',
+    recommended: true,
+    given: [
+      // operations
+      '$.channels.*.[publish,subscribe].message',
+      '$.channels.*.[publish,subscribe].message.oneOf.*',
+      '$.components.channels.*.[publish,subscribe].message',
+      '$.components.channels.*.[publish,subscribe].message.oneOf.*',
+      // messages
+      '$.components.messages.*',
+    ],
+    then: {
+      function: rulesetFunction(parser),
+    },
+  };
+}
+
+export function asyncApi3SchemaParserRule(parser: Parser): RuleDefinition {
   return {
     description: 'Custom schema must be correctly formatted from the point of view of the used format.',
     message: '{{error}}',
@@ -51,7 +71,7 @@ function rulesetFunction(parser: Parser) {
 
       const path = [...ctx.path, 'payload'];
       const document = ctx.document;
-      const parsedSpec = document.data as v2.AsyncAPIObject;
+      const parsedSpec = document.data as AsyncAPIObject;
       const schemaFormat = getSchemaFormat(targetVal.schemaFormat, parsedSpec.asyncapi);
       const defaultSchemaFormat = getDefaultSchemaFormat(parsedSpec.asyncapi);
       const asyncapi = createDetailedAsyncAPI(parsedSpec, (document as any).__parserInput, document.source || undefined);

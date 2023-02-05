@@ -1,4 +1,4 @@
-export function parseUrlVariables(str: string): string[] {
+export function parseUrlVariables(str?: string): string[] {
   if (typeof str !== 'string') return [];
   const variables = str.match(/{(.+?)}/g);
   if (!variables || variables.length === 0) return [];

@@ -13,6 +13,8 @@ const aas2_3Regex = /^2\.3(?:\.[0-9]*)?$/;
 const aas2_4Regex = /^2\.4(?:\.[0-9]*)?$/;
 const aas2_5Regex = /^2\.5(?:\.[0-9]*)?$/;
 const aas2_6Regex = /^2\.6(?:\.[0-9]*)?$/;
+const aas3Regex = /^3\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$/;
+const aas3_0Regex = /^3\.0(?:\.[0-9]*)?$/;
 
 const isAas2 = (document: unknown): document is { asyncapi: string } & Record<string, unknown> =>
   isObject(document) && 'asyncapi' in document && aas2Regex.test(String((document as MaybeAsyncAPI).asyncapi));
@@ -48,4 +50,15 @@ export const aas2_6: Format = (document: unknown): boolean =>
   isAas2(document) && aas2_6Regex.test(String((document as MaybeAsyncAPI).asyncapi));
 aas2_6.displayName = 'AsyncAPI 2.6.x';
 
+const isAas3 = (document: unknown): document is { asyncapi: string } & Record<string, unknown> =>
+  isObject(document) && 'asyncapi' in document && aas3Regex.test(String((document as MaybeAsyncAPI).asyncapi));
+
+export const aas3: Format = isAas3;
+aas3.displayName = 'AsyncAPI 3.x';
+
+export const aas3_0: Format = (document: unknown): boolean =>
+  isAas3(document) && aas3_0Regex.test(String((document as MaybeAsyncAPI).asyncapi));
+aas3_0.displayName = 'AsyncAPI 3.0.x';
+
 export const aas2All = [aas2_0, aas2_1, aas2_2, aas2_3, aas2_4, aas2_5, aas2_6];
+export const aas3All = [aas3_0, aas2_1, aas2_2, aas2_3, aas2_4, aas2_5, aas2_6];

@@ -1,9 +1,9 @@
 import { createRulesetFunction } from '@stoplight/spectral-core';
 import { truthy } from '@stoplight/spectral-functions';
 
-import { mergeTraits } from '../../utils';
+import { mergeTraits } from '../utils';
 
-import type { MaybeHaveTraits } from '../../utils';
+import type { MaybeHaveTraits } from '../utils';
 
 export const checkId = createRulesetFunction<MaybeHaveTraits, { idField: 'operationId' | 'messageId' }>(
   {
