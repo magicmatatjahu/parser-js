@@ -29,13 +29,13 @@ export const security = createRulesetFunction<Array<v3.SecuritySchemeObject>, nu
     targetVal.forEach((securityScheme, index) => {
       if (securityScheme?.type === 'oauth2') {
         const availableScopes = getAllScopes(securityScheme.flows ?? {});
-        (securityScheme.scopes || []).forEach(scope => {
+        (securityScheme.scopes || []).forEach((scope, scopeIndex) => {
           if (!availableScopes.includes(scope)) {
             results.push({
               message: `Non-existing security scope for the specified security scheme. Available: [${availableScopes.join(
                 ', ',
               )}]`,
-              path: [...ctx.path, index, 'scopes'],
+              path: [...ctx.path, index, 'scopes', scopeIndex],
             });
           }
         });

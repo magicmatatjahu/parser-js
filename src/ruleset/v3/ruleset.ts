@@ -32,8 +32,8 @@ export const v3CoreRuleset = {
       severity: 'error',
       recommended: true,
       given: [
-        '$.servers.*.security.*',
-        '$.components.servers.*.security.*',
+        '$.servers.*.security',
+        '$.components.servers.*.security',
       ],
       then: {
         function: security,
@@ -104,8 +104,8 @@ export const v3CoreRuleset = {
       severity: 'error',
       recommended: true,
       given: [
-        '$.operations.*.security.*',
-        '$.components.operations.*.security.*',
+        '$.operations.*.security',
+        '$.components.operations.*.security',
       ],
       then: {
         function: security,
@@ -282,10 +282,10 @@ export const v3RecommendedRuleset = {
       description: 'Server URL should not have empty variable substitution pattern.',
       recommended: true,
       given: [
-        '$.server.*.host',
-        '$.server.*.pathname',
-        '$.components.server.*.host',
-        '$.components.server.*.pathname',
+        '$.servers.*.host',
+        '$.servers.*.pathname',
+        '$.components.servers.*.host',
+        '$.components.servers.*.pathname',
       ],
       then: {
         function: pattern,
@@ -298,8 +298,8 @@ export const v3RecommendedRuleset = {
       description: 'Server HOST should not end with slash.',
       recommended: true,
       given: [
-        '$.server.*.host',
-        '$.components.server.*.host',
+        '$.servers.*.host',
+        '$.components.servers.*.host',
       ],
       then: {
         function: pattern,
@@ -312,8 +312,8 @@ export const v3RecommendedRuleset = {
       description: 'Server PATHNAME should start with slash.',
       recommended: true,
       given: [
-        '$.server.*.pathname',
-        '$.components.server.*.pathname',
+        '$.servers.*.pathname',
+        '$.components.servers.*.pathname',
       ],
       then: {
         function: pattern,

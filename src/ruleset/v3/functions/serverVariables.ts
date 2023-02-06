@@ -10,14 +10,17 @@ export const serverVariables = createRulesetFunction<v3.ServerObject, null>(
     input: {
       type: 'object',
       properties: {
-        url: {
+        host: {
+          type: 'string',
+        },
+        pathname: {
           type: 'string',
         },
         variables: {
           type: 'object',
         },
       },
-      required: ['url', 'variables'],
+      required: ['host', 'variables'],
     },
     options: null,
   },
@@ -45,7 +48,7 @@ export const serverVariables = createRulesetFunction<v3.ServerObject, null>(
     if (redundantVariables.length) {
       redundantVariables.forEach(variable => {
         results.push({
-          message: `Server's "variables" object has redundant defined "${variable}" url variable.`,
+          message: `Server's "variables" object has redundant defined "${variable}" host/pathname variable.`,
           path: [...ctx.path, 'variables', variable],
         });
       });
